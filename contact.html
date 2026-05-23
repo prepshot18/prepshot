@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — PrepShot</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060810; --bg2: #0b0e18; --card: #0d1019;
+    --border: rgba(255,255,255,0.07); --accent: #6366f1;
+    --accent2: #818cf8; --accent3: #a78bfa;
+    --text: #eef2ff; --muted: #7c85a2; --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; min-height: 100vh; }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 80% 110%, rgba(167,139,250,0.16) 0%, transparent 50%);
+  }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(8,11,18,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; text-decoration: none; padding: 6px 14px; border-radius: 50px; border: 1px solid var(--border); transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  .page-wrap { max-width: 700px; margin: 0 auto; padding: 60px 24px 80px; position: relative; z-index: 1; }
+  .page-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: var(--accent2); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.08em; }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 12px; background: linear-gradient(135deg, var(--text) 40%, var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 48px; line-height: 1.6; }
+  .contact-card {
+    background: rgba(13,16,25,0.85); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 36px 32px; margin-bottom: 20px;
+    text-align: center;
+  }
+  .contact-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+  .contact-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .contact-card p { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+  .email-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
+    color: var(--accent2); padding: 12px 24px; border-radius: 50px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .email-link:hover { background: rgba(99,102,241,0.2); border-color: rgba(99,102,241,0.5); }
+  .yt-card {
+    background: rgba(13,16,25,0.85); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .yt-icon-wrap { width: 52px; height: 52px; background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .yt-icon-wrap svg { width: 26px; height: 26px; fill: #f87171; }
+  .yt-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .yt-card p { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .yt-card a { color: #f87171; text-decoration: none; font-size: 14px; font-weight: 600; }
+  .yt-card a:hover { text-decoration: underline; }
+  .info-box { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: var(--radius); padding: 20px 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .info-box strong { color: var(--text); }
+
+  /* FOOTER */
+  .ps-footer { margin-top: 72px; border-top: 1px solid var(--border); padding: 40px 24px 24px; }
+  .ps-footer-inner { max-width: 700px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-start; }
+  .ps-footer-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: block; margin-bottom: 6px; }
+  .ps-footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ps-footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .ps-footer-links a { color: var(--text); text-decoration: none; font-size: 14px; opacity: 0.7; transition: opacity 0.18s; }
+  .ps-footer-links a:hover { opacity: 1; color: var(--accent2); }
+  .ps-footer-bottom { max-width: 700px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+  .ps-footer-bottom a { color: var(--muted); text-decoration: none; }
+  .ps-footer-bottom a:hover { color: var(--accent2); }
+  @media (max-width: 520px) { .yt-card { flex-direction: column; align-items: flex-start; } .ps-footer-inner { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">PrepShot</a>
+  <a class="nav-back" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <span class="page-badge">📬 Contact</span>
+  <h1>Get in Touch</h1>
+  <p class="subtitle">We're always happy to hear from students. Whether it's feedback, a question, or a content request — drop us a message.</p>
+
+  <!-- Email Card -->
+  <div class="contact-card">
+    <span class="contact-icon">✉️</span>
+    <h2>Email Us</h2>
+    <p>For queries, suggestions, feedback, or any concerns about our content or platform, reach out directly via email. We aim to reply within 48 hours.</p>
+    <a class="email-link" href="/cdn-cgi/l/email-protection#0676746376756e6972373e46616b676f6a2865696b">
+      📧 <span class="__cf_email__" data-cfemail="4434362134372c2b30757c042329252d286a272b29">[email&#160;protected]</span>
+    </a>
+  </div>
+
+  <!-- YouTube Card -->
+  <div class="yt-card">
+    <div class="yt-icon-wrap">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </div>
+    <div>
+      <h2>YouTube Channel</h2>
+      <p>Subscribe to our channel for the latest one-shot lectures and updates.</p>
+      <a href="https://www.youtube.com/channel/UCLxLreUbNhemHvEdaXfdJtA" target="_blank" rel="noopener noreferrer">
+        @prepshot-18 →
+      </a>
+    </div>
+  </div>
+
+  <!-- Info box -->
+  <div class="info-box">
+    <strong>Note:</strong> PrepShot is run by an anonymous individual. We do not have a physical address or phone number. All communication is handled via email. For urgent matters related to content or copyright, please mention it clearly in your email subject line.
+  </div>
+</div>
+
+<footer class="ps-footer">
+  <div class="ps-footer-inner">
+    <div>
+      <a class="ps-footer-logo" href="index.html">PrepShot</a>
+      <p style="color:var(--muted);font-size:13px;font-style:italic">Prep Smart. Crack Fast.</p>
+    </div>
+    <div class="ps-footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ps-footer-bottom">
+    <span>© 2026 PrepShot. All rights re

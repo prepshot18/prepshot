@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes — PrepShot</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root {
+    --bg: #060810; --bg2: #0b0e18; --card: #0d1019;
+    --border: rgba(255,255,255,0.07); --accent: #6366f1;
+    --accent2: #818cf8; --accent3: #a78bfa;
+    --text: #eef2ff; --muted: #7c85a2; --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; min-height: 100vh; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 80% 110%, rgba(167,139,250,0.16) 0%, transparent 50%);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,11,18,0.88); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none; letter-spacing: -0.5px; white-space: nowrap;
+  }
+  .nav-search {
+    flex: 1; max-width: 440px;
+    display: flex; align-items: center;
+    background: rgba(20,24,32,0.8); border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 50px; padding: 0 16px; height: 38px; gap: 8px;
+  }
+  .nav-search input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-family: inherit; font-size: 14px;
+  }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    display: flex; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 13px; font-weight: 500;
+    padding: 7px 14px; border-radius: 50px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .nav-link.active {
+    color: var(--accent2); background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.25);
+    box-shadow: 0 0 12px rgba(99,102,241,0.2);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 60px 24px 40px; max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .hero-left { flex: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
+    color: var(--accent2); font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 20px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800; line-height: 1.1; margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--text) 40%, var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p { color: var(--muted); font-size: 16px; margin-bottom: 28px; line-height: 1.6; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 500;
+  }
+  .pill-icon { font-size: 15px; }
+  .hero-img { font-size: 140px; filter: drop-shadow(0 0 40px rgba(99,102,241,0.4)); line-height: 1; flex-shrink: 0; }
+
+  /* ── SEARCH FILTER BAR ── */
+  .filter-bar {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px 36px;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  .filter-search {
+    flex: 1; min-width: 260px;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(13,16,25,0.8); border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 12px; padding: 0 16px; height: 46px;
+    transition: border-color 0.2s;
+  }
+  .filter-search:focus-within { border-color: rgba(99,102,241,0.5); }
+  .filter-search input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-family: inherit; font-size: 14px;
+  }
+  .filter-select {
+    height: 46px; padding: 0 16px; background: rgba(13,16,25,0.8);
+    border: 1px solid rgba(99,102,241,0.2); border-radius: 12px;
+    color: var(--text); font-family: inherit; font-size: 14px; cursor: pointer;
+  }
+  .filter-select option { background: #0d1019; }
+  .btn-reset {
+    height: 46px; padding: 0 20px; background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.25); border-radius: 12px;
+    color: var(--accent2); font-family: inherit; font-size: 14px; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-reset:hover { background: rgba(99,102,241,0.2); }
+
+  /* ── SECTION ── */
+  .section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 18px; font-weight: 700; margin-bottom: 24px;
+  }
+  .section-title::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 8px var(--accent); flex-shrink: 0;
+  }
+
+  /* ── CLASS CARDS GRID ── */
+  .class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+  }
+  .class-card {
+    background: rgba(13,16,25,0.85); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px; padding: 24px 20px;
+    cursor: pointer; text-decoration: none; color: var(--text);
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    position: relative; overflow: hidden;
+  }
+  .class-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--card-color, rgba(99,102,241,0.08)) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .class-card:hover { transform: translateY(-5px); border-color: var(--card-color, rgba(99,102,241,0.4)); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+  .class-card:hover::before { opacity: 1; }
+  .card-icon-wrap {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .card-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; }
+  .card-sub { font-size: 12px; color: var(--muted); }
+  .card-count {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);
+    color: var(--accent2); font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 20px; width: fit-content;
+  }
+  .card-arrow {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: var(--accent2);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .class-card:hover .card-arrow { background: rgba(99,102,241,0.25); transform: translateY(-50%) translateX(2px); }
+
+  /* ── FOOTER ── */
+  .ps-footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 40px 24px 24px; position: relative; z-index: 1; }
+  .ps-footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+  .ps-footer-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; display: block; margin-bottom: 6px; }
+  .ps-footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ps-footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .ps-footer-links a { color: var(--text); text-decoration: none; font-size: 14px; opacity: 0.7; transition: opacity 0.18s; }
+  .ps-footer-links a:hover { opacity: 1; color: var(--accent2); }
+  .ps-footer-bottom { max-width: 1200px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+
+  /* ── LOADING ── */
+  .loading-msg { text-align: center; padding: 40px; color: var(--muted); font-size: 15px; }
+
+  @media (max-width: 768px) {
+    /* NAV */
+    nav { padding: 0 12px; gap: 8px; flex-wrap: nowrap; }
+    .nav-search { max-width: none; flex: 1; min-width: 0; }
+    .nav-links { gap: 2px; flex-shrink: 0; }
+    .nav-link { padding: 6px 8px; font-size: 12px; }
+    .nav-link span.label { display: none; }
+
+    /* HERO — compact on mobile */
+    .hero {
+      flex-direction: column;
+      padding: 24px 16px 16px;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .hero-img { display: none; } /* hide big emoji on mobile */
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 14px; margin-bottom: 16px; }
+    .hero-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .pill { font-size: 12px; padding: 7px 12px; justify-content: center; }
+
+    /* FILTER BAR */
+    .filter-bar { flex-direction: column; padding: 0 16px 20px; gap: 10px; }
+    .filter-search { width: 100%; min-width: unset; }
+    .filter-select { width: 100%; }
+    .btn-reset { width: 100%; }
+
+    /* CLASS GRID — 2 columns */
+    .class-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card-arrow { display: none; }
+    .class-card { padding: 18px 14px; border-radius: 14px; }
+    .card-icon-wrap { width: 48px; height: 48px; font-size: 24px; }
+    .card-name { font-size: 15px; }
+
+    /* SECTION */
+    .section { padding: 0 16px 40px; }
+    .section-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">PrepShot</a>
+  <div class="nav-search">
+    <span style="color:var(--muted)">🔍</span>
+    <input type="text" placeholder="Lecture dhundho..." onkeydown="if(event.key==='Enter') window.location='index.html?q='+encodeURIComponent(this.value)" />
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">🏠 <span class="label">Home</span></a>
+    <a class="nav-link" href="index.html#lectures">📚 <span class="label">Lectures</span></a>
+    <a class="nav-link active" href="notes.html">📘 <span class="label">Notes</span></a>
+    <a class="nav-link" href="about.html">ℹ️ <span class="label">About</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">📘 All Notes, One Place</div>
+    <h1>Notes Ka Ultimate<br>Collection</h1>
+    <p>Class-wise, Subject-wise, One Click PDF Access</p>
+    <div class="hero-pills">
+      <div class="pill"><span class="pill-icon">🎁</span> Free Access</div>
+      <div class="pill"><span class="pill-icon">🛡️</span> High Quality</div>
+      <div class="pill"><span class="pill-icon">⚡</span> Updated Regularly</div>
+      <div class="pill"><span class="pill-icon">⬇️</span> Easy Download</div>
+    </div>
+  </div>
+  <div class="hero-img">📘</div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-search">
+    <span style="color:var(--muted);font-size:15px">🔍</span>
+    <input type="text" id="notesSearch" placeholder="Search notes by subject or chapter..." oninput="filterCards()" />
+  </div>
+  <select class="filter-select" id="classFilter" onchange="filterCards()">
+    <option value="">All Classes</option>
+    <option>Class 9</option>
+    <option>Class 10</option>
+    <option>Class 11</option>
+    <option>Class 12</option>
+    <option>JEE</option>
+    <option>NEET</option>
+  </select>
+  <button class="btn-reset" onclick="resetFilters()">↺ Reset</button>
+</div>
+
+<!-- CLASS CARDS -->
+<div class="section">
+  <div class="section-title">Explore Notes by Class</div>
+  <div class="class-grid" id="classGrid">
+    <div class="loading-msg">Loading notes...</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ps-footer">
+  <div class="ps-footer-inner">
+    <div>
+      <a class="ps-footer-logo" href="index.html">PrepShot</a>
+      <p style="color:var(--muted);font-size:13px;font-style:italic">Prep Smart. Crack Fast.</p>
+    </div>
+    <div class="ps-footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ps-footer-bottom">
+    <span>© 2026 PrepShot. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const SUPABASE_URL  = 'https://ohptzgfwgbmtjcmivstx.supabase.co';
+  const SUPABASE_ANON = 'sb_publishable_HR_yW3JVvVuEjUmE0h9vWQ_xVy0xjFs';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+  // Icon + color pools for classes
+  const CLASS_ICONS   = ['🎒','📘','📖','🎓','🚀','🩺','🔬','📐','🧪','⚡','🏆','🧬'];
+  const CLASS_COLORS  = [
+    {color:'rgba(20,184,166,0.3)',  border:'rgba(20,184,166,0.4)'},
+    {color:'rgba(6,182,212,0.3)',   border:'rgba(6,182,212,0.4)'},
+    {color:'rgba(139,92,246,0.3)',  border:'rgba(139,92,246,0.4)'},
+    {color:'rgba(99,102,241,0.3)',  border:'rgba(99,102,241,0.4)'},
+    {color:'rgba(245,158,11,0.3)',  border:'rgba(245,158,11,0.4)'},
+    {color:'rgba(236,72,153,0.3)',  border:'rgba(236,72,153,0.4)'},
+    {color:'rgba(52,211,153,0.3)',  border:'rgba(52,211,153,0.4)'},
+    {color:'rgba(249,115,22,0.3)',  border:'rgba(249,115,22,0.4)'},
+  ];
+
+  let allClasses = [];   // from Supabase note_classes table
+  let allCounts  = {};   // note counts per class
+
+  async function loadClasses() {
+    const grid = document.getElementById('classGrid');
+    grid.innerHTML = '<div class="loading-msg">⏳ Loading classes...</div>';
+
+    // 1. Fetch classes from note_classes table
+    const { data: classData, error } = await db
+      .from('note_classes').select('*').order('sort_order');
+
+    // 2. Fetch note counts
+    const { data: noteData } = await db.from('notes').select('class_name');
+    allCounts = {};
+    (noteData||[]).forEach(n => { allCounts[n.class_name] = (allCounts[n.class_name]||0)+1; });
+
+    if (error || !classData?.length) {
+      grid.innerHTML = '<div class="loading-msg">Koi classes nahi hain abhi.</div>';
+      return;
+    }
+
+    // Build class config from DB
+    allClasses = classData.map((cls, i) => ({
+      name:   cls.name,
+      icon:   CLASS_ICONS[i % CLASS_ICONS.length],
+      color:  CLASS_COLORS[i % CLASS_COLORS.length].color,
+      border: CLASS_COLORS[i % CLASS_COLORS.length].border,
+    }));
+
+    // Update filter dropdown dynamically
+    const sel = document.getElementById('classFilter');
+    sel.innerHTML = '<option value="">All Classes</option>';
+    allClasses.forEach(c => { sel.innerHTML += `<option value="${c.name}">${c.name}</option>`; });
+
+    renderCards(allClasses);
+  }
+
+  function renderCards(classes) {
+    const grid = document.getElementById('classGrid');
+    if (!classes.length) {
+      grid.innerHTML = '<div class="loading-msg">Koi classes nahi mili.</div>';
+      return;
+    }
+    grid.innerHTML = classes.map(cls => `
+      <a class="class-card" href="notes-class.html?class=${encodeURIComponent(cls.name)}"
+         style="--card-color:${cls.border}">
+        <div class="card-icon-wrap" style="background:${cls.color};border-color:${cls.border}">${cls.icon}</div>
+        <div>
+          <div class="card-name">${cls.name}</div>
+          <div class="card-sub">All Subjects</div>
+        </div>
+        <div class="card-count">📄 ${allCounts[cls.name] || 0} Notes</div>
+        <div class="card-arrow">›</div>
+      </a>
+    `).join('');
+  }
+
+  function filterCards() {
+    const q   = document.getElementById('notesSearch').value.toLowerCase();
+    const cls = document.getElementById('classFilter').value;
+    const filtered = allClasses.filter(c => {
+      const matchCls = !cls || c.name === cls;
+      const matchQ   = !q   || c.name.toLowerCase().includes(q);
+      return matchCls && matchQ;
+    });
+    renderCards(filtered);
+  }
+
+  function resetFilters() {
+    document.getElementById('notesSearch').value = '';
+    document.getElementById('classFilter').value = '';
+    renderCards(allClasses);
+  }
+
+  loadClasses();
+</script>
+</body>
+</html>

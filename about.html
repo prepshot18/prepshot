@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — PrepShot</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060810; --bg2: #0b0e18; --card: #0d1019;
+    --border: rgba(255,255,255,0.07); --accent: #6366f1;
+    --accent2: #818cf8; --accent3: #a78bfa;
+    --text: #eef2ff; --muted: #7c85a2; --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Space Grotesk', sans-serif; min-height: 100vh;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 80% 110%, rgba(167,139,250,0.16) 0%, transparent 50%);
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,11,18,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    text-decoration: none; letter-spacing: -0.5px;
+  }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 13px; text-decoration: none;
+    padding: 6px 14px; border-radius: 50px;
+    border: 1px solid var(--border); transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+
+  /* CONTENT */
+  .page-wrap { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; position: relative; z-index: 1; }
+  .page-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25);
+    color: var(--accent2); font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 20px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800; line-height: 1.15; margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--text) 40%, var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 48px; line-height: 1.6; }
+  .card {
+    background: rgba(13,16,25,0.8); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px;
+  }
+  .card h2 { font-size: 17px; font-weight: 700; margin-bottom: 12px; color: var(--accent2); }
+  .card p, .card li { font-size: 15px; color: rgba(238,242,255,0.75); line-height: 1.75; }
+  .card ul { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .coming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-top: 16px; }
+  .coming-chip {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.18);
+    border-radius: 10px; padding: 12px 16px; font-size: 14px; font-weight: 600;
+  }
+  .coming-chip span { font-size: 20px; }
+
+  /* FOOTER */
+  .ps-footer { margin-top: 72px; border-top: 1px solid var(--border); padding: 40px 24px 24px; }
+  .ps-footer-inner { max-width: 760px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-start; }
+  .ps-footer-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: block; margin-bottom: 6px; }
+  .ps-footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ps-footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .ps-footer-links a { color: var(--text); text-decoration: none; font-size: 14px; opacity: 0.7; transition: opacity 0.18s; }
+  .ps-footer-links a:hover { opacity: 1; color: var(--accent2); }
+  .ps-yt-btn { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,0,0,0.09); border: 1px solid rgba(255,0,0,0.22); color: #f87171; padding: 6px 12px; border-radius: 50px; font-size: 13px; font-weight: 600; text-decoration: none; }
+  .ps-yt-btn:hover { background: rgba(255,0,0,0.16); }
+  .ps-yt-icon { width: 16px; height: 16px; fill: #f87171; }
+  .ps-footer-bottom { max-width: 760px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+  .ps-footer-bottom a { color: var(--muted); text-decoration: none; }
+  .ps-footer-bottom a:hover { color: var(--accent2); }
+  @media (max-width: 520px) { .card { padding: 22px 18px; } .ps-footer-inner { flex-direction: column; gap: 20px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">PrepShot</a>
+  <a class="nav-back" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <span class="page-badge">ℹ️ About Us</span>
+  <h1>Free Learning.<br>Zero Excuses.</h1>
+  <p class="subtitle">PrepShot is built on one belief — every student deserves access to world-class lectures, completely free.</p>
+
+  <div class="card">
+    <h2>🎯 What is PrepShot?</h2>
+    <p>PrepShot is a free one-shot lecture platform designed for students preparing for competitive exams like JEE, NEET, and board examinations. We curate and organise the best free lectures from YouTube so you don't have to hunt for them — everything you need is in one place, structured by batch, subject, and chapter.</p>
+  </div>
+
+  <div class="card">
+    <h2>📚 What We Offer Today</h2>
+    <ul>
+      <li>One-shot lecture videos covering full chapters in a single session</li>
+      <li>Physics, Chemistry, Mathematics, and more</li>
+      <li>Organised by batch, subject, and chapter for easy navigation</li>
+      <li>Zero registration required — just open and start learning</li>
+      <li>Works on mobile, tablet, and desktop</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🚀 Coming Soon — AI Courses</h2>
+    <p style="margin-bottom:16px">PrepShot is expanding beyond exams. We're building a series of practical AI and tech courses to help students future-proof their skills:</p>
+    <div class="coming-grid">
+      <div class="coming-chip"><span>🐍</span> Python Basics</div>
+      <div class="coming-chip"><span>📊</span> Data Analytics</div>
+      <div class="coming-chip"><span>🤖</span> Prompt Engineering</div>
+      <div class="coming-chip"><span>⚡</span> AI for Students</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💰 Is PrepShot Free?</h2>
+    <p>Yes — 100% free. PrepShot is currently supported by Google AdSense advertisements. Ads help us keep the platform running at no cost to you. All content is sourced from YouTube and remains free to watch.</p>
+  </div>
+
+  <div class="card">
+    <h2>📬 Get in Touch</h2>
+    <p>Have feedback, a suggestion, or a question? We'd love to hear from you. Reach us at <a href="/cdn-cgi/l/email-protection#d3a3a1b6a3a0bbbca7e2eb93b4beb2babffdb0bcbe" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="5626243326253e3922676e16313b373f3a7835393b">[email&#160;protected]</span></a> or visit our <a href="https://www.youtube.com/channel/UCLxLreUbNhemHvEdaXfdJtA" target="_blank" style="color:var(--accent2)">YouTube channel</a>.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="ps-footer">
+  <div class="ps-footer-inner">
+    <div>
+      <a class="ps-footer-logo" href="index.html">PrepShot</a>
+      <p style="color:var(--muted);font-size:13px;font-style:italic;margin-bottom:12px">Prep Smart. Crack Fast.</p>
+      <a class="ps-yt-btn" href="https://www.youtube.com/channel/UCLxLreUbNhemHvEdaXfdJtA" target="_blank">
+        <svg class="ps-yt-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        @prepshot-18
+      </a>
+    </div>
+    <div class="ps-footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Contact</h4>
+      <a href="/cdn-cgi/l/email-protection#81f1f3e4f1f2e9eef5b0b9c1e6ece0e8edafe2eeec" style="color:var(--accent2);font-size:14px;text-decoration:none"><span class="__cf_email__" data-cfemail="611113041112090e15505921060c00080d4

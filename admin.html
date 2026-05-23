@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrepShot Admin Panel</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f13;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(99,102,241,0.3);
+    }
+    .header h1 { font-size: 20px; color: #a5b4fc; }
+    .header span { font-size: 22px; }
+
+    /* ── Password gate ── */
+    #password-gate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      gap: 16px;
+    }
+    #password-gate h2 { color: #a5b4fc; font-size: 22px; }
+    #password-gate input {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(99,102,241,0.4);
+      background: #1e1b4b;
+      color: #fff;
+      font-size: 16px;
+      width: 260px;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+    #password-gate button {
+      padding: 12px 32px;
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      width: 260px;
+    }
+    #password-gate button:hover { background: #4f46e5; }
+    #pw-error { color: #f87171; font-size: 14px; display: none; }
+
+    /* ── Main admin panel ── */
+    #admin-panel { display: none; padding: 24px; max-width: 900px; margin: 0 auto; }
+
+    /* ── Card ── */
+    .card {
+      background: #1a1a2e;
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 16px;
+      color: #a5b4fc;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── Form ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      background: #0f0f1a;
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 10px;
+      color: #e2e8f0;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+    }
+    select option { background: #1a1a2e; }
+    textarea { resize: vertical; min-height: 60px; }
+
+    /* ── Thumbnail preview ── */
+    #thumb-preview {
+      display: none;
+      width: 100%;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 1px solid rgba(99,102,241,0.2);
+    }
+
+    /* ── Submit button ── */
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: opacity 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.9; }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── Message box ── */
+    .msg {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-top: 12px;
+      display: none;
+    }
+    .msg-success { background: rgba(52,211,153,0.1); border: 1px solid #34d399; color: #34d399; }
+    .msg-error   { background: rgba(248,113,113,0.1); border: 1px solid #f87171; color: #f87171; }
+    .msg-info    { background: rgba(99,102,241,0.1);  border: 1px solid #6366f1; color: #a5b4fc; }
+
+    /* ── Lecture list ── */
+    .lecture-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #0f0f1a;
+      border: 1px solid rgba(99,102,241,0.1);
+      margin-bottom: 10px;
+      transition: border 0.2s;
+    }
+    .lecture-row:hover { border-color: rgba(99,102,241,0.3); }
+    .lecture-thumb {
+      width: 90px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .lecture-info { flex: 1; min-width: 0; }
+    .lecture-info strong { display: block; font-size: 14px; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lecture-info span { font-size: 12px; color: #64748b; }
+
+    .btn-delete {
+      padding: 7px 14px;
+      background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.3);
+      color: #f87171;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .btn-delete:hover { background: rgba(248,113,113,0.25); }
+
+    .empty-msg { color: #475569; text-align: center; padding: 24px 0; font-size: 14px; }
+
+    /* ── Filter bar ── */
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 16px; }
+    .filter-bar select { max-width: 200px; }
+
+    /* ── Count badge ── */
+    .badge {
+      background: rgba(99,102,241,0.15);
+      color: #a5b4fc;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-left: 8px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .filter-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <span>⚡</span>
+  <h1>PrepShot Admin Panel</h1>
+  <div style="margin-left:auto;display:flex;gap:8px">
+    <button onclick="showTab('lectures')" id="tab-lectures" style="padding:7px 16px;border-radius:8px;border:1px solid rgba(99,102,241,0.4);background:rgba(99,102,241,0.2);color:#a5b4fc;font-size:13px;cursor:pointer;font-weight:600">📚 Lectures</button>
+    <button onclick="showTab('notes')" id="tab-notes" style="padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#94a3b8;font-size:13px;cursor:pointer;font-weight:600">📘 Notes</button>
+    <button onclick="showTab('books')" id="tab-books" style="padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#94a3b8;font-size:13px;cursor:pointer;font-weight:600">📚 Books</button>
+    <button onclick="showTab('testimonials')" id="tab-testimonials" style="padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#94a3b8;font-size:13px;cursor:pointer;font-weight:600">💬 Testimonials</button>
+  </div>
+</div>
+
+<!-- Password Gate -->
+<div id="password-gate">
+  <h2>🔐 Admin Login</h2>
+  <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()" />
+  <button onclick="checkPassword()">Login</button>
+  <p id="pw-error">❌ Wrong password!</p>
+</div>
+
+<!-- Admin Panel (shown after login) -->
+<div id="admin-content" style="display:none">
+<div id="admin-panel">
+
+  <!-- Batch & Subject Management -->
+  <div class="card" id="batch-mgmt-card">
+    <h2>📦 Batch Management</h2>
+
+    <div style="display:flex;gap:10px;margin-bottom:16px">
+      <input type="text" id="new-batch-name" placeholder="New batch name e.g. JEE Class 12" style="flex:1" />
+      <button onclick="addBatch()" style="padding:10px 20px;background:#6366f1;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:14px;white-space:nowrap">+ Add Batch</button>
+    </div>
+    <div id="batch-list"><p class="empty-msg">Loading batches...</p></div>
+
+    <div class="msg" id="batch-msg"></div>
+  </div>
+
+  <!-- Subject Management -->
+  <div class="card" id="subject-mgmt-card">
+    <h2>📋 Subject Management</h2>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <select id="subject-batch-select" style="flex:1;min-width:180px" onchange="loadSubjectsForMgmt()">
+        <option value="">— Select Batch —</option>
+      </select>
+      <input type="text" id="new-subject-name" placeholder="New subject name" style="flex:1;min-width:160px" />
+      <button onclick="addSubject()" style="padding:10px 20px;background:#6366f1;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:14px;white-space:nowrap">+ Add Subject</button>
+    </div>
+    <div id="subject-list"><p class="empty-msg">Select a batch to see subjects.</p></div>
+    <div class="msg" id="subject-msg"></div>
+  </div>
+
+  <!-- Add Lecture Form -->
+  <div class="card">
+    <h2>➕ Naya Lecture Add Karo</h2>
+
+    <div class="form-grid">
+
+      <!-- YouTube URL -->
+      <div class="form-full">
+        <label>YouTube URL *</label>
+        <input type="url" id="yt-url" placeholder="https://www.youtube.com/watch?v=..." />
+        <img id="thumb-preview" src="" alt="Thumbnail preview" />
+      </div>
+
+      <!-- Title -->
+      <div class="form-full">
+        <label>Lecture Title *</label>
+        <input type="text" id="lec-title" placeholder="e.g. MOTION IN A STRAIGHT LINE in One Shot..." />
+      </div>
+
+      <!-- Batch -->
+      <div>
+        <label>Batch *</label>
+        <select id="lec-batch" onchange="updateSubjectsFromDB()">
+          <option value="">— Loading... —</option>
+        </select>
+      </div>
+
+      <!-- Subject -->
+      <div>
+        <label>Subject *</label>
+        <select id="lec-subject" disabled>
+          <option value="">— Pehle Batch chuno —</option>
+        </select>
+      </div>
+
+      <!-- Chapter Name -->
+      <div>
+        <label>Chapter Name *</label>
+        <input type="text" id="lec-chapter" placeholder="e.g. MOTION IN A STRAIGHT LINE" />
+      </div>
+
+      <!-- Chapter Number -->
+      <div>
+        <label>Chapter Number</label>
+        <input type="number" id="lec-chapnum" placeholder="e.g. 2" min="1" value="1" />
+      </div>
+
+      <!-- Chapter Name -->
+      <div>
+        <label>Chapter Name *</label>
+        <input type="text" id="lec-chapter-name" placeholder="e.g. MOTION IN A STRAIGHT LINE" />
+      </div>
+
+      <!-- Chapter Number -->
+      <div>
+        <label>Chapter Number</label>
+        <input type="number" id="lec-chapter-num" placeholder="e.g. 2" min="1" value="1" />
+      </div>
+
+
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="addLecture()">➕ Add Lecture</button>
+    <div class="msg" id="form-msg"></div>
+  </div>
+
+  <!-- Lecture List -->
+  <div class="card">
+    <h2>📚 Existing Lectures <span class="badge" id="count-badge">0</span></h2>
+
+    <div class="filter-bar">
+      <select id="filter-batch" onchange="loadLectures()">
+        <option value="">All Batches</option>
+      </select>
+      <select id="filter-subject" onchange="loadLectures()">
+        <option value="">All Subjects</option>
+      </select>
+    </div>
+
+    <div id="lecture-list"><p class="empty-msg">Loading...</p></div>
+  </div>
+
+</div>
+
+<!-- ── NOTES MANAGEMENT PANEL ──────────────────────────── -->
+<div id="notes-panel" style="display:none;padding:24px;max-width:900px;margin:0 auto">
+
+  <!-- Class Management -->
+  <div class="card">
+    <h2>🗂️ Notes Class Management</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:16px">Classes add, rename ya delete karo. Delete karne se us class ke saare notes bhi delete honge!</p>
+
+    <!-- Add new class -->
+    <div style="display:flex;gap:10px;margin-bottom:20px">
+      <input type="text" id="new-class-input" placeholder="New class name e.g. Class 11, JEE"
+        style="flex:1;padding:11px 14px;background:#0f0f1a;border:1px solid rgba(99,102,241,0.25);border-radius:10px;color:#e2e8f0;font-family:inherit;font-size:14px"
+        onkeydown="if(event.key==='Enter') addNoteClass()" />
+      <button onclick="addNoteClass()"
+        style="padding:11px 22px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap">
+        + Add Class
+      </button>
+    </div>
+
+    <!-- Existing classes list -->
+    <div id="class-mgmt-list"><p class="empty-msg">Loading classes...</p></div>
+    <div class="msg" id="class-msg"></div>
+  </div>
+
+  <!-- Add/Edit Note Form -->
+  <div class="card">
+    <h2 id="note-form-title">➕ Naya Note Add Karo</h2>
+    <input type="hidden" id="editing-note-id" />
+    <div class="form-grid">
+      <div>
+        <label>Class *</label>
+        <select id="note-class" onchange="loadNoteSubjects()">
+          <option value="">— Select Class —</option>
+        </select>
+      </div>
+      <div>
+        <label>Subject *</label>
+        <select id="note-subject">
+          <option value="">— Pehle Class chuno —</option>
+        </select>
+      </div>
+      <div class="form-full">
+        <label>Chapter Title *</label>
+        <input type="text" id="note-title" placeholder="e.g. Motion in a Straight Line" />
+      </div>
+      <div>
+        <label>Chapter Number</label>
+        <input type="number" id="note-chapter" placeholder="e.g. 2" min="1" value="1" />
+      </div>
+      <div>
+        <label>Pages</label>
+        <input type="number" id="note-pages" placeholder="e.g. 18" min="1" />
+      </div>
+      <div class="form-full">
+        <label>PDF URL *</label>
+        <input type="url" id="note-pdf" placeholder="https://drive.google.com/..." />
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:6px">
+      <button class="btn-submit" id="note-submit-btn" onclick="submitNote()" style="flex:1">➕ Add Note</button>
+      <button id="note-cancel-btn" onclick="cancelEditNote()" style="display:none;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#94a3b8;cursor:pointer;font-size:15px">✕ Cancel</button>
+    </div>
+    <div class="msg" id="note-msg"></div>
+  </div>
+
+  <!-- Subject Management -->
+  <div class="card">
+    <h2>📋 Notes Subject Management</h2>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <select id="sub-mgmt-class" onchange="loadSubjectMgmt()"
+        style="flex:1;min-width:160px;padding:10px 14px;background:#0f0f1a;border:1px solid rgba(99,102,241,0.25);border-radius:10px;color:#e2e8f0;font-family:inherit;font-size:14px">
+        <option value="">— Select Class —</option>
+      </select>
+      <input type="text" id="new-subject-input" placeholder="New subject e.g. Physics"
+        style="flex:1;min-width:160px;padding:10px 14px;background:#0f0f1a;border:1px solid rgba(99,102,241,0.25);border-radius:10px;color:#e2e8f0;font-family:inherit;font-size:14px"
+        onkeydown="if(event.key==='Enter') addNoteSubject()" />
+      <button onclick="addNoteSubject()"
+        style="padding:10px 20px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap">
+        + Add Subject
+      </button>
+    </div>
+    <div id="subject-mgmt-list"><p class="empty-msg">Select a class to see subjects.</p></div>
+    <div class="msg" id="subject-msg"></div>
+  </div>
+
+  <!-- Notes List -->
+  <div class="card">
+    <h2>📄 Existing Notes <span class="badge" id="notes-count-badge">0</span></h2>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <input type="text" id="notes-search" placeholder="🔍 Search notes..." oninput="loadAdminNotes()" style="flex:1;padding:10px 14px;background:#0f0f1a;border:1px solid rgba(99,102,241,0.25);border-radius:10px;color:#e2e8f0;font-family:inherit;font-size:14px" />
+      <select id="notes-filter-class" onchange="loadAdminNotes()" style="padding:10px 14px;background:#0f0f1a;border:1px solid rgba(99,102,241,0.25);border-radius:10px;color:#e2e8f0;font-family:inherit;font-size:14px">
+        <option value="">All Classes</option>
+        <option>Class 9</option><option>Class 10</option>
+        <option>Class 11</option><option>Class 12</option>
+        <option>JEE</option><option>NEET</option>
+      </select>
+    </div>
+    <div id="admin-notes-list"><p class="empty-msg">Loading...</p></div>
+  </div>
+</div>
+
+<script>
+
+
+// ── CONFIG ──────────────────────────────────────────────────
+const ADMIN_PASSWORD = '123456789';
+const SUPABASE_URL   = 'https://ohptzgfwgbmtjcmivstx.supabase.co';
+const SUPABASE_ANON  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M';
+
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+// Set today's date default
+
+
+// ── PASSWORD ─────────────────────────────────────────────────
+function checkPassword() {
+  const pw = document.getElementById('pw-input').value;
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    document.getElementById('admin-panel').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+async function initAdmin() {
+  await refreshBatchDropdowns();
+  await loadBatchList();
+  await loadLectures();
+}
+
+// ── YOUTUBE HELPERS ──────────────────────────────────────────
+function extractYtId(url) {
+  try {
+    const patterns = [
+      /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+      /[?&]v=([a-zA-Z0-9_-]{11})/,
+      /embed\/([a-zA-Z0-9_-]{11})/,
+      /shorts\/([a-zA-Z0-9_-]{11})/,
+    ];
+    for (const p of patterns) { const m = url.match(p); if (m) return m[1]; }
+    return null;
+  } catch { return null; }
+}
+
+async function fetchYtTitle(url) {
+  try {
+    const res = await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.title || null;
+  } catch { return null; }
+}
+
+// ── YouTube URL → thumbnail preview ──────────────────────────
+document.getElementById('yt-url').addEventListener('input', function () {
+  const id = extractYtId(this.value.trim());
+  const preview = document.getElementById('thumb-preview');
+  if (id) {
+    preview.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    preview.style.display = 'block';
+    // Auto-fill title if empty
+    const titleInput = document.getElementById('lec-title');
+    if (!titleInput.value) {
+      titleInput.placeholder = 'Fetching title...';
+      fetchYtTitle(this.value.trim()).then(t => {
+        if (t) { titleInput.value = t; titleInput.placeholder = ''; }
+        else titleInput.placeholder = 'Could not fetch — enter manually';
+      });
+    }
+  } else {
+    preview.style.display = 'none';
+  }
+});
+
+// ── BATCH MANAGEMENT ─────────────────────────────────────────
+async function refreshBatchDropdowns() {
+  const { data: batches } = await db.from('batches').select('id, name').order('name');
+  const list = batches || [];
+
+  // Update lec-batch
+  const lecBatch = document.getElementById('lec-batch');
+  lecBatch.innerHTML = '<option value="">— Select Batch —</option>';
+  list.forEach(b => lecBatch.innerHTML += `<option value="${b.id}" data-name="${b.name}">${b.name}</option>`);
+
+  // Update filter-batch
+  const fb = document.getElementById('filter-batch');
+  const fbVal = fb.value;
+  fb.innerHTML = '<option value="">All Batches</option>';
+  list.forEach(b => fb.innerHTML += `<option value="${b.id}">${b.name}</option>`);
+  if (fbVal) fb.value = fbVal;
+
+  // Update subject-batch-select
+  const sbs = document.getElementById('subject-batch-select');
+  const sbsVal = sbs.value;
+  sbs.innerHTML = '<option value="">— Select Batch —</option>';
+  list.forEach(b => sbs.innerHTML += `<option value="${b.id}">${b.name}</option>`);
+  if (sbsVal) sbs.value = sbsVal;
+}
+
+async function loadBatchList() {
+  const listEl = document.getElementById('batch-list');
+  const { data: batches, error } = await db.from('batches').select('id, name').order('name');
+  if (error || !batches?.length) {
+    listEl.innerHTML = '<p class="empty-msg">No batches yet. Add one above!</p>';
+    return;
+  }
+  listEl.innerHTML = '';
+  batches.forEach(b => {
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.innerHTML = `
+      <div class="lecture-info" style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:18px">📦</span>
+        <div>
+          <strong>${b.name}</strong>
+          <span id="batch-subcount-${b.id}" style="font-size:12px;color:#64748b;display:block">Loading subjects...</span>
+        </div>
+      </div>
+      <button class="btn-delete" onclick="deleteBatch('${b.id}','${b.name}',this)">🗑 Delete</button>
+    `;
+    listEl.appendChild(row);
+    // Load subject count
+    db.from('subjects').select('id',{count:'exact',head:true}).eq('batch_id',b.id).then(({count}) => {
+      const el = document.getElementById(`batch-subcount-${b.id}`);
+      if (el) el.textContent = `${count || 0} subject(s)`;
+    });
+  });
+}
+
+async function addBatch() {
+  const input = document.getElementById('new-batch-name');
+  const msgEl = document.getElementById('batch-msg');
+  const name = input.value.trim();
+  if (!name) return showMsg(msgEl, '❌ Batch name required!', 'error');
+
+  const { error } = await db.from('batches').insert([{ name }]);
+  if (error) return showMsg(msgEl, '❌ ' + error.message, 'error');
+
+  input.value = '';
+  showMsg(msgEl, '✅ Batch added!', 'success');
+  await refreshBatchDropdowns();
+  await loadBatchList();
+}
+
+async function deleteBatch(id, name, btn) {
+  if (!confirm(`Delete batch "${name}"? This will delete ALL subjects and lectures inside it!`)) return;
+  btn.disabled = true;
+  const { error } = await db.from('batches').delete().eq('id', id);
+  if (error) { alert('Error: ' + error.message); btn.disabled = false; return; }
+  await refreshBatchDropdowns();
+  await loadBatchList();
+  await loadLectures();
+}
+
+// ── SUBJECT MANAGEMENT ────────────────────────────────────────
+async function loadSubjectsForMgmt() {
+  const batchId = document.getElementById('subject-batch-select').value;
+  const listEl = document.getElementById('subject-list');
+  if (!batchId) { listEl.innerHTML = '<p class="empty-msg">Select a batch first.</p>'; return; }
+
+  const { data: subjects } = await db.from('subjects').select('id, name').eq('batch_id', batchId).order('name');
+  if (!subjects?.length) { listEl.innerHTML = '<p class="empty-msg">No subjects in this batch yet.</p>'; return; }
+
+  listEl.innerHTML = '';
+  subjects.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.innerHTML = `
+      <div class="lecture-info"><strong>${s.name}</strong></div>
+      <button class="btn-delete" onclick="deleteSubject('${s.id}','${s.name}',this)">🗑 Delete</button>
+    `;
+    listEl.appendChild(row);
+  });
+}
+
+async function addSubject() {
+  const batchId = document.getElementById('subject-batch-select').value;
+  const name    = document.getElementById('new-subject-name').value.trim();
+  const msgEl   = document.getElementById('subject-msg');
+  if (!batchId) return showMsg(msgEl, '❌ Select a batch first!', 'error');
+  if (!name)    return showMsg(msgEl, '❌ Subject name required!', 'error');
+
+  const { error } = await db.from('subjects').insert([{ batch_id: batchId, name }]);
+  if (error) return showMsg(msgEl, '❌ ' + error.message, 'error');
+
+  document.getElementById('new-subject-name').value = '';
+  showMsg(msgEl, '✅ Subject added!', 'success');
+  await loadSubjectsForMgmt();
+  // Refresh subject dropdown in lecture form if same batch selected
+  const lecBatch = document.getElementById('lec-batch').value;
+  if (lecBatch === batchId) await updateSubjectsFromDB();
+}
+
+async function deleteSubject(id, name, btn) {
+  if (!confirm(`Delete subject "${name}"? All lectures inside it will also be deleted!`)) return;
+  btn.disabled = true;
+  const { error } = await db.from('subjects').delete().eq('id', id);
+  if (error) { alert('Error: ' + error.message); btn.disabled = false; return; }
+  await loadSubjectsForMgmt();
+  await loadLectures();
+}
+
+// ── DYNAMIC SUBJECT DROPDOWN (lecture form) ───────────────────
+async function updateSubjectsFromDB() {
+  const batchId = document.getElementById('lec-batch').value;
+  const subSel  = document.getElementById('lec-subject');
+  subSel.innerHTML = '<option value="">— Loading... —</option>';
+  subSel.disabled = true;
+  if (!batchId) { subSel.innerHTML = '<option value="">— Select Batch First —</option>'; return; }
+
+  const { data: subjects } = await db.from('subjects').select('id, name').eq('batch_id', batchId).order('name');
+  subSel.innerHTML = '<option value="">— Select Subject —</option>';
+  (subjects || []).forEach(s => { subSel.innerHTML += `<option value="${s.id}">${s.name}</option>`; });
+  subSel.disabled = false;
+}
+
+// ── ADD LECTURE ───────────────────────────────────────────────
+async function addLecture() {
+  const msgEl    = document.getElementById('form-msg');
+  const btn      = document.getElementById('submit-btn');
+  const ytUrl    = document.getElementById('yt-url').value.trim();
+  const titleVal = document.getElementById('lec-title').value.trim();
+  const batchId  = document.getElementById('lec-batch').value;
+  const subjectId= document.getElementById('lec-subject').value;
+
+  if (!ytUrl)     return showMsg(msgEl, '❌ YouTube URL required!', 'error');
+  if (!batchId)   return showMsg(msgEl, '❌ Batch chuno!', 'error');
+  if (!subjectId) return showMsg(msgEl, '❌ Subject chuno!', 'error');
+
+  const ytId = extractYtId(ytUrl);
+  if (!ytId) return showMsg(msgEl, '❌ Valid YouTube URL nahi hai!', 'error');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Saving...';
+  showMsg(msgEl, '⏳ Title fetch ho raha hai...', 'info');
+
+  // Auto-fetch title if not filled
+  let title = titleVal;
+  if (!title) {
+    title = await fetchYtTitle(ytUrl);
+    if (title) document.getElementById('lec-title').value = title;
+    else title = 'Lecture — ' + new Date().toLocaleDateString();
+  }
+
+  const chapterName = document.getElementById('lec-chapter-name').value.trim() || document.getElementById('lec-subject').options[document.getElementById('lec-subject').selectedIndex]?.text || '';
+  const chapterNum  = parseInt(document.getElementById('lec-chapter-num').value) || 1;
+
+  const record = {
+    subject_id:    subjectId,
+    title:         title,
+    youtube_url:   ytUrl,
+    embed_url:     `https://www.youtube.com/embed/${ytId}`,
+    thumbnail_url: `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`,
+    chapter_name:  chapterName,
+    chapter_num:   chapterNum,
+  };
+
+  showMsg(msgEl, '⏳ Supabase pe save ho raha hai...', 'info');
+  const { error } = await db.from('lectures').insert([record]);
+  if (error) {
+    showMsg(msgEl, '❌ Error: ' + error.message, 'error');
+    btn.disabled = false; btn.textContent = '➕ Add Lecture';
+    return;
+  }
+
+  showMsg(msgEl, '✅ Lecture add ho gaya!', 'success');
+  document.getElementById('yt-url').value = '';
+  document.getElementById('lec-title').value = '';
+  document.getElementById('lec-chapter-name').value = '';
+  document.getElementById('lec-chapter-num').value = '1';
+  document.getElementById('thumb-preview').style.display = 'none';
+  btn.disabled = false; btn.textContent = '➕ Add Lecture';
+  await loadLectures();
+}
+
+// ── LOAD LECTURES LIST ─────────────────────────────────────────
+async function loadLectures() {
+  const listEl   = document.getElementById('lecture-list');
+  const batchF   = document.getElementById('filter-batch').value;
+  const subjectF = document.getElementById('filter-subject').value;
+
+  listEl.innerHTML = '<p class="empty-msg">Loading...</p>';
+
+  let query = db.from('lectures')
+    .select('id, title, thumbnail_url, youtube_url, subjects(id, name, batches(id, name))')
+    .order('created_at', { ascending: false });
+
+  // Filter by subject_id if subject selected
+  if (subjectF) query = query.eq('subject_id', subjectF);
+
+  const { data, error } = await query;
+  if (error) { listEl.innerHTML = `<p class="empty-msg" style="color:#f87171">Error: ${error.message}</p>`; return; }
+
+  // Filter by batch client-side
+  let filtered = data || [];
+  if (batchF) filtered = filtered.filter(l => l.subjects?.batches?.id === batchF);
+
+  document.getElementById('count-badge').textContent = filtered.length;
+  if (!filtered.length) { listEl.innerHTML = '<p class="empty-msg">Koi lectures nahi hain abhi.</p>'; return; }
+
+  // Also update filter-subject dropdown based on batch selection
+  if (batchF) {
+    const { data: subs } = await db.from('subjects').select('id,name').eq('batch_id', batchF).order('name');
+    const fs = document.getElementById('filter-subject');
+    const fsVal = fs.value;
+    fs.innerHTML = '<option value="">All Subjects</option>';
+    (subs||[]).forEach(s => fs.innerHTML += `<option value="${s.id}">${s.name}</option>`);
+    if (fsVal) fs.value = fsVal;
+  } else {
+    document.getElementById('filter-subject').innerHTML = '<option value="">All Subjects</option>';
+  }
+
+  listEl.innerHTML = '';
+  filtered.forEach(lec => {
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.innerHTML = `
+      <img class="lecture-thumb" src="${lec.thumbnail_url}" onerror="this.style.display='none'" />
+      <div class="lecture-info">
+        <strong>${lec.title}</strong>
+        <span>${lec.subjects?.batches?.name || '—'} › ${lec.subjects?.name || '—'}</span>
+      </div>
+      <button class="btn-delete" onclick="deleteLecture('${lec.id}',this)">🗑 Delete</button>
+    `;
+    listEl.appendChild(row);
+  });
+}
+
+// ── DELETE LECTURE ─────────────────────────────────────────────
+async function deleteLecture(id, btn) {
+  if (!confirm('Is lecture ko delete karna chahte ho?')) return;
+  btn.disabled = true; btn.textContent = '...';
+  const { error } = await db.from('lectures').delete().eq('id', id);
+  if (error) { alert('Delete failed: ' + error.message); btn.disabled = false; btn.textContent = '🗑 Delete'; }
+  else { btn.closest('.lecture-row').remove(); const b = document.getElementById('count-badge'); b.textContent = parseInt(b.textContent) - 1; }
+}
+
+// ── UTILITY ────────────────────────────────────────────────────
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.className = `msg msg-${type}`;
+  el.style.display = 'block';
+  if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+// ── TAB SWITCHING ──────────────────────────────────────────
+function showTab(tab) {
+  const lecturesPanel = document.getElementById('admin-panel');
+  const notesPanel    = document.getElementById('notes-panel');
+  const testiPanel    = document.getElementById('testimonials-panel');
+  const booksPanel    = document.getElementById('books-panel');
+  const tabBooks      = document.getElementById('tab-books');
+  const tabLec        = document.getElementById('tab-lectures');
+  const tabNotes      = document.getElementById('tab-notes');
+  const tabTesti      = document.getElementById('tab-testimonials');
+  const ON  = {background:'rgba(99,102,241,0.2)',color:'#a5b4fc',borderColor:'rgba(99,102,241,0.4)'};
+  const OFF = {background:'transparent',color:'#94a3b8',borderColor:'rgba(255,255,255,0.1)'};
+  lecturesPanel.style.display = 'none';
+  notesPanel.style.display    = 'none';
+  testiPanel.style.display    = 'none';
+  if(booksPanel) booksPanel.style.display='none';
+  Object.assign(tabLec.style,   OFF);
+  Object.assign(tabNotes.style, OFF);
+  if(tabTesti) Object.assign(tabTesti.style, OFF);
+  if(tabBooks) Object.assign(tabBooks.style, OFF);
+  if (tab === 'lectures') {
+    lecturesPanel.style.display = 'block';
+    Object.assign(tabLec.style, ON);
+  } else if (tab === 'notes') {
+    notesPanel.style.display = 'block';
+    Object.assign(tabNotes.style, ON);
+    loadAdminNotes();
+    loadClassMgmt();
+  } else if(tab==='books') {
+    if(booksPanel){booksPanel.style.display='block';bkLoad();}
+    if(tabBooks) Object.assign(tabBooks.style, ON);
+  } else {
+    testiPanel.style.display = 'block';
+    if(tabTesti) Object.assign(tabTesti.style, ON);
+  }
+}
+
+// ── ADD / EDIT NOTE ────────────────────────────────────────
+async function submitNote() {
+  const btn       = document.getElementById('note-submit-btn');
+  const msgEl     = document.getElementById('note-msg');
+  const editId    = document.getElementById('editing-note-id').value;
+  const className = document.getElementById('note-class').value;
+  const subject   = document.getElementById('note-subject').value.trim();
+  const title     = document.getElementById('note-title').value.trim();
+  const pdfUrl    = document.getElementById('note-pdf').value.trim();
+  const chapterNum = parseInt(document.getElementById('note-chapter').value) || 1;
+  const pages     = parseInt(document.getElementById('note-pages').value) || 0;
+
+  if (!className) return showNoteMsg('❌ Class chuno!', 'error');
+  if (!subject)   return showNoteMsg('❌ Subject required!', 'error');
+  if (!title)     return showNoteMsg('❌ Title required!', 'error');
+  if (!pdfUrl)    return showNoteMsg('❌ PDF URL required!', 'error');
+
+  const record = { class_name: className, subject, title, pdf_url: pdfUrl, chapter_num: chapterNum, pages };
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Saving...';
+
+  try {
+    let error;
+    if (editId) {
+      ({ error } = await db.from('notes').update(record).eq('id', editId));
+    } else {
+      ({ error } = await db.from('notes').insert([record]));
+    }
+    if (error) throw error;
+
+    showNoteMsg(editId ? '✅ Note updated!' : '✅ Note added!', 'success');
+    cancelEditNote();
+    await loadAdminNotes();
+  } catch(e) {
+    showNoteMsg('❌ Error: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = editId ? '💾 Update Note' : '➕ Add Note';
+  }
+}
+
+function cancelEditNote() {
+  document.getElementById('editing-note-id').value = '';
+  document.getElementById('note-class').value = '';
+  document.getElementById('note-subject').value = '';
+  document.getElementById('note-title').value = '';
+  document.getElementById('note-pdf').value = '';
+  document.getElementById('note-chapter').value = '1';
+  document.getElementById('note-pages').value = '';
+  document.getElementById('note-form-title').textContent = '➕ Naya Note Add Karo';
+  document.getElementById('note-submit-btn').textContent = '➕ Add Note';
+  document.getElementById('note-cancel-btn').style.display = 'none';
+}
+
+function editNote(note) {
+  document.getElementById('editing-note-id').value = note.id;
+  document.getElementById('note-class').value   = note.class_name;
+  document.getElementById('note-subject').value  = note.subject;
+  document.getElementById('note-title').value    = note.title;
+  document.getElementById('note-pdf').value      = note.pdf_url;
+  document.getElementById('note-chapter').value  = note.chapter_num || 1;
+  document.getElementById('note-pages').value    = note.pages || '';
+  document.getElementById('note-form-title').textContent = '✏️ Note Edit Karo';
+  document.getElementById('note-submit-btn').textContent = '💾 Update Note';
+  document.getElementById('note-cancel-btn').style.display = 'block';
+  document.getElementById('note-form-title').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── LOAD NOTES LIST ────────────────────────────────────────
+async function loadAdminNotes() {
+  const listEl  = document.getElementById('admin-notes-list');
+  const q       = document.getElementById('notes-search').value.toLowerCase();
+  const clsF    = document.getElementById('notes-filter-class').value;
+
+  listEl.innerHTML = '<p class="empty-msg">Loading...</p>';
+
+  let query = db.from('notes').select('*').order('created_at', { ascending: false });
+  if (clsF) query = query.eq('class_name', clsF);
+
+  const { data, error } = await query;
+  if (error) { listEl.innerHTML = `<p class="empty-msg" style="color:#f87171">Error: ${error.message}</p>`; return; }
+
+  let filtered = data || [];
+  if (q) filtered = filtered.filter(n => n.title.toLowerCase().includes(q) || n.subject.toLowerCase().includes(q) || n.class_name.toLowerCase().includes(q));
+
+  document.getElementById('notes-count-badge').textContent = filtered.length;
+
+  if (!filtered.length) { listEl.innerHTML = '<p class="empty-msg">Koi notes nahi hain abhi.</p>'; return; }
+
+  listEl.innerHTML = '';
+  filtered.forEach(note => {
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.innerHTML = `
+      <div class="lecture-info">
+        <strong>${note.title}</strong>
+        <span>${note.class_name} › ${note.subject} › Chapter ${note.chapter_num || 1}</span>
+      </div>
+      <a href="${note.pdf_url}" target="_blank" style="padding:6px 12px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);color:#a5b4fc;border-radius:8px;font-size:12px;text-decoration:none">📄 PDF</a>
+      <button onclick='editNote(${JSON.stringify(note)})' style="padding:6px 12px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;border-radius:8px;font-size:12px;cursor:pointer">✏️ Edit</button>
+      <button class="btn-delete" onclick="deleteNote('${note.id}',this)">🗑 Delete</button>
+    `;
+    listEl.appendChild(row);
+  });
+}
+
+async function deleteNote(id, btn) {
+  if (!confirm('Is note ko delete karna chahte ho?')) return;
+  btn.disabled = true;
+  const { error } = await db.from('notes').delete().eq('id', id);
+  if (error) { alert('Error: ' + error.message); btn.disabled = false; return; }
+  btn.closest('.lecture-row').remove();
+  const badge = document.getElementById('notes-count-badge');
+  badge.textContent = parseInt(badge.textContent) - 1;
+}
+
+function showNoteMsg(text, type) {
+  const el = document.getElementById('note-msg');
+  el.textContent = text;
+  el.className = `msg msg-${type}`;
+  el.style.display = 'block';
+  if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+// ── NOTES CLASS MANAGEMENT (Supabase-powered) ─────────────
+
+async function loadClassMgmt() {
+  const listEl = document.getElementById('class-mgmt-list');
+  if (!listEl) return;
+  listEl.innerHTML = '<p class="empty-msg">Loading...</p>';
+
+  // Fetch classes from Supabase note_classes table
+  const { data: classes, error } = await db
+    .from('note_classes').select('*').order('sort_order');
+
+  // Also get note counts per class
+  const { data: notes } = await db.from('notes').select('class_name');
+  const countMap = {};
+  (notes||[]).forEach(n => { countMap[n.class_name] = (countMap[n.class_name]||0)+1; });
+
+  if (error || !classes?.length) {
+    listEl.innerHTML = '<p class="empty-msg">Koi class nahi hai. Upar se add karo!</p>';
+    refreshNoteClassDropdowns([]);
+    return;
+  }
+
+  listEl.innerHTML = '';
+  classes.forEach(cls => {
+    const count = countMap[cls.name] || 0;
+    const safeId = cls.id;
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.id = `class-row-${safeId}`;
+    row.innerHTML = `
+      <div class="lecture-info" style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:16px">🗂️</span>
+        <div>
+          <strong id="cls-name-${safeId}">${cls.name}</strong>
+          <span style="font-size:12px;color:#64748b;display:block">${count} note${count!==1?'s':''}</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="startRenameClass('${safeId}','${cls.name}')"
+          style="padding:6px 14px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;border-radius:8px;font-size:12px;cursor:pointer">
+          ✏️ Rename
+        </button>
+        <button onclick="deleteNoteClass('${safeId}','${cls.name}',${count},this)"
+          style="padding:6px 14px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:#f87171;border-radius:8px;font-size:12px;cursor:pointer">
+          🗑 Delete
+        </button>
+      </div>
+    `;
+    listEl.appendChild(row);
+  });
+
+  refreshNoteClassDropdowns(classes.map(c => c.name));
+}
+
+function refreshNoteClassDropdowns(classNames) {
+  ['note-class','notes-filter-class','sub-mgmt-class'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (!sel) return;
+    const cur = sel.value;
+    const isFilter = id === 'notes-filter-class';
+    const isSub    = id === 'sub-mgmt-class';
+    sel.innerHTML = isFilter ? '<option value="">All Classes</option>'
+                  : isSub   ? '<option value="">— Select Class —</option>'
+                  :            '<option value="">— Select Class —</option>';
+    classNames.forEach(name => {
+      sel.innerHTML += `<option value="${name}">${name}</option>`;
+    });
+    if (cur) sel.value = cur;
+  });
+}
+
+async function addNoteClass() {
+  const input = document.getElementById('new-class-input');
+  const name  = input.value.trim();
+  if (!name) return showClassMsg('❌ Class name required!', 'error');
+
+  // Check max sort_order
+  const { data: existing } = await db.from('note_classes').select('sort_order').order('sort_order',{ascending:false}).limit(1);
+  const nextOrder = existing?.length ? (existing[0].sort_order + 1) : 1;
+
+  const { error } = await db.from('note_classes').insert([{ name, sort_order: nextOrder }]);
+  if (error) return showClassMsg('❌ ' + (error.message.includes('unique') ? `"${name}" already exists!` : error.message), 'error');
+
+  input.value = '';
+  showClassMsg(`✅ "${name}" class added! Main website pe bhi dikh jaayegi.`, 'success');
+  await loadClassMgmt();
+}
+
+// ── RENAME ────────────────────────────────────────────────
+function startRenameClass(id, oldName) {
+  const nameEl = document.getElementById(`cls-name-${id}`);
+  if (!nameEl) return;
+  nameEl.innerHTML = `
+    <input id="rename-input-${id}" type="text" value="${oldName}"
+      style="background:#0f0f1a;border:1px solid rgba(99,102,241,0.4);border-radius:8px;padding:4px 10px;color:#e2e8f0;font-family:inherit;font-size:14px;width:180px"
+      onkeydown="if(event.key==='Enter') confirmRenameClass('${id}','${oldName}')" />
+    <button onclick="confirmRenameClass('${id}','${oldName}')"
+      style="margin-left:8px;padding:4px 12px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer">Save</button>
+    <button onclick="loadClassMgmt()"
+      style="margin-left:4px;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#94a3b8;border-radius:8px;font-size:12px;cursor:pointer">✕</button>
+  `;
+  document.getElementById(`rename-input-${id}`)?.focus();
+}
+
+async function confirmRenameClass(id, oldName) {
+  const newName = document.getElementById(`rename-input-${id}`)?.value?.trim();
+  if (!newName)            return showClassMsg('❌ New name required!', 'error');
+  if (newName === oldName) { await loadClassMgmt(); return; }
+
+  showClassMsg('⏳ Renaming...', 'info');
+
+  // 1. Rename in note_classes table
+  const { error: e1 } = await db.from('note_classes').update({ name: newName }).eq('id', id);
+  if (e1) return showClassMsg('❌ ' + e1.message, 'error');
+
+  // 2. Update class_name in all notes
+  const { error: e2 } = await db.from('notes').update({ class_name: newName }).eq('class_name', oldName);
+  if (e2) return showClassMsg('❌ Notes update failed: ' + e2.message, 'error');
+
+  showClassMsg(`✅ "${oldName}" → "${newName}" — main website pe bhi update ho gaya!`, 'success');
+  await loadClassMgmt();
+}
+
+// ── DELETE ────────────────────────────────────────────────
+async function deleteNoteClass(id, name, count, btn) {
+  const msg = count > 0
+    ? `"${name}" delete karne se iske ${count} notes bhi delete honge!
+
+Confirm karo?`
+    : `"${name}" class delete karna chahte ho?`;
+  if (!confirm(msg)) return;
+
+  btn.disabled = true; btn.textContent = '...';
+  showClassMsg('⏳ Deleting...', 'info');
+
+  // 1. Delete all notes of this class
+  if (count > 0) {
+    const { error } = await db.from('notes').delete().eq('class_name', name);
+    if (error) {
+      showClassMsg('❌ Notes delete failed: ' + error.message, 'error');
+      btn.disabled = false; btn.textContent = '🗑 Delete'; return;
+    }
+  }
+
+  // 2. Delete from note_classes table
+  const { error: e2 } = await db.from('note_classes').delete().eq('id', id);
+  if (e2) {
+    showClassMsg('❌ ' + e2.message, 'error');
+    btn.disabled = false; btn.textContent = '🗑 Delete'; return;
+  }
+
+  showClassMsg(`✅ "${name}" deleted — main website se bhi hat gayi!`, 'success');
+  await loadClassMgmt();
+  await loadAdminNotes();
+}
+
+function showClassMsg(text, type) {
+  const el = document.getElementById('class-msg');
+  if (!el) return;
+  el.textContent = text;
+  el.className = `msg msg-${type}`;
+  el.style.display = 'block';
+  if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
+// ── NOTE SUBJECT MANAGEMENT ────────────────────────────────
+
+async function loadNoteSubjects() {
+  const className = document.getElementById('note-class').value;
+  const subSel    = document.getElementById('note-subject');
+  subSel.innerHTML = '<option value="">— Loading... —</option>';
+  if (!className) { subSel.innerHTML = '<option value="">— Pehle Class chuno —</option>'; return; }
+
+  const { data } = await db.from('note_subjects').select('name').eq('class_name', className).order('name');
+  subSel.innerHTML = '<option value="">— Select Subject —</option>';
+  (data||[]).forEach(s => { subSel.innerHTML += `<option value="${s.name}">${s.name}</option>`; });
+  if (!data?.length) subSel.innerHTML += '<option disabled>No subjects — Subject Management se add karo</option>';
+}
+
+async function loadSubjectMgmt() {
+  const className = document.getElementById('sub-mgmt-class').value;
+  const listEl    = document.getElementById('subject-mgmt-list');
+  if (!className) { listEl.innerHTML = '<p class="empty-msg">Select a class first.</p>'; return; }
+
+  listEl.innerHTML = '<p class="empty-msg">Loading...</p>';
+  const { data, error } = await db.from('note_subjects').select('*').eq('class_name', className).order('name');
+
+  if (error) { listEl.innerHTML = `<p class="empty-msg" style="color:#f87171">${error.message}</p>`; return; }
+  if (!data?.length) { listEl.innerHTML = '<p class="empty-msg">Koi subjects nahi. Upar se add karo!</p>'; return; }
+
+  listEl.innerHTML = '';
+  data.forEach(sub => {
+    const row = document.createElement('div');
+    row.className = 'lecture-row';
+    row.innerHTML = `
+      <div class="lecture-info"><strong>${sub.name}</strong><span>${className}</span></div>
+      <button onclick="deleteNoteSubject('${sub.id}','${sub.name}',this)"
+        style="padding:6px 14px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:#f87171;border-radius:8px;font-size:12px;cursor:pointer">
+        🗑 Delete
+      </button>
+    `;
+    listEl.appendChild(row);
+  });
+}
+
+async function addNoteSubject() {
+  const className = document.getElementById('sub-mgmt-class').value;
+  const name      = document.getElementById('new-subject-input').value.trim();
+  const msgEl     = document.getElementById('subject-msg');
+
+  if (!className) return showSubjectMsg('❌ Pehle class select karo!', 'error');
+  if (!name)      return showSubjectMsg('❌ Subject name required!', 'error');
+
+  const { error } = await db.from('note_subjects').insert([{ class_name: className, name }]);
+  if (error) return showSubjectMsg('❌ ' + (error.message.includes('unique') ? 'Subject already exists!' : error.message), 'error');
+
+  document.getElementById('new-subject-input').value = '';
+  showSubjectMsg(`✅ "${name}" added to ${className}!`, 'success');
+  await loadSubjectMgmt();
+  // Refresh note form if same class selected
+  if (document.getElementById('note-class').value === className) await loadNoteSubjects();
+}
+
+async function deleteNoteSubject(id, name, btn) {
+  if (!confirm(`"${name}" subject delete karna chahte ho?`)) return;
+  btn.disabled = true;
+  const { error } = await db.from('note_subjects').delete().eq('id', id);
+  if (error) { alert(error.message); btn.disabled = false; return; }
+  showSubjectMsg(`✅ "${name}" deleted!`, 'success');
+  await loadSubjectMgmt();
+}
+
+function showSubjectMsg(text, type) {
+  const el = document.getElementById('subject-msg');
+  if (!el) return;
+  el.textContent = text; el.className = `msg msg-${type}`; el.style.display = 'block';
+  if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+</script>
+
+
+<!-- TESTIMONIALS PANEL -->
+<div id="testimonials-panel" style="display:none;padding:24px">
+  <style>
+    .t-grid{display:grid;grid-template-columns:1fr 340px;gap:1.25rem;align-items:start}
+    .t-card{background:#1a1d2e;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.25rem;margin-bottom:1rem}
+    .t-label{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#7c85a2;margin-bottom:.4rem;display:block}
+    .t-inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.55rem .85rem;color:#eef2ff;font-family:inherit;font-size:.85rem;outline:none;margin-bottom:.75rem}
+    .t-inp:focus{border-color:#6366f1}
+    .t-textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.55rem .85rem;color:#eef2ff;font-family:inherit;font-size:.85rem;outline:none;min-height:80px;resize:vertical;margin-bottom:.75rem}
+    .t-stars{display:flex;gap:.25rem;margin-bottom:.75rem}
+    .t-star{font-size:1.4rem;cursor:pointer;color:#1e293b;background:none;border:none;padding:0;transition:color .15s}
+    .t-star.on{color:#fbbf24}
+    .t-av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.1)}
+    .t-av img{width:100%;height:100%;object-fit:cover}
+    .t-row{display:flex;align-items:center;gap:.85rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+    .t-row:last-child{border-bottom:none}
+    .t-row-info{flex:1;min-width:0}
+    .t-actions{display:flex;gap:.4rem}
+    .t-edit{padding:.3rem .65rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:6px;color:#a5b4fc;font-size:.72rem;cursor:pointer}
+    .t-del{padding:.3rem .65rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:6px;color:#f87171;font-size:.72rem;cursor:pointer}
+    .t-save{width:100%;padding:.7rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:8px;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;margin-top:.25rem}
+    .t-cancel{width:100%;padding:.6rem;background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#94a3b8;font-size:.82rem;cursor:pointer;margin-bottom:.5rem}
+    .t-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem}
+    .t-stat{background:#1a1d2e;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.85rem;text-align:center}
+    .t-stat-n{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .t-stat-l{font-size:.68rem;color:#7c85a2;margin-top:.15rem}
+    .t-prev{background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:1rem;position:relative}
+    .t-prev-q{position:absolute;top:.75rem;right:.75rem;font-size:1.5rem;color:#6366f1;opacity:.4;font-family:Georgia,serif}
+    .t-prev-top{display:flex;align-items:center;gap:.65rem;margin-bottom:.7rem}
+    .t-prev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:#fff;overflow:hidden}
+    .t-prev-av img{width:100%;height:100%;object-fit:cover}
+    @media(max-width:900px){.t-grid{grid-template-columns:1fr}}
+  </style>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <div>
+      <div style="font-size:1.1rem;font-weight:700;color:#a5b4fc">💬 Manage Testimonials</div>
+      <div style="font-size:.75rem;color:#7c85a2;margin-top:.2rem">Add, edit and delete student reviews</div>
+    </div>
+    <button class="t-cancel" style="width:auto;padding:.5rem 1rem;margin:0" onclick="tResetForm()">+ New</button>
+  </div>
+
+  <div class="t-stats">
+    <div class="t-stat"><div class="t-stat-n" id="t-s-total">0</div><div class="t-stat-l">Total</div></div>
+    <div class="t-stat"><div class="t-stat-n" id="t-s-avg">0</div><div class="t-stat-l">Avg Rating</div></div>
+    <div class="t-stat"><div class="t-stat-n" id="t-s-five">0</div><div class="t-stat-l">5★ Reviews</div></div>
+  </div>
+
+  <div class="t-grid">
+    <div>
+      <div class="t-card">
+        <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:1rem">
+          <div class="t-av" id="t-av-prev"><span id="t-av-init">?</span></div>
+          <div>
+            <input type="file" id="t-photo" accept="image/*" style="display:none" onchange="tHandlePhoto(this)">
+            <button class="t-edit" style="margin-right:.4rem" onclick="document.getElementById('t-photo').click()">Upload Photo</button>
+            <button class="t-del" onclick="tClearPhoto()">Remove</button>
+          </div>
+        </div>
+        <label class="t-label">Student Name</label>
+        <input class="t-inp" id="t-name" placeholder="e.g. Ayush Gupta" oninput="tUpdatePreview()">
+        <label class="t-label">Role / Subtitle</label>
+        <input class="t-inp" id="t-role" placeholder="e.g. JEE Aspirant" oninput="tUpdatePreview()">
+        <label class="t-label">Rating</label>
+        <div class="t-stars" id="t-stars">
+          <button class="t-star" data-v="1" onclick="tSetStar(1)">★</button>
+          <button class="t-star" data-v="2" onclick="tSetStar(2)">★</button>
+          <button class="t-star" data-v="3" onclick="tSetStar(3)">★</button>
+          <button class="t-star" data-v="4" onclick="tSetStar(4)">★</button>
+          <button class="t-star on" data-v="5" onclick="tSetStar(5)">★</button>
+        </div>
+        <label class="t-label">Review Text</label>
+        <textarea class="t-textarea" id="t-text" placeholder="Write student review…" oninput="tUpdatePreview()"></textarea>
+        <button class="t-cancel" onclick="tResetForm()">Cancel</button>
+        <button class="t-save" onclick="tSave()">Save Testimonial</button>
+      </div>
+
+      <div class="t-card">
+        <div style="font-size:.82rem;font-weight:600;color:#a5b4fc;margin-bottom:.75rem">📋 All Testimonials</div>
+        <div id="t-list"><div style="text-align:center;padding:1.5rem;color:#7c85a2;font-size:.82rem">No testimonials yet</div></div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div style="font-size:.82rem;font-weight:600;color:#a5b4fc;margin-bottom:.75rem">👁 Live Preview</div>
+      <div class="t-prev">
+        <div class="t-prev-q">"</div>
+        <div class="t-prev-top">
+          <div class="t-prev-av" id="t-prev-av"><span id="t-prev-init">?</span></div>
+          <div>
+            <div style="font-weight:600;font-size:.88rem" id="t-prev-name">Student Name</div>
+            <div style="font-size:.7rem;color:#a78bfa" id="t-prev-role">Role</div>
+          </div>
+        </div>
+        <div style="color:#fbbf24;font-size:.8rem;margin-bottom:.6rem" id="t-prev-stars">★★★★★</div>
+        <p style="font-size:.8rem;color:#94a3b8;line-height:1.6" id="t-prev-text">Review text will appear here…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TESTIMONIALS ──────────────────────────────────────────
+let tData=[], tEditIdx=-1, tStars=5, tPhoto='';
+const T_URL=SUPABASE_URL+'/rest/v1/testimonials';
+const T_HDR={'apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON,'Content-Type':'application/json'};
+
+function tInits(n){return(n||'?').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2)||'?';}
+
+function tSetStar(v){
+  tStars=v;
+  document.querySelectorAll('.t-star').forEach(b=>b.classList.toggle('on',+b.dataset.v<=v));
+  tUpdatePreview();
+}
+function tHandlePhoto(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{tPhoto=e.target.result;tSetAvPreview(tPhoto);tUpdatePreview();};
+  r.readAsDataURL(f);
+}
+function tClearPhoto(){tPhoto='';document.getElementById('t-photo').value='';tSetAvPreview('');tUpdatePreview();}
+function tSetAvPreview(src){
+  const el=document.getElementById('t-av-prev');
+  const nm=document.getElementById('t-name').value;
+  el.innerHTML=src?`<img src="${src}" alt="">`:`<span id="t-av-init">${tInits(nm)}</span>`;
+}
+function tUpdatePreview(){
+  const n=document.getElementById('t-name').value||'Student Name';
+  const r=document.getElementById('t-role').value||'Role';
+  const t=document.getElementById('t-text').value||'Review text will appear here…';
+  document.getElementById('t-prev-name').textContent=n;
+  document.getElementById('t-prev-role').textContent=r;
+  document.getElementById('t-prev-text').textContent=t;
+  document.getElementById('t-prev-stars').textContent='★'.repeat(tStars)+'☆'.repeat(5-tStars);
+  const pa=document.getElementById('t-prev-av');
+  pa.innerHTML=tPhoto?`<img src="${tPhoto}" alt="" style="width:100%;height:100%;object-fit:cover;">`:`<span>${tInits(n)}</span>`;
+  const ai=document.getElementById('t-av-init');if(ai)ai.textContent=tInits(n);
+}
+function tResetForm(){
+  tEditIdx=-1;tStars=5;tPhoto='';
+  document.getElementById('t-name').value='';
+  document.getElementById('t-role').value='';
+  document.getElementById('t-text').value='';
+  document.getElementById('t-photo').value='';
+  tSetStar(5);tSetAvPreview('');tUpdatePreview();
+}
+async function tSave(){
+  const n=document.getElementById('t-name').value.trim();
+  const r=document.getElementById('t-role').value.trim();
+  const t=document.getElementById('t-text').value.trim();
+  if(!n||!r||!t){alert('Fill all fields');return;}
+  const obj={name:n,role:r,stars:tStars,text:t,photo:tPhoto};
+  try{
+    if(tEditIdx>=0 && tData[tEditIdx].id){
+      await fetch(`${T_URL}?id=eq.${tData[tEditIdx].id}`,{method:'PATCH',headers:{...T_HDR,'Prefer':'return=minimal'},body:JSON.stringify(obj)});
+    } else {
+      await fetch(T_URL,{method:'POST',headers:{...T_HDR,'Prefer':'return=minimal'},body:JSON.stringify(obj)});
+    }
+    await tLoad();tRenderList();tUpdateStats();tResetForm();
+  }catch(e){alert('Error: '+e.message);}
+}
+async function tEdit(i){
+  tEditIdx=i;const t=tData[i];
+  document.getElementById('t-name').value=t.name;
+  document.getElementById('t-role').value=t.role;
+  document.getElementById('t-text').value=t.text;
+  tPhoto=t.photo||'';tStars=t.stars;
+  tSetStar(t.stars);tSetAvPreview(tPhoto);tUpdatePreview();
+}
+async function tDel(i){
+  if(!confirm('Delete?'))return;
+  try{
+    if(tData[i].id) await fetch(`${T_URL}?id=eq.${tData[i].id}`,{method:'DELETE',headers:T_HDR});
+    await tLoad();tRenderList();tUpdateStats();
+  }catch(e){alert('Error: '+e.message);}
+}
+function tRenderList(){
+  const el=document.getElementById('t-list');
+  if(!tData.length){el.innerHTML='<div style="text-align:center;padding:1.5rem;color:#7c85a2;font-size:.82rem">No testimonials yet</div>';return;}
+  el.innerHTML=tData.map((t,i)=>`
+    <div class="t-row">
+      <div class="t-av">${t.photo?`<img src="${t.photo}" alt="">`:`${tInits(t.name)}`}</div>
+      <div class="t-row-info">
+        <div style="font-weight:600;font-size:.85rem">${t.name}</div>
+        <div style="font-size:.7rem;color:#7c85a2">${t.role}</div>
+        <div style="color:#fbbf24;font-size:.7rem">${'★'.repeat(t.stars)}</div>
+      </div>
+      <div class="t-actions">
+        <button class="t-edit" onclick="tEdit(${i})">Edit</button>
+        <button class="t-del" onclick="tDel(${i})">Del</button>
+      </div>
+    </div>`).join('');
+}
+function tUpdateStats(){
+  document.getElementById('t-s-total').textContent=tData.length;
+  const avg=tData.length?(tData.reduce((a,t)=>a+t.stars,0)/tData.length).toFixed(1):0;
+  document.getElementById('t-s-avg').textContent=avg;
+  document.getElementById('t-s-five').textContent=tData.filter(t=>t.stars===5).length;
+}
+async function tLoad(){
+  try{
+    const r=await fetch(T_URL+'?select=*&order=created_at.asc',{headers:T_HDR});
+    tData=await r.json();
+  }catch(e){tData=[];}
+}
+tLoad().then(()=>{tRenderList();tUpdateStats();});
+</script>
+</div><!-- /admin-content -->
+
+<!-- BOOKS PANEL -->
+<div id="books-panel" style="display:none;padding:24px">
+<style>
+.bk-form{background:#1a1d2e;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.25rem;margin-bottom:1rem;}
+.bk-lbl{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#7c85a2;margin-bottom:.35rem;display:block;}
+.bk-inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.55rem .85rem;color:#eef2ff;font-family:inherit;font-size:.85rem;outline:none;margin-bottom:.75rem;}
+.bk-inp:focus{border-color:#6366f1;}
+.bk-select{width:100%;background:#0d1124;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.55rem .85rem;color:#eef2ff;font-family:inherit;font-size:.85rem;outline:none;margin-bottom:.75rem;}
+.bk-save-btn{width:100%;padding:.7rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:8px;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;}
+.bk-cancel-btn{width:100%;padding:.6rem;background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#94a3b8;font-size:.82rem;cursor:pointer;margin-bottom:.5rem;}
+.bk-row{display:flex;align-items:center;gap:.85rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.bk-row:last-child{border-bottom:none;}
+.bk-row-thumb{width:36px;height:48px;border-radius:6px;background:linear-gradient(135deg,#1e1b4b,#312e81);display:flex;align-items:center;justify-content:center;font-size:1.2rem;overflow:hidden;flex-shrink:0;}
+.bk-row-thumb img{width:100%;height:100%;object-fit:cover;}
+.bk-row-info{flex:1;min-width:0;}
+.bk-edit{padding:.3rem .65rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:6px;color:#a5b4fc;font-size:.72rem;cursor:pointer;}
+.bk-del{padding:.3rem .65rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:6px;color:#f87171;font-size:.72rem;cursor:pointer;}
+.bk-grid{display:grid;grid-template-columns:1fr 340px;gap:1.25rem;align-items:start;}
+@media(max-width:900px){.bk-grid{grid-template-columns:1fr;}}
+</style>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+  <div><div style="font-size:1.1rem;font-weight:700;color:#a5b4fc;">📚 Digital Books</div><div style="font-size:.75rem;color:#7c85a2;margin-top:.2rem;">Add, edit and delete books</div></div>
+  <button class="bk-cancel-btn" style="width:auto;padding:.5rem 1rem;margin:0;" onclick="bkReset()">+ New</button>
+</div>
+
+<div class="bk-grid">
+  <div>
+    <div class="bk-form">
+      <label class="bk-lbl">Book Title *</label>
+      <input class="bk-inp" id="bk-title" placeholder="e.g. Concepts of Physics">
+      <label class="bk-lbl">Author</label>
+      <input class="bk-inp" id="bk-author" placeholder="e.g. H.C. Verma">
+      <label class="bk-lbl">Category</label>
+      <select class="bk-select" id="bk-cat">
+        <option value="">Select category</option>
+        <option>IIT-JEE</option>
+        <option>NEET</option>
+        <option>Foundation</option>
+        <option>Boards</option>
+      </select>
+      <label class="bk-lbl">Thumbnail URL</label>
+      <input class="bk-inp" id="bk-thumb" placeholder="https://... (image URL)">
+      <label class="bk-lbl">PDF / Drive Link *</label>
+      <input class="bk-inp" id="bk-pdf" placeholder="https://drive.google.com/...">
+      <button class="bk-cancel-btn" onclick="bkReset()">Cancel</button>
+      <button class="bk-save-btn" onclick="bkSave()">Save Book</button>
+    </div>
+    <div class="bk-form">
+      <div style="font-size:.82rem;font-weight:600;color:#a5b4fc;margin-bottom:.75rem;">📋 All Books</div>
+      <input class="bk-inp" id="bk-search" placeholder="Search books..." oninput="bkRender()" style="margin-bottom:.75rem;">
+      <div id="bk-list"></div>
+    </div>
+  </div>
+
+  <div class="bk-form" id="bk-preview">
+    <div style="font-size:.82rem;font-weight:600;color:#a5b4fc;margin-bottom:.75rem;">👁 Preview</div>
+    <div style="background:#0d1124;border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;">
+      <div id="bk-prev-thumb" style="width:100%;height:160px;background:linear-gradient(135deg,#1e1b4b,#312e81);display:flex;align-items:center;justify-content:center;font-size:3rem;">📖</div>
+      <div style="padding:.85rem;">
+        <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;color:#a78bfa;margin-bottom:.3rem;" id="bk-prev-cat">Category</div>
+        <div style="font-weight:700;font-size:.9rem;margin-bottom:.2rem;" id="bk-prev-title">Book Title</div>
+        <div style="font-size:.72rem;color:#64748b;" id="bk-prev-author">Author</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const BK_URL='https://ohptzgfwgbmtjcmivstx.supabase.co/rest/v1/digital_books';
+const BK_HDR={'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M','Content-Type':'application/json'};
+let bkData=[],bkEditId=null;
+
+async function bkLoad(){
+  try{const r=await fetch(BK_URL+'?select=*&order=created_at.desc',{headers:BK_HDR});bkData=await r.json();}
+  catch(e){bkData=[];}
+  bkRender();
+}
+function bkReset(){
+  bkEditId=null;
+  ['bk-title','bk-author','bk-thumb','bk-pdf'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('bk-cat').value='';
+  bkUpdatePreview();
+}
+function bkUpdatePreview(){
+  const t=document.getElementById('bk-title').value||'Book Title';
+  const a=document.getElementById('bk-author').value||'Author';
+  const c=document.getElementById('bk-cat').value||'Category';
+  const th=document.getElementById('bk-thumb').value;
+  document.getElementById('bk-prev-title').textContent=t;
+  document.getElementById('bk-prev-author').textContent=a;
+  document.getElementById('bk-prev-cat').textContent=c;
+  document.getElementById('bk-prev-thumb').innerHTML=th?`<img src="${th}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='📖'">`:'📖';
+}
+['bk-title','bk-author','bk-cat','bk-thumb','bk-pdf'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) el.addEventListener('input',bkUpdatePreview);
+});
+async function bkSave(){
+  const title=document.getElementById('bk-title').value.trim();
+  const pdf_url=document.getElementById('bk-pdf').value.trim();
+  if(!title||!pdf_url){alert('Title and PDF URL required');return;}
+  const obj={title,author:document.getElementById('bk-author').value.trim(),category:document.getElementById('bk-cat').value,thumbnail_url:document.getElementById('bk-thumb').value.trim(),pdf_url};
+  try{
+    if(bkEditId){await fetch(`${BK_URL}?id=eq.${bkEditId}`,{method:'PATCH',headers:{...BK_HDR,'Prefer':'return=minimal'},body:JSON.stringify(obj)});}
+    else{await fetch(BK_URL,{method:'POST',headers:{...BK_HDR,'Prefer':'return=minimal'},body:JSON.stringify(obj)});}
+    await bkLoad();bkReset();
+  }catch(e){alert('Error: '+e.message);}
+}
+function bkEdit(b){
+  bkEditId=b.id;
+  document.getElementById('bk-title').value=b.title||'';
+  document.getElementById('bk-author').value=b.author||'';
+  document.getElementById('bk-cat').value=b.category||'';
+  document.getElementById('bk-thumb').value=b.thumbnail_url||'';
+  document.getElementById('bk-pdf').value=b.pdf_url||'';
+  bkUpdatePreview();
+}
+async function bkDel(id){
+  if(!confirm('Delete this book?'))return;
+  await fetch(`${BK_URL}?id=eq.${id}`,{method:'DELETE',headers:BK_HDR});
+  await bkLoad();
+}
+function bkRender(){
+  const q=(document.getElementById('bk-search')?.value||'').toLowerCase();
+  const data=bkData.filter(b=>!q||(b.title+b.author+b.category).toLowerCase().includes(q));
+  const el=document.getElementById('bk-list');
+  if(!data.length){el.innerHTML='<div style="text-align:center;padding:1.5rem;color:#7c85a2;font-size:.82rem;">No books yet</div>';return;}
+  el.innerHTML=data.map(b=>`
+    <div class="bk-row">
+      <div class="bk-row-thumb">${b.thumbnail_url?`<img src="${b.thumbnail_url}" alt="${b.title}">`:'📖'}</div>
+      <div class="bk-row-info">
+        <div style="font-weight:600;font-size:.85rem;">${b.title}</div>
+        <div style="font-size:.7rem;color:#7c85a2;">${b.author||''} ${b.category?'· '+b.category:''}</div>
+      </div>
+      <div style="display:flex;gap:.4rem;">
+        <button class="bk-edit" onclick='bkEdit(${JSON.stringify(b)})'>Edit</button>
+        <button class="bk-del" onclick="bkDel('${b.id}')">Del</button>
+      </div>
+    </div>`).join('');
+}
+</script>
+
+</body>
+</html>
