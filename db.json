@@ -1,0 +1,1821 @@
+{
+  "batches": [
+    {
+      "id": "097b73a7",
+      "name": "Arjuna JEE"
+    },
+    {
+      "id": "6c01c17e",
+      "name": "NEET Class 11"
+    },
+    {
+      "id": "8c6c1ca6",
+      "name": "Class 10"
+    },
+    {
+      "id": "894db23c",
+      "name": "Class 9"
+    }
+  ],
+  "lectures": [
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 1,
+      "chapter_name": "Unit and Dimension",
+      "title": "UNIT AND DIMENSION FULL CHAPTER | Class 11th Chapter 1 | Arjuna JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=YX5sLwRtULk",
+      "embed_url": "https://www.youtube.com/embed/YX5sLwRtULk",
+      "thumbnail_url": "https://img.youtube.com/vi/YX5sLwRtULk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 2,
+      "chapter_name": "Motion in a Straight Line",
+      "title": "MOTION IN A STRAIGHT LINE in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=6HQgDO1trlM",
+      "embed_url": "https://www.youtube.com/embed/6HQgDO1trlM",
+      "thumbnail_url": "https://img.youtube.com/vi/6HQgDO1trlM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 4,
+      "chapter_name": "Laws of Motion",
+      "title": "LAWS OF MOTION in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=mE8w2uxm6XY",
+      "embed_url": "https://www.youtube.com/embed/mE8w2uxm6XY",
+      "thumbnail_url": "https://img.youtube.com/vi/mE8w2uxm6XY/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 5,
+      "chapter_name": "Work, Energy & Power",
+      "title": "Work, Energy & Power in ONE SHOT for JEE Main & Advanced 2026!",
+      "youtube_url": "https://www.youtube.com/watch?v=PAlXOkn_Pa8",
+      "embed_url": "https://www.youtube.com/embed/PAlXOkn_Pa8",
+      "thumbnail_url": "https://img.youtube.com/vi/PAlXOkn_Pa8/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 7,
+      "chapter_name": "Gravitation",
+      "title": "GRAVITATION in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=wE0xrUuJLnk",
+      "embed_url": "https://www.youtube.com/embed/wE0xrUuJLnk",
+      "thumbnail_url": "https://img.youtube.com/vi/wE0xrUuJLnk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 8,
+      "chapter_name": "Mechanical Properties of Solid",
+      "title": "MECHANICAL PROPERTIES OF SOLID & FLUID in One Shot | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=FCByCwnj_J0",
+      "embed_url": "https://www.youtube.com/embed/FCByCwnj_J0",
+      "thumbnail_url": "https://img.youtube.com/vi/FCByCwnj_J0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 9,
+      "chapter_name": "Mechanical Properties of Fluids",
+      "title": "MECHANICAL PROPERTIES OF FLUIDS in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=8_KVbLZlCjM",
+      "embed_url": "https://www.youtube.com/embed/8_KVbLZlCjM",
+      "thumbnail_url": "https://img.youtube.com/vi/8_KVbLZlCjM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 10,
+      "chapter_name": "KTG & Thermodynamics",
+      "title": "KTG & THERMODYNAMICS in one Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=JAvi2K_DbbI",
+      "embed_url": "https://www.youtube.com/embed/JAvi2K_DbbI",
+      "thumbnail_url": "https://img.youtube.com/vi/JAvi2K_DbbI/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 11,
+      "chapter_name": "Oscillations",
+      "title": "OSCILLATIONS in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=bv8qBsHK9bM",
+      "embed_url": "https://www.youtube.com/embed/bv8qBsHK9bM",
+      "thumbnail_url": "https://img.youtube.com/vi/bv8qBsHK9bM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Physics",
+      "chapter_num": 12,
+      "chapter_name": "Wave Optics",
+      "title": "WAVE OPTICS in 1 Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=k8IyQgwDdUk",
+      "embed_url": "https://www.youtube.com/embed/k8IyQgwDdUk",
+      "thumbnail_url": "https://img.youtube.com/vi/k8IyQgwDdUk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 1,
+      "chapter_name": "Mole Concept",
+      "title": "Mole Concept in ONE SHOT | All Concepts & PYQs Covered | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=tMHrpmJH5I8",
+      "embed_url": "https://www.youtube.com/embed/tMHrpmJH5I8",
+      "thumbnail_url": "https://img.youtube.com/vi/tMHrpmJH5I8/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 2,
+      "chapter_name": "Structure of Atom",
+      "title": "Structure of Atom in ONE SHOT | All Concepts & PYQs Covered | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=ae1qJxylnn4",
+      "embed_url": "https://www.youtube.com/embed/ae1qJxylnn4",
+      "thumbnail_url": "https://img.youtube.com/vi/ae1qJxylnn4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 3,
+      "chapter_name": "Periodic Table",
+      "title": "PERIODIC TABLE in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=nLE7_YBFQNQ",
+      "embed_url": "https://www.youtube.com/embed/nLE7_YBFQNQ",
+      "thumbnail_url": "https://img.youtube.com/vi/nLE7_YBFQNQ/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 4,
+      "chapter_name": "Chemical Bonding",
+      "title": "CHEMICAL BONDING in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=kS8s_WX0IlY",
+      "embed_url": "https://www.youtube.com/embed/kS8s_WX0IlY",
+      "thumbnail_url": "https://img.youtube.com/vi/kS8s_WX0IlY/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 5,
+      "chapter_name": "Thermodynamics",
+      "title": "THERMODYNAMICS in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=2u1A9gskJ2I",
+      "embed_url": "https://www.youtube.com/embed/2u1A9gskJ2I",
+      "thumbnail_url": "https://img.youtube.com/vi/2u1A9gskJ2I/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 6,
+      "chapter_name": "Chemical Equilibrium",
+      "title": "CHEMICAL EQUILIBRIUM in 1 Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=BceSksiNLD4",
+      "embed_url": "https://www.youtube.com/embed/BceSksiNLD4",
+      "thumbnail_url": "https://img.youtube.com/vi/BceSksiNLD4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 7,
+      "chapter_name": "Ionic Equilibrium",
+      "title": "IONIC EQUILIBRIUM in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=1W-UvePUAKo",
+      "embed_url": "https://www.youtube.com/embed/1W-UvePUAKo",
+      "thumbnail_url": "https://img.youtube.com/vi/1W-UvePUAKo/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 8,
+      "chapter_name": "Redox Reaction",
+      "title": "REDOX REACTION in 1 Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=8oypjDXAXZc",
+      "embed_url": "https://www.youtube.com/embed/8oypjDXAXZc",
+      "thumbnail_url": "https://img.youtube.com/vi/8oypjDXAXZc/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 9,
+      "chapter_name": "Organic Chemistry",
+      "title": "Complete ORGANIC CHEMISTRY in 1 Shot | All Concepts & PYQs | JEE 2025",
+      "youtube_url": "https://www.youtube.com/watch?v=kwG6zR-Gvso",
+      "embed_url": "https://www.youtube.com/embed/kwG6zR-Gvso",
+      "thumbnail_url": "https://img.youtube.com/vi/kwG6zR-Gvso/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Chemistry",
+      "chapter_num": 10,
+      "chapter_name": "Hydrocarbon",
+      "title": "HYDROCARBON in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=gUCTJ7oVhLg",
+      "embed_url": "https://www.youtube.com/embed/gUCTJ7oVhLg",
+      "thumbnail_url": "https://img.youtube.com/vi/gUCTJ7oVhLg/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 1,
+      "chapter_name": "Basic Maths",
+      "title": "BASIC MATHS in ONE SHOT | All Concepts & PYQs Covered | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=6I-EMg_z3XY",
+      "embed_url": "https://www.youtube.com/embed/6I-EMg_z3XY",
+      "thumbnail_url": "https://img.youtube.com/vi/6I-EMg_z3XY/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 2,
+      "chapter_name": "Sets",
+      "title": "SETS in ONE SHOT | All Concepts & PYQs Covered | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=4Ueyba595R0",
+      "embed_url": "https://www.youtube.com/embed/4Ueyba595R0",
+      "thumbnail_url": "https://img.youtube.com/vi/4Ueyba595R0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 3,
+      "chapter_name": "Relations & Functions",
+      "title": "RELATIONS & FUNCTIONS in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=Qs0wRt70mC4",
+      "embed_url": "https://www.youtube.com/embed/Qs0wRt70mC4",
+      "thumbnail_url": "https://img.youtube.com/vi/Qs0wRt70mC4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 4,
+      "chapter_name": "Trigonometric Ratios & Identities",
+      "title": "Trigonometric Ratios & Identities in ONE SHOT | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=Nb7mjbGt0n4",
+      "embed_url": "https://www.youtube.com/embed/Nb7mjbGt0n4",
+      "thumbnail_url": "https://img.youtube.com/vi/Nb7mjbGt0n4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 5,
+      "chapter_name": "Complex Numbers",
+      "title": "Complex Numbers FULL CHAPTER | Class 11th Maths | Arjuna JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=o8T4ZG08q8g",
+      "embed_url": "https://www.youtube.com/embed/o8T4ZG08q8g",
+      "thumbnail_url": "https://img.youtube.com/vi/o8T4ZG08q8g/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 8,
+      "chapter_name": "Permutation & Combination",
+      "title": "Permutation & Combinations FULL CHAPTER | Class 11th Maths | Arjuna JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=UoJh42eQU8I",
+      "embed_url": "https://www.youtube.com/embed/UoJh42eQU8I",
+      "thumbnail_url": "https://img.youtube.com/vi/UoJh42eQU8I/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 9,
+      "chapter_name": "Binomial Theorem",
+      "title": "BINOMIAL THEOREM in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=YiY0Z5sQ47U",
+      "embed_url": "https://www.youtube.com/embed/YiY0Z5sQ47U",
+      "thumbnail_url": "https://img.youtube.com/vi/YiY0Z5sQ47U/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 10,
+      "chapter_name": "Sequence & Series",
+      "title": "SEQUENCE & SERIES in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=zOdUhsMydtM",
+      "embed_url": "https://www.youtube.com/embed/zOdUhsMydtM",
+      "thumbnail_url": "https://img.youtube.com/vi/zOdUhsMydtM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 11,
+      "chapter_name": "Straight Lines",
+      "title": "Straight Lines FULL CHAPTER | Class 11th Maths | Arjuna JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=4ddGqKZIIvs",
+      "embed_url": "https://www.youtube.com/embed/4ddGqKZIIvs",
+      "thumbnail_url": "https://img.youtube.com/vi/4ddGqKZIIvs/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 13,
+      "chapter_name": "3D Geometry",
+      "title": "THREE-DIMENSIONAL GEOMETRY in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=t_RMMkiYj4g",
+      "embed_url": "https://www.youtube.com/embed/t_RMMkiYj4g",
+      "thumbnail_url": "https://img.youtube.com/vi/t_RMMkiYj4g/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 14,
+      "chapter_name": "Limits",
+      "title": "LIMIT in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=JnER25G1V7o",
+      "embed_url": "https://www.youtube.com/embed/JnER25G1V7o",
+      "thumbnail_url": "https://img.youtube.com/vi/JnER25G1V7o/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 15,
+      "chapter_name": "Method of Differentiation",
+      "title": "METHOD OF DIFFERENTIATION in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=3JMzZR2TvhA",
+      "embed_url": "https://www.youtube.com/embed/3JMzZR2TvhA",
+      "thumbnail_url": "https://img.youtube.com/vi/3JMzZR2TvhA/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 16,
+      "chapter_name": "Statistics",
+      "title": "STATISTICS: Complete Chapter in 1 Video | Concepts+PYQs | Class 11 JEE",
+      "youtube_url": "https://www.youtube.com/watch?v=M0wE7kH_ojk",
+      "embed_url": "https://www.youtube.com/embed/M0wE7kH_ojk",
+      "thumbnail_url": "https://img.youtube.com/vi/M0wE7kH_ojk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Arjuna JEE",
+      "subject": "Mathematics",
+      "chapter_num": 17,
+      "chapter_name": "Probability",
+      "title": "PROBABILITY in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://www.youtube.com/watch?v=3OFuYbk-BV4",
+      "embed_url": "https://www.youtube.com/embed/3OFuYbk-BV4",
+      "thumbnail_url": "https://img.youtube.com/vi/3OFuYbk-BV4/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 1,
+      "chapter_name": "Basic Maths & Calculus",
+      "title": "Basic Maths & Calculus FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/NM0qPrIV6bw",
+      "embed_url": "https://www.youtube.com/embed/NM0qPrIV6bw",
+      "thumbnail_url": "https://img.youtube.com/vi/NM0qPrIV6bw/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 2,
+      "chapter_name": "Vector",
+      "title": "Vector FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/J8w8_eie6lw",
+      "embed_url": "https://www.youtube.com/embed/J8w8_eie6lw",
+      "thumbnail_url": "https://img.youtube.com/vi/J8w8_eie6lw/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 3,
+      "chapter_name": "Units and Dimensions",
+      "title": "Units and Dimensions FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/UIPSSuSKXwY",
+      "embed_url": "https://www.youtube.com/embed/UIPSSuSKXwY",
+      "thumbnail_url": "https://img.youtube.com/vi/UIPSSuSKXwY/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 4,
+      "chapter_name": "Motion in a Straight Line",
+      "title": "Motion in A Straight Line in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/AskjZPBWyyU",
+      "embed_url": "https://www.youtube.com/embed/AskjZPBWyyU",
+      "thumbnail_url": "https://img.youtube.com/vi/AskjZPBWyyU/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 5,
+      "chapter_name": "Motion in a Plane",
+      "title": "Motion in A Plane in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/Tj9lEmQSVQM",
+      "embed_url": "https://www.youtube.com/embed/Tj9lEmQSVQM",
+      "thumbnail_url": "https://img.youtube.com/vi/Tj9lEmQSVQM/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 6,
+      "chapter_name": "Laws of Motion",
+      "title": "LAWS OF MOTION in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/iwaCd0HfqBY",
+      "embed_url": "https://www.youtube.com/embed/iwaCd0HfqBY",
+      "thumbnail_url": "https://img.youtube.com/vi/iwaCd0HfqBY/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 7,
+      "chapter_name": "Friction",
+      "title": "FRICTION in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/aK6049huRLw",
+      "embed_url": "https://www.youtube.com/embed/aK6049huRLw",
+      "thumbnail_url": "https://img.youtube.com/vi/aK6049huRLw/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 8,
+      "chapter_name": "Work, Energy & Power",
+      "title": "WORK, ENERGY & POWER in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/lDa5ZWZOuT4",
+      "embed_url": "https://www.youtube.com/embed/lDa5ZWZOuT4",
+      "thumbnail_url": "https://img.youtube.com/vi/lDa5ZWZOuT4/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 9,
+      "chapter_name": "Circular Motion",
+      "title": "CIRCULAR MOTION in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/yeG_uqGPEQo",
+      "embed_url": "https://www.youtube.com/embed/yeG_uqGPEQo",
+      "thumbnail_url": "https://img.youtube.com/vi/yeG_uqGPEQo/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 10,
+      "chapter_name": "Center of Mass",
+      "title": "CENTER OF MASS in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/XEV5qRwnH2Q",
+      "embed_url": "https://www.youtube.com/embed/XEV5qRwnH2Q",
+      "thumbnail_url": "https://img.youtube.com/vi/XEV5qRwnH2Q/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 11,
+      "chapter_name": "Rotational Motion",
+      "title": "ROTATIONAL MOTION in ONE SHOT | All Concepts & PYQs | Class 11 NEET",
+      "youtube_url": "https://youtu.be/p06331ToyhY",
+      "embed_url": "https://www.youtube.com/embed/p06331ToyhY",
+      "thumbnail_url": "https://img.youtube.com/vi/p06331ToyhY/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 12,
+      "chapter_name": "Gravitation",
+      "title": "GRAVITATION in One Shot: All Concepts & PYQs Covered | JEE Main & Advanced",
+      "youtube_url": "https://youtu.be/wE0xrUuJLnk",
+      "embed_url": "https://www.youtube.com/embed/wE0xrUuJLnk",
+      "thumbnail_url": "https://img.youtube.com/vi/wE0xrUuJLnk/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 13,
+      "chapter_name": "Mechanical Properties of Solids",
+      "title": "MECHANICAL PROPERTIES OF SOLIDS in ONE SHOT | Ummeed NEET",
+      "youtube_url": "https://youtu.be/a2T84FeLIdY",
+      "embed_url": "https://www.youtube.com/embed/a2T84FeLIdY",
+      "thumbnail_url": "https://img.youtube.com/vi/a2T84FeLIdY/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 14,
+      "chapter_name": "Mechanical Properties of Fluids",
+      "title": "MECHANICAL PROPERTIES OF FLUIDS in ONE SHOT | Ummeed NEET",
+      "youtube_url": "https://youtu.be/Ele4sqz0cUI",
+      "embed_url": "https://www.youtube.com/embed/Ele4sqz0cUI",
+      "thumbnail_url": "https://img.youtube.com/vi/Ele4sqz0cUI/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 15,
+      "chapter_name": "Kinetic Theory of Gases",
+      "title": "Kinetic Theory of Gases FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/6v8bY7xlcgw",
+      "embed_url": "https://www.youtube.com/embed/6v8bY7xlcgw",
+      "thumbnail_url": "https://img.youtube.com/vi/6v8bY7xlcgw/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 16,
+      "chapter_name": "Simple Harmonic Motion",
+      "title": "Simple Harmonic Motion FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/m_G043Say2I",
+      "embed_url": "https://www.youtube.com/embed/m_G043Say2I",
+      "thumbnail_url": "https://img.youtube.com/vi/m_G043Say2I/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Physics",
+      "chapter_num": 17,
+      "chapter_name": "Waves",
+      "title": "Waves FULL CHAPTER | Class 11th Physics | Arjuna NEET",
+      "youtube_url": "https://youtu.be/pOK_PdI2Brc",
+      "embed_url": "https://www.youtube.com/embed/pOK_PdI2Brc",
+      "thumbnail_url": "https://img.youtube.com/vi/pOK_PdI2Brc/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 1,
+      "chapter_name": "Cell: The Unit of Life",
+      "title": "Cell : The Unit of Life - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/hJi3S1haN3Y",
+      "embed_url": "https://www.youtube.com/embed/hJi3S1haN3Y",
+      "thumbnail_url": "https://img.youtube.com/vi/hJi3S1haN3Y/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 2,
+      "chapter_name": "Cell Cycle & Cell Division",
+      "title": "CELL CYCLE & CELL DIVISION - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/ln8ZcNjF8xc",
+      "embed_url": "https://www.youtube.com/embed/ln8ZcNjF8xc",
+      "thumbnail_url": "https://img.youtube.com/vi/ln8ZcNjF8xc/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 3,
+      "chapter_name": "The Living World",
+      "title": "THE LIVING WORLD - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/3i8mHECla2k",
+      "embed_url": "https://www.youtube.com/embed/3i8mHECla2k",
+      "thumbnail_url": "https://img.youtube.com/vi/3i8mHECla2k/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 4,
+      "chapter_name": "Biological Classification",
+      "title": "BIOLOGICAL CLASSIFICATION - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/6ZAttkFaQ1I",
+      "embed_url": "https://www.youtube.com/embed/6ZAttkFaQ1I",
+      "thumbnail_url": "https://img.youtube.com/vi/6ZAttkFaQ1I/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 5,
+      "chapter_name": "Plant Kingdom",
+      "title": "PLANT KINGDOM - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/Bxe9iXiX1VQ",
+      "embed_url": "https://www.youtube.com/embed/Bxe9iXiX1VQ",
+      "thumbnail_url": "https://img.youtube.com/vi/Bxe9iXiX1VQ/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 6,
+      "chapter_name": "Morphology of Flowering Plants",
+      "title": "MORPHOLOGY OF FLOWERING PLANTS - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/H3r8gcnonyU",
+      "embed_url": "https://www.youtube.com/embed/H3r8gcnonyU",
+      "thumbnail_url": "https://img.youtube.com/vi/H3r8gcnonyU/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 7,
+      "chapter_name": "Anatomy of Flowering Plants",
+      "title": "ANATOMY OF FLOWERING PLANTS - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/HriPOJPRVng",
+      "embed_url": "https://www.youtube.com/embed/HriPOJPRVng",
+      "thumbnail_url": "https://img.youtube.com/vi/HriPOJPRVng/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 8,
+      "chapter_name": "Respiration in Plants",
+      "title": "RESPIRATION IN PLANTS - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/kC0hk6_Uxis",
+      "embed_url": "https://www.youtube.com/embed/kC0hk6_Uxis",
+      "thumbnail_url": "https://img.youtube.com/vi/kC0hk6_Uxis/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 9,
+      "chapter_name": "Photosynthesis in Higher Plants",
+      "title": "PHOTOSYNTHESIS IN HIGHER PLANTS - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/d6pfq-0CwZc",
+      "embed_url": "https://www.youtube.com/embed/d6pfq-0CwZc",
+      "thumbnail_url": "https://img.youtube.com/vi/d6pfq-0CwZc/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Botany)",
+      "chapter_num": 10,
+      "chapter_name": "Plant Growth and Development",
+      "title": "PLANT GROWTH AND DEVELOPMENT - Complete Chapter in One Video | Class 11th NEET",
+      "youtube_url": "https://youtu.be/5rhSaeXug2k",
+      "embed_url": "https://www.youtube.com/embed/5rhSaeXug2k",
+      "thumbnail_url": "https://img.youtube.com/vi/5rhSaeXug2k/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 1,
+      "chapter_name": "Chemical Control & Integration",
+      "title": "Chemical Control & Integration in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/FGwLEHzCwd8",
+      "embed_url": "https://www.youtube.com/embed/FGwLEHzCwd8",
+      "thumbnail_url": "https://img.youtube.com/vi/FGwLEHzCwd8/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 2,
+      "chapter_name": "Neural Control & Coordination",
+      "title": "Neural Control & Coordination in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/7Nf559g_WKQ",
+      "embed_url": "https://www.youtube.com/embed/7Nf559g_WKQ",
+      "thumbnail_url": "https://img.youtube.com/vi/7Nf559g_WKQ/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 3,
+      "chapter_name": "Locomotion & Movement",
+      "title": "Locomotion & Movement in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/aSOFtK3Xi5s",
+      "embed_url": "https://www.youtube.com/embed/aSOFtK3Xi5s",
+      "thumbnail_url": "https://img.youtube.com/vi/aSOFtK3Xi5s/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 4,
+      "chapter_name": "Excretory Products & Elimination",
+      "title": "Excretory Products & Elimination in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/_q-Ro8bw_Bk",
+      "embed_url": "https://www.youtube.com/embed/_q-Ro8bw_Bk",
+      "thumbnail_url": "https://img.youtube.com/vi/_q-Ro8bw_Bk/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 5,
+      "chapter_name": "Evolution",
+      "title": "Evolution in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/x3U83f9eFSo",
+      "embed_url": "https://www.youtube.com/embed/x3U83f9eFSo",
+      "thumbnail_url": "https://img.youtube.com/vi/x3U83f9eFSo/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 6,
+      "chapter_name": "Body Fluids & Circulation",
+      "title": "Body Fluids & Circulation in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/zNTcdab8bB4",
+      "embed_url": "https://www.youtube.com/embed/zNTcdab8bB4",
+      "thumbnail_url": "https://img.youtube.com/vi/zNTcdab8bB4/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 7,
+      "chapter_name": "Biotechnology & Its Applications",
+      "title": "Biotechnology & Its Applications in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/v2dm3-4PCPY",
+      "embed_url": "https://www.youtube.com/embed/v2dm3-4PCPY",
+      "thumbnail_url": "https://img.youtube.com/vi/v2dm3-4PCPY/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 8,
+      "chapter_name": "Biotechnology Principle & Process",
+      "title": "Biotechnology Principle & Process in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/C9MmxQ7AgwA",
+      "embed_url": "https://www.youtube.com/embed/C9MmxQ7AgwA",
+      "thumbnail_url": "https://img.youtube.com/vi/C9MmxQ7AgwA/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 9,
+      "chapter_name": "Breathing and Exchange of Gases",
+      "title": "Breathing and Exchange of Gases in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/xlQVJpG4ZFM",
+      "embed_url": "https://www.youtube.com/embed/xlQVJpG4ZFM",
+      "thumbnail_url": "https://img.youtube.com/vi/xlQVJpG4ZFM/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 10,
+      "chapter_name": "Human Health & Diseases",
+      "title": "Human Health & Diseases in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/sNpUnG4R95Y",
+      "embed_url": "https://www.youtube.com/embed/sNpUnG4R95Y",
+      "thumbnail_url": "https://img.youtube.com/vi/sNpUnG4R95Y/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 11,
+      "chapter_name": "Biomolecules",
+      "title": "Biomolecules in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/BQjXZQ_grOc",
+      "embed_url": "https://www.youtube.com/embed/BQjXZQ_grOc",
+      "thumbnail_url": "https://img.youtube.com/vi/BQjXZQ_grOc/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 12,
+      "chapter_name": "Reproductive Health",
+      "title": "REPRODUCTIVE HEALTH in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/EsnYNvvAUTA",
+      "embed_url": "https://www.youtube.com/embed/EsnYNvvAUTA",
+      "thumbnail_url": "https://img.youtube.com/vi/EsnYNvvAUTA/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 14,
+      "chapter_name": "Structural Organisation in Animal",
+      "title": "STRUCTURAL ORGANISATION IN ANIMAL in One SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/RQ08z8-sGCk",
+      "embed_url": "https://www.youtube.com/embed/RQ08z8-sGCk",
+      "thumbnail_url": "https://img.youtube.com/vi/RQ08z8-sGCk/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 15,
+      "chapter_name": "Human Reproduction",
+      "title": "HUMAN REPRODUCTION in ONE SHOT | Class 12 NEET",
+      "youtube_url": "https://youtu.be/Ckc0gS9Kvrg",
+      "embed_url": "https://www.youtube.com/embed/Ckc0gS9Kvrg",
+      "thumbnail_url": "https://img.youtube.com/vi/Ckc0gS9Kvrg/maxresdefault.jpg"
+    },
+    {
+      "batch": "NEET Class 11",
+      "subject": "Biology (Zoology)",
+      "chapter_num": 16,
+      "chapter_name": "Animal Kingdom",
+      "title": "ANIMAL KINGDOM in ONE SHOT | Class 11 NEET",
+      "youtube_url": "https://youtu.be/X9jfD1hc9ck",
+      "embed_url": "https://www.youtube.com/embed/X9jfD1hc9ck",
+      "thumbnail_url": "https://img.youtube.com/vi/X9jfD1hc9ck/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Chemistry",
+      "chapter_num": 1,
+      "chapter_name": "Chemical Reactions and Equations",
+      "title": "CHEMICAL REACTIONS AND EQUATIONS in 1 Shot: FULL CHAPTER | Class 10 Boards",
+      "youtube_url": "https://www.youtube.com/watch?v=AFtaBg9A3BU",
+      "embed_url": "https://www.youtube.com/embed/AFtaBg9A3BU",
+      "thumbnail_url": "https://img.youtube.com/vi/AFtaBg9A3BU/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Chemistry",
+      "chapter_num": 2,
+      "chapter_name": "Acids, Bases and Salts",
+      "title": "ACIDS, BASES AND SALTS in 1 Shot: FULL CHAPTER | Class 10 Boards",
+      "youtube_url": "https://www.youtube.com/watch?v=OuToVYR2VZA",
+      "embed_url": "https://www.youtube.com/embed/OuToVYR2VZA",
+      "thumbnail_url": "https://img.youtube.com/vi/OuToVYR2VZA/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Chemistry",
+      "chapter_num": 3,
+      "chapter_name": "Metals and Non Metals",
+      "title": "Metals and Non Metals | CLASS 10 Science | NCERT Covered | Prashant Kirad",
+      "youtube_url": "https://www.youtube.com/watch?v=YV1BFWi-AWY",
+      "embed_url": "https://www.youtube.com/embed/YV1BFWi-AWY",
+      "thumbnail_url": "https://img.youtube.com/vi/YV1BFWi-AWY/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Chemistry",
+      "chapter_num": 4,
+      "chapter_name": "Carbon and Its Compounds",
+      "title": "Carbon and Its Compounds in ONE SHOT Class 10 | Chemistry Full Chapter | Alakh Pandey",
+      "youtube_url": "https://www.youtube.com/watch?v=bN7etGvBRi4",
+      "embed_url": "https://www.youtube.com/embed/bN7etGvBRi4",
+      "thumbnail_url": "https://img.youtube.com/vi/bN7etGvBRi4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 1,
+      "chapter_name": "Real Numbers",
+      "title": "Class 10 REAL NUMBERS One Shot | Class 10 Maths Chapter 1 | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=4htFy1-Bw_Q",
+      "embed_url": "https://www.youtube.com/embed/4htFy1-Bw_Q",
+      "thumbnail_url": "https://img.youtube.com/vi/4htFy1-Bw_Q/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 2,
+      "chapter_name": "Polynomials",
+      "title": "Polynomials ONE SHOT | Class 10 Maths Chapter 2 | By Ritik Mishra",
+      "youtube_url": "https://www.youtube.com/watch?v=kiegUjhq8Ao",
+      "embed_url": "https://www.youtube.com/embed/kiegUjhq8Ao",
+      "thumbnail_url": "https://img.youtube.com/vi/kiegUjhq8Ao/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 3,
+      "chapter_name": "Pair of Linear Equations",
+      "title": "Pair Of Linear Equations ONE SHOT | Class 10 Maths Chapter 3 | Ritik Mishra",
+      "youtube_url": "https://www.youtube.com/watch?v=uz1yjvlu-RU",
+      "embed_url": "https://www.youtube.com/embed/uz1yjvlu-RU",
+      "thumbnail_url": "https://img.youtube.com/vi/uz1yjvlu-RU/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 4,
+      "chapter_name": "Quadratic Equations",
+      "title": "Quadratic Equations ONE SHOT | Class 10 Maths Chapter 4 | Ritik Mishra",
+      "youtube_url": "https://www.youtube.com/watch?v=hayFtYnAB-Q",
+      "embed_url": "https://www.youtube.com/embed/hayFtYnAB-Q",
+      "thumbnail_url": "https://img.youtube.com/vi/hayFtYnAB-Q/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 5,
+      "chapter_name": "Arithmetic Progression",
+      "title": "ARITHMETIC PROGRESSION One Shot | Class 10 Maths Chapter 5 | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=jZP82MHaDYg",
+      "embed_url": "https://www.youtube.com/embed/jZP82MHaDYg",
+      "thumbnail_url": "https://img.youtube.com/vi/jZP82MHaDYg/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 6,
+      "chapter_name": "Triangles",
+      "title": "Class 10th TRIANGLES One Shot | Class 10 Maths Chapter 6 | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=jB_TrpVvrmk",
+      "embed_url": "https://www.youtube.com/embed/jB_TrpVvrmk",
+      "thumbnail_url": "https://img.youtube.com/vi/jB_TrpVvrmk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 7,
+      "chapter_name": "Coordinate Geometry",
+      "title": "Class 10 COORDINATE GEOMETRY One Shot | Class 10 Maths Chapter 7 | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=36VcbVlSXMc",
+      "embed_url": "https://www.youtube.com/embed/36VcbVlSXMc",
+      "thumbnail_url": "https://img.youtube.com/vi/36VcbVlSXMc/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 8,
+      "chapter_name": "Trigonometry",
+      "title": "Class 10th TRIGONOMETRY One Shot | Class 10 Maths Chapter 8 | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=9inJz4zRors",
+      "embed_url": "https://www.youtube.com/embed/9inJz4zRors",
+      "thumbnail_url": "https://img.youtube.com/vi/9inJz4zRors/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 9,
+      "chapter_name": "Some Applications of Trigonometry",
+      "title": "Class 10 SOME APPLICATIONS OF TRIGONOMETRY One Shot | One Day One Chapter",
+      "youtube_url": "https://www.youtube.com/watch?v=kufAtLn2R18",
+      "embed_url": "https://www.youtube.com/embed/kufAtLn2R18",
+      "thumbnail_url": "https://img.youtube.com/vi/kufAtLn2R18/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 10,
+      "chapter_name": "Circles",
+      "title": "Circles One Shot | Class 10 Maths Chapter 10 | Ritik Mishra",
+      "youtube_url": "https://www.youtube.com/watch?v=dazX40Ct7J0",
+      "embed_url": "https://www.youtube.com/embed/dazX40Ct7J0",
+      "thumbnail_url": "https://img.youtube.com/vi/dazX40Ct7J0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 11,
+      "chapter_name": "Areas Related to Circle",
+      "title": "Class 10 AREAS RELATED TO CIRCLES One Shot | One Day One Chapter | Boards",
+      "youtube_url": "https://www.youtube.com/watch?v=_zHNkNxQErM",
+      "embed_url": "https://www.youtube.com/embed/_zHNkNxQErM",
+      "thumbnail_url": "https://img.youtube.com/vi/_zHNkNxQErM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 12,
+      "chapter_name": "Surface Areas and Volumes",
+      "title": "Class 10th SURFACE AREAS AND VOLUMES One Shot | Class 10 Maths Chapter 12",
+      "youtube_url": "https://www.youtube.com/watch?v=P4bnYvV15Rk",
+      "embed_url": "https://www.youtube.com/embed/P4bnYvV15Rk",
+      "thumbnail_url": "https://img.youtube.com/vi/P4bnYvV15Rk/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 13,
+      "chapter_name": "Statistics",
+      "title": "Class 10th Statistics One Shot | Class 10 Maths Chapter 13 | Shobhit Nirwan",
+      "youtube_url": "https://www.youtube.com/watch?v=fFncQze5dBc",
+      "embed_url": "https://www.youtube.com/embed/fFncQze5dBc",
+      "thumbnail_url": "https://img.youtube.com/vi/fFncQze5dBc/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Mathematics",
+      "chapter_num": 14,
+      "chapter_name": "Probability",
+      "title": "PRABABILITY CLASS 10",
+      "youtube_url": "https://www.youtube.com/watch?v=AfBPfqSoZ0Y",
+      "embed_url": "https://www.youtube.com/embed/AfBPfqSoZ0Y",
+      "thumbnail_url": "https://img.youtube.com/vi/AfBPfqSoZ0Y/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Physics",
+      "chapter_num": 1,
+      "chapter_name": "Light - Reflection & Refraction",
+      "title": "LIGHT - Reflection & Refraction Class 10 | Complete Chapter in ONE SHOT | Alakh Pandey",
+      "youtube_url": "https://youtu.be/kHVAk96r05Y",
+      "embed_url": "https://www.youtube.com/embed/kHVAk96r05Y",
+      "thumbnail_url": "https://img.youtube.com/vi/kHVAk96r05Y/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Physics",
+      "chapter_num": 2,
+      "chapter_name": "Human Eye and the Colourful World",
+      "title": "Human Eye and the Colourful World Class 10 | Complete CHAPTER One Shot | Alakh Pandey",
+      "youtube_url": "https://youtu.be/G7zDZwrP6O4",
+      "embed_url": "https://www.youtube.com/embed/G7zDZwrP6O4",
+      "thumbnail_url": "https://img.youtube.com/vi/G7zDZwrP6O4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Physics",
+      "chapter_num": 3,
+      "chapter_name": "Electricity",
+      "title": "Electricity Class 10 | Complete CHAPTER IN ONE SHOT | NCERT Covered | Alakh Pandey",
+      "youtube_url": "https://youtu.be/EJcnBv691cY",
+      "embed_url": "https://www.youtube.com/embed/EJcnBv691cY",
+      "thumbnail_url": "https://img.youtube.com/vi/EJcnBv691cY/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Physics",
+      "chapter_num": 4,
+      "chapter_name": "Magnetic Effects of Electric Current",
+      "title": "Magnetic Effects Of Electric Current Class 10 | Complete CHAPTER IN ONE SHOT | NCERT",
+      "youtube_url": "https://youtu.be/lYGBsKJ0LYs",
+      "embed_url": "https://www.youtube.com/embed/lYGBsKJ0LYs",
+      "thumbnail_url": "https://img.youtube.com/vi/lYGBsKJ0LYs/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Biology",
+      "chapter_num": 1,
+      "chapter_name": "Life Processes",
+      "title": "Life Processes ONE SHOT | Full Chapter Line by Line | Class 10th Science | Chapter 1",
+      "youtube_url": "https://youtu.be/a3klf9QIUg8",
+      "embed_url": "https://www.youtube.com/embed/a3klf9QIUg8",
+      "thumbnail_url": "https://img.youtube.com/vi/a3klf9QIUg8/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Biology",
+      "chapter_num": 2,
+      "chapter_name": "Control and Coordination",
+      "title": "Control and Coordination in ONE SHOT | Class 10 Science Chapter 6 | Samridhi S.",
+      "youtube_url": "https://youtu.be/_YUmu4ceJyQ",
+      "embed_url": "https://www.youtube.com/embed/_YUmu4ceJyQ",
+      "thumbnail_url": "https://img.youtube.com/vi/_YUmu4ceJyQ/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Biology",
+      "chapter_num": 3,
+      "chapter_name": "How do Organisms Reproduce?",
+      "title": "How do Organisms Reproduce? in ONE SHOT | Class 10 Science Chapter 7 | Samridhi S.",
+      "youtube_url": "https://youtu.be/5RcjemEhsT4",
+      "embed_url": "https://www.youtube.com/embed/5RcjemEhsT4",
+      "thumbnail_url": "https://img.youtube.com/vi/5RcjemEhsT4/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Biology",
+      "chapter_num": 4,
+      "chapter_name": "Heredity and Evolution",
+      "title": "Heredity and Evolution Chapter 8 In ONE SHOT | Class 10 Science | Samridhi Sharma",
+      "youtube_url": "https://youtu.be/WJ08NIoqC3Q",
+      "embed_url": "https://www.youtube.com/embed/WJ08NIoqC3Q",
+      "thumbnail_url": "https://img.youtube.com/vi/WJ08NIoqC3Q/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 10",
+      "subject": "Biology",
+      "chapter_num": 5,
+      "chapter_name": "Our Environment",
+      "title": "Our Environment In ONE SHOT | Class 10 Science Chapter 13 | Samridhi Sharma",
+      "youtube_url": "https://youtu.be/OS69CcCrvf0",
+      "embed_url": "https://www.youtube.com/embed/OS69CcCrvf0",
+      "thumbnail_url": "https://img.youtube.com/vi/OS69CcCrvf0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 1,
+      "chapter_name": "Number System",
+      "title": "Number System Class 9 in ONE SHOT | Chapter 1 Maths | Ritik Mishra",
+      "youtube_url": "https://youtu.be/9Z1xEW3-T14",
+      "embed_url": "https://www.youtube.com/embed/9Z1xEW3-T14",
+      "thumbnail_url": "https://img.youtube.com/vi/9Z1xEW3-T14/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 2,
+      "chapter_name": "Polynomials",
+      "title": "Polynomials Class 9 in ONE SHOT | Chapter 2 Maths | Ritik Mishra",
+      "youtube_url": "https://youtu.be/WiteEH5a0Eg",
+      "embed_url": "https://www.youtube.com/embed/WiteEH5a0Eg",
+      "thumbnail_url": "https://img.youtube.com/vi/WiteEH5a0Eg/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 3,
+      "chapter_name": "Coordinate Geometry",
+      "title": "Coordinate Geometry Class 9 in ONE SHOT | Chapter 3 Maths | Ritik Mishra",
+      "youtube_url": "https://youtu.be/XwNKoPg_8mo",
+      "embed_url": "https://www.youtube.com/embed/XwNKoPg_8mo",
+      "thumbnail_url": "https://img.youtube.com/vi/XwNKoPg_8mo/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 4,
+      "chapter_name": "Introduction to Euclid's Geometry",
+      "title": "Introduction to Euclid's Geometry in ONE SHOT | Class 9 Maths Chapter 5 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/so8Jhy1m1D0",
+      "embed_url": "https://www.youtube.com/embed/so8Jhy1m1D0",
+      "thumbnail_url": "https://img.youtube.com/vi/so8Jhy1m1D0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 5,
+      "chapter_name": "Linear Equation In Two Variables",
+      "title": "Linear Equation In Two Variables in One Shot | Class 9 MATHS Chapter 4 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/TfmasgcpD3Y",
+      "embed_url": "https://www.youtube.com/embed/TfmasgcpD3Y",
+      "thumbnail_url": "https://img.youtube.com/vi/TfmasgcpD3Y/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 6,
+      "chapter_name": "Lines and Angles",
+      "title": "Lines and Angles in ONE SHOT | Class 9 Maths Chapter 6 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/42u_1PKQ1gM",
+      "embed_url": "https://www.youtube.com/embed/42u_1PKQ1gM",
+      "thumbnail_url": "https://img.youtube.com/vi/42u_1PKQ1gM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 7,
+      "chapter_name": "Triangles",
+      "title": "Triangles Class 9 in ONE SHOT | Chapter 7 Maths | Ritik Mishra",
+      "youtube_url": "https://youtu.be/m3Qj5FT74LM",
+      "embed_url": "https://www.youtube.com/embed/m3Qj5FT74LM",
+      "thumbnail_url": "https://img.youtube.com/vi/m3Qj5FT74LM/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 8,
+      "chapter_name": "Quadrilaterals",
+      "title": "Quadrilaterals Class 9 in ONE SHOT | Maths Chapter 8 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/_2kf1Xh15CU",
+      "embed_url": "https://www.youtube.com/embed/_2kf1Xh15CU",
+      "thumbnail_url": "https://img.youtube.com/vi/_2kf1Xh15CU/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 9,
+      "chapter_name": "Circles",
+      "title": "Circles ONE SHOT | Full Chapter | Class 9 Maths | Chapter 10",
+      "youtube_url": "https://youtu.be/wey1enBKFt0",
+      "embed_url": "https://www.youtube.com/embed/wey1enBKFt0",
+      "thumbnail_url": "https://img.youtube.com/vi/wey1enBKFt0/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 10,
+      "chapter_name": "Surface Areas and Volumes",
+      "title": "Surface Areas and Volumes in ONE SHOT | Maths Chapter 11 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/Ypt6LgTNHgA",
+      "embed_url": "https://www.youtube.com/embed/Ypt6LgTNHgA",
+      "thumbnail_url": "https://img.youtube.com/vi/Ypt6LgTNHgA/maxresdefault.jpg"
+    },
+    {
+      "batch": "Class 9",
+      "subject": "Mathematics",
+      "chapter_num": 11,
+      "chapter_name": "Statistics",
+      "title": "Statistics in ONE SHOT | Class 9 Maths Chapter 12 | Boards 2026 | Ritik Mishra",
+      "youtube_url": "https://youtu.be/3jVwXMl6-yU",
+      "embed_url": "https://www.youtube.com/embed/3jVwXMl6-yU",
+      "thumbnail_url": "https://img.youtube.com/vi/3jVwXMl6-yU/maxresdefault.jpg"
+    }
+  ],
+  "notes": [
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 1,
+      "title": "Kinematics",
+      "pdf_url": "https://drive.google.com/file/d/1idBgj5qjyDsgvQtQr9GSvXM8HRGpnIlb/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 2,
+      "title": "Newton Law Of Motion",
+      "pdf_url": "https://drive.google.com/file/d/1749WIAEoOhV_74N7VCz1t0cJvZqRQWdL/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 3,
+      "title": "Friction",
+      "pdf_url": "https://drive.google.com/file/d/1ZSULc0g7rNh9s_wMUEA026YXt4Xmu6ri/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 4,
+      "title": "Work Energy And Power",
+      "pdf_url": "https://drive.google.com/file/d/1yHCXSiBs1_wMWJJcFhjAUH46kilV/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 5,
+      "title": "Centre Mass And Momentum",
+      "pdf_url": "https://drive.google.com/file/d/1ACxlmO5ryUv_A5u4NkZQFets7ND12M1K/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 6,
+      "title": "Rotational Motion",
+      "pdf_url": "https://drive.google.com/file/d/16fV7XNnAK6jVVELPiVbf7KNaPcoRvMEE/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 7,
+      "title": "Gravitation",
+      "pdf_url": "https://drive.google.com/file/d/1qvAtADWGRZ-EoNyT8LhrBZPDlmbD7EWa/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 8,
+      "title": "Elasticity",
+      "pdf_url": "https://drive.google.com/file/d/1J96uX2N0IrfyFMZOMTbkTReBBFHHsxLQ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 9,
+      "title": "Fluid Mechanics",
+      "pdf_url": "https://drive.google.com/file/d/14wVKGN0DrUBtHGNNDFBYGPH_DLuKPXvJ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 10,
+      "title": "Thermodynamics",
+      "pdf_url": "https://drive.google.com/file/d/1I_o6WkdYOsdBiSL4DgXD0iZH3tMdIap9/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 11,
+      "title": "Simple Harmonic Motion",
+      "pdf_url": "https://drive.google.com/file/d/1sa-ItINe_QNjYOPr8LTWK_FA-f08jiQS/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 12,
+      "title": "Waves And Sound",
+      "pdf_url": "https://drive.google.com/file/d/1JZUBXrPSnHlsxDkzjqd2YhUMWrDv3EC4/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 13,
+      "title": "Electrostatics",
+      "pdf_url": "https://drive.google.com/file/d/1v5IJpLdsNA6Te6d0v5bC0w3RmmQu56n8/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 14,
+      "title": "Current And Electricity",
+      "pdf_url": "https://drive.google.com/file/d/1z2Hj8gukkFIXR70X5tBgg3t1QD3bBNQG/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 15,
+      "title": "Magnetic Effects",
+      "pdf_url": "https://drive.google.com/file/d/1iYJJ2NoOkIbx4Slgvi4Ks6i6rUo8KsGU/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 16,
+      "title": "EMI",
+      "pdf_url": "https://drive.google.com/file/d/1oTIDPJbc6Krr1GgT1f1w3OsuC_Va-YGk/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 17,
+      "title": "Alternating Current",
+      "pdf_url": "https://drive.google.com/file/d/15wdsGi63piyJrTQyUbnLn-N30Wi582aU/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 18,
+      "title": "Ray Optics",
+      "pdf_url": "https://drive.google.com/file/d/1QGE47v72Z_CaiKSkwkONw1AV1JWW9LCW/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 19,
+      "title": "Wave Optics",
+      "pdf_url": "https://drive.google.com/file/d/17o8GHO0n3LTAMnpe89ERjFOCrA3lRFx3/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 1,
+      "title": "Stoichiometry",
+      "pdf_url": "https://drive.google.com/file/d/1R84m6nXbKkiDyAkg6n2aX0Y8AHwfM1F2/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 2,
+      "title": "Atomic Structure",
+      "pdf_url": "https://drive.google.com/file/d/1R84m6nXbKkiDyAkg6n2aX0Y8AHwfM1F2/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 3,
+      "title": "Periodic Table",
+      "pdf_url": "https://drive.google.com/file/d/1ASueCEFW1AyBhw4DGdFoUK09DqnLL9hj/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 4,
+      "title": "Chemical Bonding",
+      "pdf_url": "https://drive.google.com/file/d/1tRfdLDnCU7LLm5u7K9upg5zBnqkuPtK7/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 5,
+      "title": "Gaseous State",
+      "pdf_url": "https://drive.google.com/file/d/1ySHJkHxHr5cdqpzVCMptiKJqydRBUBi-/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 6,
+      "title": "Thermodynamics",
+      "pdf_url": "https://drive.google.com/file/d/1Syzq9hpTd3QDn5hI6B2HyQMHj6P0ajNh/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 7,
+      "title": "Chemical Equilibrium",
+      "pdf_url": "https://drive.google.com/file/d/1wn365TOLhjuO20JD2JBq3t8SH1vKXYZI/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 8,
+      "title": "Ionic Equilibrium",
+      "pdf_url": "https://drive.google.com/file/d/1zh-MV0HR4x81fYkAek7OtRoJBYhAZSAd/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 9,
+      "title": "Redox Reaction",
+      "pdf_url": "https://drive.google.com/file/d/1OAWINrQP88WolqErTcczWr7IS8J7_Rbn/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 10,
+      "title": "Hydrogen",
+      "pdf_url": "https://drive.google.com/file/d/1cGRvaRYMz3goHgFhkmHLUeD4kiYCcta_/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 11,
+      "title": "S Block",
+      "pdf_url": "https://drive.google.com/file/d/1X5PrE80ZUylM3IFE6hyrjB9rzU5zE1ml/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 12,
+      "title": "P Block",
+      "pdf_url": "https://drive.google.com/file/d/15PnYy_x2_NUocyCfFEhF5CKbKYlWOtqm/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 13,
+      "title": "General Organic Chemistry",
+      "pdf_url": "https://drive.google.com/file/d/1AawEYwis0_hnu7y8L1pbqi2-qYRl4wsG/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 14,
+      "title": "Hydrocarbon",
+      "pdf_url": "https://drive.google.com/file/d/11QVQYKv2SmkW9QKTk3UjX_w8SER3qCBC/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 15,
+      "title": "Solid State",
+      "pdf_url": "https://drive.google.com/file/d/1zSNC9OVdMm-oYTMtO8W4NPDjxoQshIgb/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 16,
+      "title": "Solutions",
+      "pdf_url": "https://drive.google.com/file/d/1ovVaUyOvx1x5FjE3cExSDdFszUAVJ63E/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 17,
+      "title": "Electrochemistry",
+      "pdf_url": "https://drive.google.com/file/d/1S2vUCAvEpa29Qk7WBYPzTSDL1d0gwAb5/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 18,
+      "title": "Chemical Kinetics",
+      "pdf_url": "https://drive.google.com/file/d/1XasflnTyYQjY409PMaNxaJOFohZBnRJX/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 19,
+      "title": "D Block & Coordination Compounds",
+      "pdf_url": "https://drive.google.com/file/d/12eRfeTl722Hv1fFpuR3kQN6aCBw9Oj5P/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 20,
+      "title": "Alkyl Halide",
+      "pdf_url": "https://drive.google.com/file/d/1vL7zhvPd5kLRTevEbLXCPdu0yiX5sS65/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 21,
+      "title": "Alcohol Phenol Ether",
+      "pdf_url": "https://drive.google.com/file/d/1QERLnMoML8QyDHDoB8Yu9unrbIaLaly3/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 22,
+      "title": "EAS",
+      "pdf_url": "https://drive.google.com/file/d/1RBf_rQGL2ZceQyp5a4BO4jUlann_1XWS/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 23,
+      "title": "Aldehydes & Ketones",
+      "pdf_url": "https://drive.google.com/file/d/1reFhGdyblUS3ZVmDeHp6C5lQU63XCViC/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 24,
+      "title": "Carboxylic Acid",
+      "pdf_url": "https://drive.google.com/file/d/1XOhgBnPShIA9RBq9GoaRBhnYE6QVyJtE/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 25,
+      "title": "Amines",
+      "pdf_url": "https://drive.google.com/file/d/1PJNRlFzzDzsxjLWSJwEIa4OptHBka2ck/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 26,
+      "title": "Biomolecules",
+      "pdf_url": "https://drive.google.com/file/d/1xiKdjGUr9MqquqIT0CYQqTzSguNGcJ5o/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 27,
+      "title": "Polymer",
+      "pdf_url": "https://drive.google.com/file/d/1eauPQSvcx-DborlNnBioGA2R7rwJVyrR/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Chemistry",
+      "chapter_num": 28,
+      "title": "Salt Analysis",
+      "pdf_url": "https://drive.google.com/file/d/1nw2ZmYDUzy5GCLyMpZbJWTrwHPCR9p6Q/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 1,
+      "title": "Functions",
+      "pdf_url": "https://drive.google.com/file/d/1Y2K9AjL03mx4h5Y7Y_VPvLi7m6mOOTEk/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 2,
+      "title": "Trigonometric Ratios",
+      "pdf_url": "https://drive.google.com/file/d/1rebNKAovT5IEJogN_I_Jaf3irI8O6qK9/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 3,
+      "title": "Trigonometric Equation",
+      "pdf_url": "https://drive.google.com/file/d/1r2FfYHyLoYYJ1eKtwUSrIBR1p6vwuGDX/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 4,
+      "title": "Solution Of A Triangle",
+      "pdf_url": "https://drive.google.com/file/d/1mPE6kOz6-nO6IXurBV-U8QmIHHGzwUF2/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 5,
+      "title": "Complex Numbers",
+      "pdf_url": "https://drive.google.com/file/d/136T62wEvHO0hZ3ot6WUUxXkoYDXiFh0h/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 6,
+      "title": "Permutation & Combination",
+      "pdf_url": "https://drive.google.com/file/d/1KNK39xFOIfQhQwOkDERwAWRJ0ya3gtFE/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 7,
+      "title": "Binomial Theorem",
+      "pdf_url": "https://drive.google.com/file/d/1cFFiMyTwNI3HmkamQc8fRgjlXdJyrgmS/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 8,
+      "title": "Sequence & Series",
+      "pdf_url": "https://drive.google.com/file/d/19z-rEOF7vACL-9tRftg9TZY2V62GioCi/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 9,
+      "title": "Straight Line",
+      "pdf_url": "https://drive.google.com/file/d/1bgFDWgovb9Mg9BkGr8AP-nGOp2GQrEI5/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 10,
+      "title": "Circle",
+      "pdf_url": "https://drive.google.com/file/d/18uIymU4NUY0jJGbCbES6YqgIdsQstPCv/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 11,
+      "title": "Parabola",
+      "pdf_url": "https://drive.google.com/file/d/1kgczQ9hYCMxmxUchXN9rm6pKbvnOEiC0/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 12,
+      "title": "Ellipse",
+      "pdf_url": "https://drive.google.com/file/d/1mB6MWOOUDVLC_KWq8Up2g0NnbF9j2Ndc/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 13,
+      "title": "Hyperbola",
+      "pdf_url": "https://drive.google.com/file/d/1qhNr55IEsAWTp1ZsSvVBCVC-gMJQ2TOh/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 14,
+      "title": "Limit",
+      "pdf_url": "https://drive.google.com/file/d/1V4_wPiv4U0Fpp3o7_3qcjMid20bCb2bo/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 15,
+      "title": "Inverse Trigonometry",
+      "pdf_url": "https://drive.google.com/file/d/1UECMdqS6yyY2SvBpPllnF_ujuXUa_gzq/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 16,
+      "title": "Matrices & Determinants",
+      "pdf_url": "https://drive.google.com/file/d/1EuE8FIw6cIs3PrOS1CrHspLWtyjP-iwy/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 17,
+      "title": "Continuity",
+      "pdf_url": "https://drive.google.com/file/d/12l48R0e9OoKBCHhwp7ObdVETgmr2iaNa/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 18,
+      "title": "Differentiation",
+      "pdf_url": "https://drive.google.com/file/d/1_jswq5iLdEMdBdxkfxUu32YTEiPaZkKu/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 19,
+      "title": "Application Of Derivative",
+      "pdf_url": "https://drive.google.com/file/d/1QzIt977iyD4D_NHY9Kh0BoDRm-mjTXVu/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 20,
+      "title": "Indefinite Integration",
+      "pdf_url": "https://drive.google.com/file/d/1OLwWlcdlMcv1wsT8671VQJE55OTRm-bq/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 21,
+      "title": "Definite Integration",
+      "pdf_url": "https://drive.google.com/file/d/15rwGbz79nxw_cWe5d3CV-QoYL2h_LX8/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 22,
+      "title": "Area",
+      "pdf_url": "https://drive.google.com/file/d/1qg9d1nDDKdDJnJZTd2RGR78Lflb6dIYZ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 23,
+      "title": "Differential Equation",
+      "pdf_url": "https://drive.google.com/file/d/1-5YtSCJao4Ci8pYyfUoY5l6nGg8DoSNX/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 24,
+      "title": "Vector Algebra",
+      "pdf_url": "https://drive.google.com/file/d/1KLUYkwAe5FamtuCkpNG2KYeRvCvdaOra/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 25,
+      "title": "Vector 3D",
+      "pdf_url": "https://drive.google.com/file/d/1wKuQJvJcpLcNMahv2A9LGn1pDc4wLgIJ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Mathematics",
+      "chapter_num": 26,
+      "title": "Probability",
+      "pdf_url": "https://drive.google.com/file/d/1n95Dpd-07U0DmtJ0ORxCw-qxG7wNkeMw/view"
+    }
+  ],
+  "note_subjects": [
+    {
+      "class_name": "Class 9",
+      "name": "Science"
+    },
+    {
+      "class_name": "Class 9",
+      "name": "Mathematics"
+    },
+    {
+      "class_name": "Class 9",
+      "name": "Social Science"
+    },
+    {
+      "class_name": "Class 9",
+      "name": "Hindi"
+    },
+    {
+      "class_name": "Class 9",
+      "name": "English"
+    },
+    {
+      "class_name": "Class 10",
+      "name": "Science"
+    },
+    {
+      "class_name": "Class 10",
+      "name": "Mathematics"
+    },
+    {
+      "class_name": "Class 10",
+      "name": "Social Science"
+    },
+    {
+      "class_name": "Class 10",
+      "name": "Hindi"
+    },
+    {
+      "class_name": "Class 10",
+      "name": "English"
+    },
+    {
+      "class_name": "Class 11",
+      "name": "Physics"
+    },
+    {
+      "class_name": "Class 11",
+      "name": "Chemistry"
+    },
+    {
+      "class_name": "Class 11",
+      "name": "Mathematics"
+    },
+    {
+      "class_name": "Class 11",
+      "name": "Biology"
+    },
+    {
+      "class_name": "Class 11",
+      "name": "English"
+    },
+    {
+      "class_name": "Class 12",
+      "name": "Physics"
+    },
+    {
+      "class_name": "Class 12",
+      "name": "Chemistry"
+    },
+    {
+      "class_name": "Class 12",
+      "name": "Mathematics"
+    },
+    {
+      "class_name": "Class 12",
+      "name": "Biology"
+    },
+    {
+      "class_name": "Class 12",
+      "name": "English"
+    },
+    {
+      "class_name": "JEE",
+      "name": "Physics"
+    },
+    {
+      "class_name": "JEE",
+      "name": "Chemistry"
+    },
+    {
+      "class_name": "JEE",
+      "name": "Mathematics"
+    },
+    {
+      "class_name": "NEET",
+      "name": "Physics"
+    },
+    {
+      "class_name": "NEET",
+      "name": "Chemistry"
+    },
+    {
+      "class_name": "NEET",
+      "name": "Biology"
+    },
+    {
+      "class_name": "NEET",
+      "name": "Botany"
+    },
+    {
+      "class_name": "NEET",
+      "name": "Zoology"
+    }
+  ],
+  "digital_books": [
+    {
+      "title": "IE IRODOV Physics Problems",
+      "author": "I. E. Irodov",
+      "category": "IIT-JEE",
+      "thumbnail_url": "https://cdn.corenexis.com/files/c/3232694720.png",
+      "pdf_url": "https://drive.google.com/file/d/1sS0mCu3qYB1CYOdq6m0vmtssS5FOuiEa/view"
+    },
+    {
+      "title": "MS Chouhan - Advanced Theory in Organic Chemistry Vol 1",
+      "author": "MS Chouhan",
+      "category": "IIT-JEE",
+      "thumbnail_url": "https://cdn.corenexis.com/files/c/2824813720.png",
+      "pdf_url": "https://drive.google.com/file/d/1TL352jOhwjbwOLT4UZIbgr7EdVWRylBl/view"
+    },
+    {
+      "title": "VK Jaiswal Inorganic Chemistry",
+      "author": "Vk Jaiswal",
+      "category": "IIT-JEE",
+      "thumbnail_url": "https://cdn.corenexis.com/files/c/2139139720.png",
+      "pdf_url": "https://drive.google.com/file/d/1J1nAdbl9XEIpFeX0y-sf7UjB4TlnLk_c/view"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Som Patra",
+      "role": "JEE Student",
+      "stars": 5,
+      "text": "Nice",
+      "photo": ""
+    }
+  ]
+}
