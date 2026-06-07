@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Books — PrepShot</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -10,147 +9,100 @@
 :root{--bg:#060810;--card:#0d1124;--border:rgba(99,102,241,.15);--border2:rgba(255,255,255,.07);--accent:#6366f1;--accent2:#a78bfa;--text:#f1f5f9;--muted:#64748b;--muted2:#94a3b8;}
 body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;padding-bottom:2rem;}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 20% 20%,rgba(99,102,241,.07) 0%,transparent 60%);z-index:0;}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(6,8,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:0 1.25rem;height:58px;display:flex;align-items:center;gap:.75rem;}
-.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
 .logo span{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .back-btn{margin-left:auto;font-size:.78rem;color:var(--muted2);text-decoration:none;padding:.4rem .8rem;border:1px solid var(--border2);border-radius:20px;}
-
-/* STICKY SEARCH */
 .search-bar{position:sticky;top:58px;z-index:90;background:rgba(6,8,16,.92);backdrop-filter:blur(12px);padding:.75rem 1.25rem;border-bottom:1px solid var(--border2);}
 .search-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:0 1rem;height:42px;gap:.5rem;transition:border-color .2s;}
 .search-inner:focus-within{border-color:var(--accent);}
 .search-inner input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Outfit',sans-serif;font-size:.88rem;}
-
-/* FILTERS */
 .filters{padding:.75rem 1.25rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;max-width:700px;margin:0 auto;}
 .filters::-webkit-scrollbar{display:none;}
 .chip{padding:.4rem .9rem;border-radius:50px;border:1px solid var(--border2);background:transparent;color:var(--muted2);font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Outfit',sans-serif;}
 .chip:hover{border-color:var(--accent);color:var(--text);}
 .chip.active{background:rgba(99,102,241,.2);border-color:var(--accent);color:var(--accent2);}
-
-/* GRID */
 .page{max-width:700px;margin:0 auto;padding:0 1.25rem;position:relative;z-index:1;}
 .page-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin:1rem 0 .25rem;}
 .page-sub{font-size:.78rem;color:var(--muted);margin-bottom:1.25rem;}
 .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;}
-
-/* BOOK CARD */
-.book-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;display:block;}
+.book-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;transition:all .25s;text-decoration:none;display:block;}
 .book-card:hover{border-color:rgba(99,102,241,.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(99,102,241,.15);}
-.book-thumb{width:100%;aspect-ratio:3/4;object-fit:cover;background:linear-gradient(135deg,#1e1b4b,#312e81);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
-.book-thumb img{width:100%;height:100%;object-fit:cover;}
+.book-thumb img{width:100%;aspect-ratio:3/4;object-fit:cover;}
 .book-thumb-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#1e1b4b,#312e81);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
 .book-info{padding:.75rem;}
 .book-cat{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:.3rem;}
 .book-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.2rem;color:var(--text);}
 .book-author{font-size:.7rem;color:var(--muted);margin-bottom:.6rem;}
-.book-btn{display:flex;align-items:center;justify-content:center;gap:.3rem;padding:.45rem;background:linear-gradient(135deg,var(--accent),#8b5cf6);border-radius:8px;color:#fff;font-size:.72rem;font-weight:600;text-decoration:none;transition:opacity .2s;}
-.book-btn:hover{opacity:.85;}
-
-/* EMPTY */
-.empty{text-align:center;padding:4rem 1rem;color:var(--muted);}
-.empty-icon{font-size:3rem;margin-bottom:.75rem;}
-
-/* LOADING SKELETON */
-.skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:14px;}
+.book-btn{display:flex;align-items:center;justify-content:center;gap:.3rem;padding:.45rem;background:linear-gradient(135deg,var(--accent),#8b5cf6);border-radius:8px;color:#fff;font-size:.72rem;font-weight:600;}
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:14px;height:260px;}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.sk-card{height:260px;}
-
-@media(max-width:480px){
-  .books-grid{grid-template-columns:repeat(2,1fr);gap:.75rem;}
-  .page{padding:0 .9rem;}
-}
+.empty{text-align:center;padding:4rem 1rem;color:var(--muted);grid-column:1/-1;}
+@media(max-width:480px){.books-grid{grid-template-columns:repeat(2,1fr);gap:.75rem;}.page{padding:0 .9rem;}}
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="logo">
-    <span>PrepShot</span>
-  </a>
+  <a href="index.html" class="logo"><span>PrepShot</span></a>
   <a href="index.html" class="back-btn">← Home</a>
 </nav>
-
 <div class="search-bar">
   <div class="search-inner">
     <span style="color:var(--muted)">🔍</span>
-    <input type="text" id="searchInput" placeholder="Search books..." oninput="filterBooks()">
+    <input type="text" id="searchInput" placeholder="Search books..." oninput="render()">
   </div>
 </div>
-
-<div class="filters" id="filters">
-  <button class="chip active" data-cat="All" onclick="setFilter('All',this)">All</button>
-  <button class="chip" data-cat="IIT-JEE" onclick="setFilter('IIT-JEE',this)">IIT-JEE</button>
-  <button class="chip" data-cat="NEET" onclick="setFilter('NEET',this)">NEET</button>
-  <button class="chip" data-cat="Foundation" onclick="setFilter('Foundation',this)">Foundation</button>
-  <button class="chip" data-cat="Boards" onclick="setFilter('Boards',this)">Boards</button>
+<div class="filters">
+  <button class="chip active" onclick="setFilter('All',this)">All</button>
+  <button class="chip" onclick="setFilter('IIT-JEE',this)">IIT-JEE</button>
+  <button class="chip" onclick="setFilter('NEET',this)">NEET</button>
+  <button class="chip" onclick="setFilter('Foundation',this)">Foundation</button>
+  <button class="chip" onclick="setFilter('Boards',this)">Boards</button>
 </div>
-
 <div class="page">
   <div class="page-title">Digital Books 📚</div>
   <div class="page-sub">No need to buy bulky physical books. Get them all in one place!</div>
   <div class="books-grid" id="booksGrid">
-    <div class="skeleton sk-card"></div>
-    <div class="skeleton sk-card"></div>
-    <div class="skeleton sk-card"></div>
-    <div class="skeleton sk-card"></div>
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
   </div>
 </div>
-
 <script>
-const SUPA_URL='https://ohptzgfwgbmtjcmivstx.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M';
-let allBooks=[],activeFilter='All';
-
-async function loadBooks(){
+let allBooks=[], activeFilter='All';
+ 
+async function init(){
   try{
-    const r=await fetch(`${SUPA_URL}/rest/v1/digital_books?select=*&order=created_at.desc`,
-      {headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}});
-    allBooks=await r.json();
+    const r=await fetch('db.json?t='+Date.now());
+    const data=await r.json();
+    allBooks=data.digital_books||[];
   }catch(e){allBooks=[];}
   render();
 }
-
+ 
 function setFilter(cat,el){
   activeFilter=cat;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   render();
 }
-
-function filterBooks(){
-  render();
-}
-
+ 
 function render(){
   const q=document.getElementById('searchInput').value.toLowerCase();
   let data=allBooks;
   if(activeFilter!=='All') data=data.filter(b=>b.category===activeFilter);
   if(q) data=data.filter(b=>(b.title+b.author+b.category).toLowerCase().includes(q));
   const grid=document.getElementById('booksGrid');
-  if(!data.length){
-    grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">📭</div><p>No books found</p></div>`;
-    return;
-  }
+  if(!data.length){grid.innerHTML=`<div class="empty">📭 No books found</div>`;return;}
   grid.innerHTML=data.map(b=>`
     <a class="book-card" href="${b.pdf_url}" target="_blank" rel="noopener">
-      ${b.thumbnail_url
-        ?`<div class="book-thumb"><img src="${b.thumbnail_url}" alt="${b.title}" loading="lazy"></div>`
-        :`<div class="book-thumb-placeholder">📖</div>`
-      }
+      ${b.thumbnail_url?`<div class="book-thumb"><img src="${b.thumbnail_url}" alt="${b.title}" loading="lazy"></div>`:`<div class="book-thumb-placeholder">📖</div>`}
       <div class="book-info">
         <div class="book-cat">${b.category||''}</div>
         <div class="book-title">${b.title}</div>
         ${b.author?`<div class="book-author">${b.author}</div>`:''}
         <div class="book-btn">⬇ Open / Download</div>
       </div>
-    </a>
-  `).join('');
+    </a>`).join('');
 }
-
-loadBooks();
+init();
 </script>
 </body>
 </html>
