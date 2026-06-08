@@ -1161,137 +1161,11 @@
   ],
   "notes": [
     {
-      "class_name": "JEE",
-      "subject": "Physics",
+      "class_name": "Class 11",
+      "subject": "nn",
       "chapter_num": 1,
-      "title": "Kinematics",
-      "pdf_url": "https://drive.google.com/file/d/1idBgj5qjyDsgvQtQr9GSvXM8HRGpnIlb/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 2,
-      "title": "Newton Law Of Motion",
-      "pdf_url": "https://drive.google.com/file/d/1749WIAEoOhV_74N7VCz1t0cJvZqRQWdL/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 3,
-      "title": "Friction",
-      "pdf_url": "https://drive.google.com/file/d/1ZSULc0g7rNh9s_wMUEA026YXt4Xmu6ri/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 4,
-      "title": "Work Energy And Power",
-      "pdf_url": "https://drive.google.com/file/d/1yHCXSiBs1_wMWJJcFhjAUH46kilV/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 5,
-      "title": "Centre Mass And Momentum",
-      "pdf_url": "https://drive.google.com/file/d/1ACxlmO5ryUv_A5u4NkZQFets7ND12M1K/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 6,
-      "title": "Rotational Motion",
-      "pdf_url": "https://drive.google.com/file/d/16fV7XNnAK6jVVELPiVbf7KNaPcoRvMEE/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 7,
-      "title": "Gravitation",
-      "pdf_url": "https://drive.google.com/file/d/1qvAtADWGRZ-EoNyT8LhrBZPDlmbD7EWa/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 8,
-      "title": "Elasticity",
-      "pdf_url": "https://drive.google.com/file/d/1J96uX2N0IrfyFMZOMTbkTReBBFHHsxLQ/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 9,
-      "title": "Fluid Mechanics",
-      "pdf_url": "https://drive.google.com/file/d/14wVKGN0DrUBtHGNNDFBYGPH_DLuKPXvJ/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 10,
-      "title": "Thermodynamics",
-      "pdf_url": "https://drive.google.com/file/d/1I_o6WkdYOsdBiSL4DgXD0iZH3tMdIap9/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 11,
-      "title": "Simple Harmonic Motion",
-      "pdf_url": "https://drive.google.com/file/d/1sa-ItINe_QNjYOPr8LTWK_FA-f08jiQS/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 12,
-      "title": "Waves And Sound",
-      "pdf_url": "https://drive.google.com/file/d/1JZUBXrPSnHlsxDkzjqd2YhUMWrDv3EC4/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 13,
-      "title": "Electrostatics",
-      "pdf_url": "https://drive.google.com/file/d/1v5IJpLdsNA6Te6d0v5bC0w3RmmQu56n8/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 14,
-      "title": "Current And Electricity",
-      "pdf_url": "https://drive.google.com/file/d/1z2Hj8gukkFIXR70X5tBgg3t1QD3bBNQG/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 15,
-      "title": "Magnetic Effects",
-      "pdf_url": "https://drive.google.com/file/d/1iYJJ2NoOkIbx4Slgvi4Ks6i6rUo8KsGU/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 16,
-      "title": "EMI",
-      "pdf_url": "https://drive.google.com/file/d/1oTIDPJbc6Krr1GgT1f1w3OsuC_Va-YGk/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 17,
-      "title": "Alternating Current",
-      "pdf_url": "https://drive.google.com/file/d/15wdsGi63piyJrTQyUbnLn-N30Wi582aU/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 18,
-      "title": "Ray Optics",
-      "pdf_url": "https://drive.google.com/file/d/1QGE47v72Z_CaiKSkwkONw1AV1JWW9LCW/view"
-    },
-    {
-      "class_name": "JEE",
-      "subject": "Physics",
-      "chapter_num": 19,
-      "title": "Wave Optics",
-      "pdf_url": "https://drive.google.com/file/d/17o8GHO0n3LTAMnpe89ERjFOCrA3lRFx3/view"
+      "title": "n",
+      "pdf_url": "nn"
     },
     {
       "class_name": "JEE",
@@ -1670,6 +1544,139 @@
       "chapter_num": 26,
       "title": "Probability",
       "pdf_url": "https://drive.google.com/file/d/1n95Dpd-07U0DmtJ0ORxCw-qxG7wNkeMw/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 1,
+      "title": "Kinematics",
+      "pdf_url": "https://drive.google.com/file/d/1idBgj5qjyDsgvQtQr9GSvXM8HRGpnIlb/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 2,
+      "title": "Newton Law Of Motion",
+      "pdf_url": "https://drive.google.com/file/d/1749WIAEoOhV_74N7VCz1t0cJvZqRQWdL/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 3,
+      "title": "Friction",
+      "pdf_url": "https://drive.google.com/file/d/1ZSULc0g7rNh9s_wMUEA026YXt4Xmu6ri/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 4,
+      "title": "Work Energy And Power",
+      "pdf_url": "https://drive.google.com/file/d/1yHCXSiBs1_wMWJJcFhjAUH46kilV/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 5,
+      "title": "Centre Mass And Momentum",
+      "pdf_url": "https://drive.google.com/file/d/1ACxlmO5ryUv_A5u4NkZQFets7ND12M1K/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 6,
+      "title": "Rotational Motion",
+      "pdf_url": "https://drive.google.com/file/d/16fV7XNnAK6jVVELPiVbf7KNaPcoRvMEE/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 7,
+      "title": "Gravitation",
+      "pdf_url": "https://drive.google.com/file/d/1qvAtADWGRZ-EoNyT8LhrBZPDlmbD7EWa/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 8,
+      "title": "Elasticity",
+      "pdf_url": "https://drive.google.com/file/d/1J96uX2N0IrfyFMZOMTbkTReBBFHHsxLQ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 9,
+      "title": "Fluid Mechanics",
+      "pdf_url": "https://drive.google.com/file/d/14wVKGN0DrUBtHGNNDFBYGPH_DLuKPXvJ/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 10,
+      "title": "Thermodynamics",
+      "pdf_url": "https://drive.google.com/file/d/1I_o6WkdYOsdBiSL4DgXD0iZH3tMdIap9/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 11,
+      "title": "Simple Harmonic Motion",
+      "pdf_url": "https://drive.google.com/file/d/1sa-ItINe_QNjYOPr8LTWK_FA-f08jiQS/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 12,
+      "title": "Waves And Sound",
+      "pdf_url": "https://drive.google.com/file/d/1JZUBXrPSnHlsxDkzjqd2YhUMWrDv3EC4/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 13,
+      "title": "Electrostatics",
+      "pdf_url": "https://drive.google.com/file/d/1v5IJpLdsNA6Te6d0v5bC0w3RmmQu56n8/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 14,
+      "title": "Current And Electricity",
+      "pdf_url": "https://drive.google.com/file/d/1z2Hj8gukkFIXR70X5tBgg3t1QD3bBNQG/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 15,
+      "title": "Magnetic Effects",
+      "pdf_url": "https://drive.google.com/file/d/1iYJJ2NoOkIbx4Slgvi4Ks6i6rUo8KsGU/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 16,
+      "title": "EMI",
+      "pdf_url": "https://drive.google.com/file/d/1oTIDPJbc6Krr1GgT1f1w3OsuC_Va-YGk/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 17,
+      "title": "Alternating Current",
+      "pdf_url": "https://drive.google.com/file/d/15wdsGi63piyJrTQyUbnLn-N30Wi582aU/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 18,
+      "title": "Ray Optics",
+      "pdf_url": "https://drive.google.com/file/d/1QGE47v72Z_CaiKSkwkONw1AV1JWW9LCW/view"
+    },
+    {
+      "class_name": "JEE",
+      "subject": "Physics",
+      "chapter_num": 19,
+      "title": "Wave Optics",
+      "pdf_url": "https://drive.google.com/file/d/17o8GHO0n3LTAMnpe89ERjFOCrA3lRFx3/view"
     }
   ],
   "note_subjects": [
