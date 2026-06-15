@@ -1816,13 +1816,5 @@
       "pdf_url": "https://drive.google.com/file/d/1BUwuSYjBIyJn8kMLHyJTvv04v3LX5X9H/view?usp=drive_link"
     }
   ],
-  "testimonials": [
-    {
-      "name": "Som Patra",
-      "role": "JEE Student",
-      "stars": 5,
-      "text": "Nice",
-      "photo": ""
-    }
-  ]
+  "testimonials": []
 }
