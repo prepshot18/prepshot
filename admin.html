@@ -10,13 +10,13 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at 20% -10%,rgba(99,102,241,0.18) 0%,transparent 55%)}
- 
-/* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
 .admin-badge{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:0.08em}
- 
-/* SETUP SCREEN */
+#pwGate{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;gap:16px;padding:0 20px}
+#pwGate h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--accent2)}
+#pwGate input{padding:12px 20px;border-radius:10px;border:1px solid rgba(99,102,241,0.4);background:rgba(13,16,25,0.9);color:#fff;font-size:16px;width:260px;text-align:center;letter-spacing:4px;font-family:inherit}
+#pw-error{color:#f87171;font-size:14px;display:none}
 #setupScreen{position:relative;z-index:1;max-width:520px;margin:60px auto;padding:0 20px}
 .setup-card{background:rgba(13,16,25,0.9);border:1px solid var(--border);border-radius:16px;padding:36px}
 .setup-card h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px}
@@ -24,8 +24,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-fil
 .setup-steps{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:16px 20px;margin-bottom:24px;font-size:13px;color:var(--muted);line-height:2}
 .setup-steps a{color:var(--accent2)}
 .setup-steps strong{color:var(--text)}
- 
-/* FORM ELEMENTS */
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase}
 .field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
@@ -40,59 +38,67 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-fil
 .btn-outline:hover{border-color:var(--accent);color:var(--text)}
 .btn-danger{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171}
 .btn-danger:hover{background:rgba(239,68,68,0.2)}
- 
-/* MAIN ADMIN */
-#adminScreen{display:none;position:relative;z-index:1;max-width:760px;margin:0 auto;padding:32px 20px 80px}
+#adminScreen{display:none;position:relative;z-index:1;max-width:900px;margin:0 auto;padding:32px 20px 80px}
 .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
 .admin-header h1{font-family:'Syne',sans-serif;font-size:24px;font-weight:800}
 .config-info{font-size:12px;color:var(--muted);background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:6px 12px}
- 
-/* TABS */
 .tabs{display:flex;gap:0;border-bottom:2px solid rgba(255,255,255,0.06);margin-bottom:28px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:12px 24px;font-size:14px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:inherit}
 .tab:hover{color:var(--text)}
 .tab.active{color:var(--accent2);border-bottom-color:var(--accent2);font-weight:700}
- 
-/* PANELS */
 .panel{display:none}
 .panel.active{display:block}
-.form-card{background:rgba(13,16,25,0.8);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
-.form-card h3{font-size:16px;font-weight:700;margin-bottom:20px;color:var(--accent2)}
+.form-card{background:rgba(13,16,25,0.8);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.form-card h3{font-size:16px;font-weight:700;margin-bottom:20px;color:var(--accent2);display:flex;align-items:center;gap:8px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-actions{display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}
- 
-/* TOAST */
 #toast{position:fixed;bottom:24px;right:24px;z-index:999;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;display:none;align-items:center;gap:10px;max-width:340px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 #toast.success{background:rgba(22,163,74,0.95);border:1px solid rgba(34,197,94,0.4);color:#fff;display:flex}
 #toast.error{background:rgba(185,28,28,0.95);border:1px solid rgba(239,68,68,0.4);color:#fff;display:flex}
- 
-/* PREVIEW */
 .preview-thumb{width:100%;max-width:280px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-top:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border)}
 .preview-thumb img{width:100%;height:100%;object-fit:cover}
- 
-/* EXISTING DATA */
 .data-count{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
 .count-chip{background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);border-radius:8px;padding:10px 16px;font-size:13px}
 .count-chip strong{color:var(--accent2);font-size:18px;display:block}
 .count-chip span{color:var(--muted)}
- 
+.item-row{display:flex;align-items:center;gap:14px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid var(--border);margin-bottom:10px;transition:border 0.2s;flex-wrap:wrap}
+.item-row:hover{border-color:rgba(99,102,241,0.3)}
+.item-thumb{width:90px;height:54px;object-fit:cover;border-radius:6px;flex-shrink:0;background:rgba(255,255,255,0.04)}
+.item-thumb-book{width:46px;height:62px;border-radius:6px;flex-shrink:0;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden}
+.item-info{flex:1;min-width:0}
+.item-info strong{display:block;font-size:14px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-info span{font-size:12px;color:var(--muted)}
+.empty-msg{color:#475569;text-align:center;padding:24px 0;font-size:14px}
+.badge{background:rgba(99,102,241,0.15);color:var(--accent2);font-size:12px;padding:2px 8px;border-radius:20px;margin-left:8px}
+.filter-bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.filter-bar select,.filter-bar input{flex:1;min-width:140px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:14px;outline:none}
+.star-picker{display:flex;gap:4px;margin-bottom:6px}
+.star-btn{font-size:24px;cursor:pointer;color:#334155;background:none;border:none;padding:0;transition:color 0.15s}
+.star-btn.on{color:#fbbf24}
 @media(max-width:600px){.form-row{grid-template-columns:1fr}.admin-header{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
- 
+
 <nav>
   <a class="logo" href="index.html">PrepShot</a>
   <span class="admin-badge">🔐 ADMIN</span>
 </nav>
- 
+
+<!-- PASSWORD GATE -->
+<div id="pwGate">
+  <h2>🔐 Admin Login</h2>
+  <input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()" />
+  <button class="btn btn-primary" onclick="checkPassword()" style="width:260px">Login</button>
+  <p id="pw-error">❌ Wrong password!</p>
+</div>
+
 <!-- SETUP SCREEN -->
-<div id="setupScreen">
+<div id="setupScreen" style="display:none">
   <div class="setup-card">
     <h2>⚙️ One-time Setup</h2>
-    <p>Apna GitHub token aur repo details enter karo. Yeh sirf is browser mein save hoga — kisi ko share mat karna.</p>
- 
+    <p>Apna GitHub token aur repo details enter karo. Yeh sirf is browser mein save hoga.</p>
     <div class="setup-steps">
       <strong>GitHub Token kaise banayein:</strong><br>
       1. <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a> jao<br>
@@ -101,27 +107,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-fil
       4. Scopes: ✅ <strong>repo</strong> (sirf yeh tick karo)<br>
       5. "Generate token" click karo → copy karo
     </div>
- 
-    <div class="field">
-      <label>GitHub Username</label>
-      <input type="text" id="ghUser" placeholder="e.g. prepshot18" />
-    </div>
-    <div class="field">
-      <label>Repository Name</label>
-      <input type="text" id="ghRepo" placeholder="e.g. prepshot-website" />
-    </div>
-    <div class="field">
-      <label>Branch</label>
-      <input type="text" id="ghBranch" value="main" placeholder="main" />
-    </div>
-    <div class="field">
-      <label>GitHub Personal Access Token</label>
-      <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
-    </div>
-    <button class="btn btn-primary" onclick="saveSetup()">🚀 Setup Complete — Enter Admin</button>
+    <div class="field"><label>GitHub Username</label><input type="text" id="ghUser" placeholder="e.g. prepshot18" /></div>
+    <div class="field"><label>Repository Name</label><input type="text" id="ghRepo" placeholder="e.g. prepshot" /></div>
+    <div class="field"><label>Branch</label><input type="text" id="ghBranch" value="main" /></div>
+    <div class="field"><label>GitHub Personal Access Token</label><input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" /></div>
+    <button class="btn btn-primary" onclick="saveSetup()" style="width:100%">🚀 Setup Complete — Enter Admin</button>
   </div>
 </div>
- 
+
 <!-- ADMIN SCREEN -->
 <div id="adminScreen">
   <div class="admin-header">
@@ -131,24 +124,22 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-fil
       <button class="btn btn-danger" onclick="logout()" style="padding:6px 14px;font-size:13px">Logout</button>
     </div>
   </div>
- 
-  <!-- Stats -->
+
   <div class="data-count" id="dataCounts"></div>
- 
-  <!-- TABS -->
+
   <div class="tabs">
-    <button class="tab active" onclick="showTab('lecture',this)">🎥 Add Lecture</button>
-    <button class="tab" onclick="showTab('note',this)">📄 Add Note</button>
-    <button class="tab" onclick="showTab('book',this)">📚 Add Book</button>
+    <button class="tab active" onclick="showTab('lecture',this)">🎥 Lectures</button>
+    <button class="tab" onclick="showTab('note',this)">📄 Notes</button>
+    <button class="tab" onclick="showTab('book',this)">📚 Books</button>
+    <button class="tab" onclick="showTab('testimonial',this)">💬 Testimonials</button>
   </div>
- 
-  <!-- ADD LECTURE -->
+
+  <!-- LECTURES PANEL -->
   <div class="panel active" id="panel-lecture">
     <div class="form-card">
-      <h3>🎥 New Lecture Add Karo</h3>
+      <h3>➕ Naya Lecture Add Karo</h3>
       <div class="form-row">
-        <div class="field">
-          <label>Batch</label>
+        <div class="field"><label>Batch</label>
           <select id="l-batch" onchange="updateSubjects()">
             <option value="Arjuna JEE">Arjuna JEE</option>
             <option value="NEET Class 11">NEET Class 11</option>
@@ -156,175 +147,225 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,11,18,0.92);backdrop-fil
             <option value="Class 9">Class 9</option>
           </select>
         </div>
-        <div class="field">
-          <label>Subject</label>
-          <select id="l-subject"></select>
-        </div>
+        <div class="field"><label>Subject</label><select id="l-subject"></select></div>
       </div>
       <div class="form-row">
-        <div class="field">
-          <label>Chapter Number</label>
-          <input type="number" id="l-chapter-num" placeholder="e.g. 5" min="1" />
-        </div>
-        <div class="field">
-          <label>Chapter Name</label>
-          <input type="text" id="l-chapter-name" placeholder="e.g. Gravitation" />
-        </div>
+        <div class="field"><label>Chapter Number</label><input type="number" id="l-chapter-num" value="1" min="1" /></div>
+        <div class="field"><label>Chapter Name</label><input type="text" id="l-chapter-name" placeholder="e.g. Gravitation" /></div>
       </div>
-      <div class="field">
-        <label>Video Title</label>
-        <input type="text" id="l-title" placeholder="e.g. Gravitation in ONE SHOT | JEE 2026" />
-      </div>
+      <div class="field"><label>Video Title (auto-fetch hoga agar khali chhoda)</label><input type="text" id="l-title" placeholder="e.g. Gravitation in ONE SHOT | JEE 2026" /></div>
       <div class="field">
         <label>YouTube URL</label>
-        <input type="text" id="l-yt-url" placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..." oninput="previewThumb()" />
-        <div class="preview-thumb" id="thumbPreview" style="display:none">
-          <img id="thumbImg" src="" alt="Thumbnail preview" />
-        </div>
+        <input type="text" id="l-yt-url" placeholder="https://www.youtube.com/watch?v=..." oninput="previewThumb()" />
+        <div class="preview-thumb" id="thumbPreview" style="display:none"><img id="thumbImg" src="" alt="preview" /></div>
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" id="btn-add-lecture" onclick="addLecture()">✅ Add Lecture</button>
-        <span id="l-status" style="font-size:13px;color:var(--muted)"></span>
       </div>
     </div>
+
+    <div class="form-card">
+      <h3>📚 Existing Lectures <span class="badge" id="lec-count-badge">0</span></h3>
+      <div class="filter-bar">
+        <select id="filter-batch" onchange="updateFilterSubjects();renderLectures()">
+          <option value="">All Batches</option>
+          <option>Arjuna JEE</option><option>NEET Class 11</option>
+          <option>Class 10</option><option>Class 9</option>
+        </select>
+        <select id="filter-subject" onchange="renderLectures()"><option value="">All Subjects</option></select>
+        <input type="text" id="lec-search" placeholder="🔍 Search..." oninput="renderLectures()" />
+      </div>
+      <div id="lecture-list"><p class="empty-msg">Loading...</p></div>
+    </div>
   </div>
- 
-  <!-- ADD NOTE -->
+
+  <!-- NOTES PANEL -->
   <div class="panel" id="panel-note">
     <div class="form-card">
-      <h3>📄 New Note Add Karo</h3>
+      <h3 id="note-form-title">➕ Naya Note Add Karo</h3>
+      <input type="hidden" id="editing-note-idx" value="" />
       <div class="form-row">
-        <div class="field">
-          <label>Class</label>
+        <div class="field"><label>Class</label>
           <select id="n-class">
             <option>JEE</option><option>NEET</option>
             <option>Class 12</option><option>Class 11</option>
             <option>Class 10</option><option>Class 9</option>
           </select>
         </div>
-        <div class="field">
-          <label>Subject</label>
-          <input type="text" id="n-subject" placeholder="e.g. Physics, Chemistry" />
-        </div>
+        <div class="field"><label>Subject</label><input type="text" id="n-subject" placeholder="e.g. Physics" /></div>
       </div>
       <div class="form-row">
-        <div class="field">
-          <label>Chapter Number</label>
-          <input type="number" id="n-chapter-num" placeholder="e.g. 5" min="1" />
-        </div>
-        <div class="field">
-          <label>Note Title</label>
-          <input type="text" id="n-title" placeholder="e.g. Gravitation" />
-        </div>
+        <div class="field"><label>Chapter Number</label><input type="number" id="n-chapter-num" value="1" min="1" /></div>
+        <div class="field"><label>Note Title</label><input type="text" id="n-title" placeholder="e.g. Gravitation" /></div>
       </div>
-      <div class="field">
-        <label>Google Drive PDF URL</label>
-        <input type="text" id="n-pdf-url" placeholder="https://drive.google.com/file/d/.../view" />
-      </div>
+      <div class="field"><label>Google Drive PDF URL</label><input type="text" id="n-pdf-url" placeholder="https://drive.google.com/file/d/.../view" /></div>
       <div class="form-actions">
-        <button class="btn btn-primary" id="btn-add-note" onclick="addNote()">✅ Add Note</button>
-        <span id="n-status" style="font-size:13px;color:var(--muted)"></span>
+        <button class="btn btn-primary" id="btn-add-note" onclick="submitNote()">✅ Add Note</button>
+        <button class="btn btn-outline" id="note-cancel-btn" onclick="cancelEditNote()" style="display:none">✕ Cancel Edit</button>
       </div>
     </div>
-  </div>
- 
-  <!-- ADD BOOK -->
-  <div class="panel" id="panel-book">
+
     <div class="form-card">
-      <h3>📚 New Book Add Karo</h3>
-      <div class="form-row">
-        <div class="field">
-          <label>Book Title</label>
-          <input type="text" id="b-title" placeholder="e.g. HC Verma Part 1" />
-        </div>
-        <div class="field">
-          <label>Author</label>
-          <input type="text" id="b-author" placeholder="e.g. H.C. Verma" />
-        </div>
+      <h3>📋 Note Subject Management</h3>
+      <div class="filter-bar">
+        <select id="ns-class-select" onchange="renderNoteSubjects()">
+          <option value="">— Select Class —</option>
+          <option>JEE</option><option>NEET</option>
+          <option>Class 12</option><option>Class 11</option>
+          <option>Class 10</option><option>Class 9</option>
+        </select>
+        <input type="text" id="ns-new-subject" placeholder="New subject e.g. Physics" />
+        <button class="btn btn-primary" onclick="addNoteSubject()" style="white-space:nowrap">+ Add</button>
       </div>
-      <div class="field">
-        <label>Category</label>
-        <select id="b-category">
-          <option value="IIT-JEE">IIT-JEE</option>
-          <option value="NEET">NEET</option>
-          <option value="Foundation">Foundation</option>
-          <option value="Boards">Boards</option>
+      <div id="note-subject-list"><p class="empty-msg">Select a class to see subjects.</p></div>
+    </div>
+
+    <div class="form-card">
+      <h3>📄 Existing Notes <span class="badge" id="note-count-badge">0</span></h3>
+      <div class="filter-bar">
+        <input type="text" id="notes-search" placeholder="🔍 Search notes..." oninput="renderNotes()" />
+        <select id="notes-filter-class" onchange="renderNotes()">
+          <option value="">All Classes</option>
+          <option>Class 9</option><option>Class 10</option>
+          <option>Class 11</option><option>Class 12</option>
+          <option>JEE</option><option>NEET</option>
         </select>
       </div>
-      <div class="field">
-        <label>Thumbnail URL (optional)</label>
-        <input type="text" id="b-thumb" placeholder="https://cdn.corenexis.com/files/c/..." />
+      <div id="notes-list"><p class="empty-msg">Loading...</p></div>
+    </div>
+  </div>
+
+  <!-- BOOKS PANEL -->
+  <div class="panel" id="panel-book">
+    <div class="form-card">
+      <h3 id="book-form-title">➕ Naya Book Add Karo</h3>
+      <input type="hidden" id="editing-book-idx" value="" />
+      <div class="form-row">
+        <div class="field"><label>Book Title</label><input type="text" id="b-title" placeholder="e.g. HC Verma Part 1" /></div>
+        <div class="field"><label>Author</label><input type="text" id="b-author" placeholder="e.g. H.C. Verma" /></div>
       </div>
-      <div class="field">
-        <label>Google Drive PDF URL</label>
-        <input type="text" id="b-pdf-url" placeholder="https://drive.google.com/file/d/.../view" />
+      <div class="field"><label>Category</label>
+        <select id="b-category">
+          <option value="IIT-JEE">IIT-JEE</option><option value="NEET">NEET</option>
+          <option value="Foundation">Foundation</option><option value="Boards">Boards</option>
+        </select>
       </div>
+      <div class="field"><label>Thumbnail URL (optional)</label><input type="text" id="b-thumb" placeholder="https://..." /></div>
+      <div class="field"><label>Google Drive PDF URL</label><input type="text" id="b-pdf-url" placeholder="https://drive.google.com/file/d/.../view" /></div>
       <div class="form-actions">
-        <button class="btn btn-primary" id="btn-add-book" onclick="addBook()">✅ Add Book</button>
-        <span id="b-status" style="font-size:13px;color:var(--muted)"></span>
+        <button class="btn btn-primary" id="btn-add-book" onclick="submitBook()">✅ Add Book</button>
+        <button class="btn btn-outline" id="book-cancel-btn" onclick="cancelEditBook()" style="display:none">✕ Cancel Edit</button>
       </div>
+    </div>
+    <div class="form-card">
+      <h3>📚 Existing Books <span class="badge" id="book-count-badge">0</span></h3>
+      <input type="text" id="books-search" placeholder="🔍 Search books..." oninput="renderBooks()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:inherit;font-size:14px;outline:none;margin-bottom:16px" />
+      <div id="books-list"><p class="empty-msg">Loading...</p></div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS PANEL -->
+  <div class="panel" id="panel-testimonial">
+    <div class="form-card">
+      <h3 id="t-form-title">➕ Naya Testimonial Add Karo</h3>
+      <input type="hidden" id="editing-t-idx" value="" />
+      <div class="form-row">
+        <div class="field"><label>Student Name</label><input type="text" id="t-name" placeholder="e.g. Ayush Gupta" /></div>
+        <div class="field"><label>Role / Subtitle</label><input type="text" id="t-role" placeholder="e.g. JEE Aspirant" /></div>
+      </div>
+      <div class="field"><label>Rating</label>
+        <div class="star-picker" id="t-stars">
+          <button class="star-btn" data-v="1" onclick="setTStar(1)">★</button>
+          <button class="star-btn" data-v="2" onclick="setTStar(2)">★</button>
+          <button class="star-btn" data-v="3" onclick="setTStar(3)">★</button>
+          <button class="star-btn" data-v="4" onclick="setTStar(4)">★</button>
+          <button class="star-btn on" data-v="5" onclick="setTStar(5)">★</button>
+        </div>
+      </div>
+      <div class="field"><label>Review Text</label><textarea id="t-text" placeholder="Write student review..."></textarea></div>
+      <div class="field"><label>Photo URL (optional)</label><input type="text" id="t-photo" placeholder="https://..." /></div>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="btn-add-testimonial" onclick="submitTestimonial()">✅ Add Testimonial</button>
+        <button class="btn btn-outline" id="t-cancel-btn" onclick="cancelEditTestimonial()" style="display:none">✕ Cancel Edit</button>
+      </div>
+    </div>
+    <div class="form-card">
+      <h3>💬 Existing Testimonials <span class="badge" id="t-count-badge">0</span></h3>
+      <div id="testimonials-list"><p class="empty-msg">Loading...</p></div>
     </div>
   </div>
 </div>
- 
-<!-- TOAST -->
+
 <div id="toast"></div>
- 
+
 <script>
-// ── CONFIG ───────────────────────────────────────────────────────────
+const ADMIN_PASSWORD = '123456789';
 const SUBJECT_MAP = {
   'Arjuna JEE':    ['Physics','Chemistry','Mathematics'],
   'NEET Class 11': ['Physics','Chemistry','Biology (Botany)','Biology (Zoology)'],
   'Class 10':      ['Physics','Chemistry','Mathematics','Biology'],
   'Class 9':       ['Physics','Chemistry','Mathematics','Biology'],
 };
- 
-let GH = {};
- 
+let GH = {}, DB = null, DB_SHA = null;
+
+// ── PASSWORD ────────────────────────────────────────────────────────
+function checkPassword() {
+  if (document.getElementById('pwInput').value === ADMIN_PASSWORD) {
+    document.getElementById('pwGate').style.display = 'none';
+    const saved = localStorage.getItem('ps_gh');
+    if (saved) { GH = JSON.parse(saved); loadAdmin(); }
+    else { document.getElementById('setupScreen').style.display = 'block'; }
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+  }
+}
+
 // ── SETUP ────────────────────────────────────────────────────────────
 function saveSetup() {
-  const user   = document.getElementById('ghUser').value.trim();
-  const repo   = document.getElementById('ghRepo').value.trim();
+  const user = document.getElementById('ghUser').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
   const branch = document.getElementById('ghBranch').value.trim() || 'main';
-  const token  = document.getElementById('ghToken').value.trim();
+  const token = document.getElementById('ghToken').value.trim();
   if (!user || !repo || !token) { showToast('Sab fields fill karo!', 'error'); return; }
-  localStorage.setItem('ps_gh', JSON.stringify({ user, repo, branch, token }));
+  GH = { user, repo, branch, token };
+  localStorage.setItem('ps_gh', JSON.stringify(GH));
+  document.getElementById('setupScreen').style.display = 'none';
   loadAdmin();
 }
- 
-function logout() {
-  localStorage.removeItem('ps_gh');
-  document.getElementById('adminScreen').style.display = 'none';
-  document.getElementById('setupScreen').style.display = 'block';
-}
- 
+
+function logout() { localStorage.removeItem('ps_gh'); location.reload(); }
+
 // ── INIT ─────────────────────────────────────────────────────────────
-window.onload = () => {
-  const saved = localStorage.getItem('ps_gh');
-  if (saved) { GH = JSON.parse(saved); loadAdmin(); }
-};
- 
 async function loadAdmin() {
-  document.getElementById('setupScreen').style.display = 'none';
   document.getElementById('adminScreen').style.display = 'block';
   document.getElementById('configInfo').textContent = `${GH.user}/${GH.repo} (${GH.branch})`;
   updateSubjects();
-  await refreshCounts();
+  await refreshAll();
 }
- 
-async function refreshCounts() {
+
+async function refreshAll() {
   try {
-    const db = await fetchDB();
+    const result = await fetchDB();
+    DB = result.db; DB_SHA = result.sha;
+    DB.lectures      = DB.lectures      || [];
+    DB.notes         = DB.notes         || [];
+    DB.note_subjects = DB.note_subjects || [];
+    DB.digital_books = DB.digital_books || [];
+    DB.testimonials  = DB.testimonials  || [];
+
     document.getElementById('dataCounts').innerHTML = `
-      <div class="count-chip"><strong>${db.lectures.length}</strong><span>Lectures</span></div>
-      <div class="count-chip"><strong>${db.notes.length}</strong><span>Notes</span></div>
-      <div class="count-chip"><strong>${db.digital_books.length}</strong><span>Books</span></div>
+      <div class="count-chip"><strong>${DB.lectures.length}</strong><span>Lectures</span></div>
+      <div class="count-chip"><strong>${DB.notes.length}</strong><span>Notes</span></div>
+      <div class="count-chip"><strong>${DB.digital_books.length}</strong><span>Books</span></div>
+      <div class="count-chip"><strong>${DB.testimonials.length}</strong><span>Testimonials</span></div>
     `;
+    renderLectures(); renderNotes(); renderBooks(); renderTestimonials(); renderNoteSubjects();
   } catch(e) {
-    document.getElementById('dataCounts').innerHTML = '<div class="count-chip" style="color:var(--error)">⚠️ db.json load nahi hua — GitHub settings check karo</div>';
+    document.getElementById('dataCounts').innerHTML =
+      `<div class="count-chip" style="color:var(--error)">⚠️ Error: ${e.message}</div>`;
   }
 }
- 
+
 // ── TABS ─────────────────────────────────────────────────────────────
 function showTab(name, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -332,171 +373,386 @@ function showTab(name, el) {
   el.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
 }
- 
+
 // ── SUBJECTS ─────────────────────────────────────────────────────────
 function updateSubjects() {
   const batch = document.getElementById('l-batch').value;
-  const sel   = document.getElementById('l-subject');
+  const sel = document.getElementById('l-subject');
   sel.innerHTML = (SUBJECT_MAP[batch] || []).map(s => `<option>${s}</option>`).join('');
 }
- 
+
+function updateFilterSubjects() {
+  const batch = document.getElementById('filter-batch').value;
+  const sel = document.getElementById('filter-subject');
+  const cur = sel.value;
+  let opts = '<option value="">All Subjects</option>';
+  const subs = batch && SUBJECT_MAP[batch] ? SUBJECT_MAP[batch]
+    : [...new Set(Object.values(SUBJECT_MAP).flat())];
+  opts += subs.map(s => `<option>${s}</option>`).join('');
+  sel.innerHTML = opts;
+  if (cur) sel.value = cur;
+}
+
 // ── YOUTUBE ──────────────────────────────────────────────────────────
 function parseYTId(url) {
-  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?/\s]{11})/);
   return m ? m[1] : null;
 }
- 
-function previewThumb() {
-  const url   = document.getElementById('l-yt-url').value;
-  const vidId = parseYTId(url);
-  const wrap  = document.getElementById('thumbPreview');
-  const img   = document.getElementById('thumbImg');
-  if (vidId) {
-    img.src      = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
-    wrap.style.display = 'block';
-  } else {
-    wrap.style.display = 'none';
-  }
+async function fetchYtTitle(url) {
+  try {
+    const r = await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`);
+    return r.ok ? (await r.json()).title : null;
+  } catch { return null; }
 }
- 
+function previewThumb() {
+  const vid = parseYTId(document.getElementById('l-yt-url').value);
+  const wrap = document.getElementById('thumbPreview');
+  if (vid) { document.getElementById('thumbImg').src = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`; wrap.style.display='block'; }
+  else wrap.style.display='none';
+}
+
 // ── GITHUB API ────────────────────────────────────────────────────────
 async function fetchDB() {
   const url = `https://api.github.com/repos/${GH.user}/${GH.repo}/contents/db.json?ref=${GH.branch}&t=${Date.now()}`;
   const res = await fetch(url, { headers: { 'Authorization': `token ${GH.token}`, 'Accept': 'application/vnd.github.v3+json' } });
-  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+  if (!res.ok) throw new Error('GitHub API ' + res.status + ' — token/repo check karo');
   const data = await res.json();
-  const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g,''))));
-  return { db: JSON.parse(content), sha: data.sha };
+  return { db: JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g,''))))), sha: data.sha };
 }
- 
-async function saveDB(db, sha, msg) {
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(db, null, 2))));
-  const url = `https://api.github.com/repos/${GH.user}/${GH.repo}/contents/db.json`;
-  const res = await fetch(url, {
+async function saveDB(msg) {
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(DB, null, 2))));
+  const res = await fetch(`https://api.github.com/repos/${GH.user}/${GH.repo}/contents/db.json`, {
     method: 'PUT',
     headers: { 'Authorization': `token ${GH.token}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-    body: JSON.stringify({ message: msg, content, sha, branch: GH.branch })
+    body: JSON.stringify({ message: msg, content, sha: DB_SHA, branch: GH.branch })
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.message || 'Save failed');
-  }
-  return res.json();
+  if (!res.ok) { const e = await res.json(); throw new Error(e.message || 'Save failed'); }
+  DB_SHA = (await res.json()).content.sha;
 }
- 
-// ── ADD LECTURE ───────────────────────────────────────────────────────
+
+// ══════════════════════════ LECTURES ══════════════════════════════════
 async function addLecture() {
-  const batch      = document.getElementById('l-batch').value;
-  const subject    = document.getElementById('l-subject').value;
-  const chNum      = parseInt(document.getElementById('l-chapter-num').value);
-  const chName     = document.getElementById('l-chapter-name').value.trim();
-  const title      = document.getElementById('l-title').value.trim();
-  const ytUrl      = document.getElementById('l-yt-url').value.trim();
-  const vidId      = parseYTId(ytUrl);
- 
-  if (!chNum || !chName || !title || !ytUrl || !vidId) {
-    showToast('Sab fields fill karo + valid YouTube URL do!', 'error'); return;
-  }
- 
+  const batch   = document.getElementById('l-batch').value;
+  const subject = document.getElementById('l-subject').value;
+  const chNum   = parseInt(document.getElementById('l-chapter-num').value) || 1;
+  const chName  = document.getElementById('l-chapter-name').value.trim();
+  let   title   = document.getElementById('l-title').value.trim();
+  const ytUrl   = document.getElementById('l-yt-url').value.trim();
+  const vidId   = parseYTId(ytUrl);
+  if (!chName || !ytUrl || !vidId) { showToast('Chapter Name + valid YouTube URL required!', 'error'); return; }
   const btn = document.getElementById('btn-add-lecture');
-  btn.disabled = true; btn.textContent = 'Saving...';
- 
+  btn.disabled = true; btn.textContent = '⏳ Saving...';
+  if (!title) title = await fetchYtTitle(ytUrl) || `${chName} — ${batch}`;
+  DB.lectures.push({ batch, subject, chapter_num:chNum, chapter_name:chName, title, youtube_url:ytUrl,
+    embed_url:`https://www.youtube.com/embed/${vidId}`,
+    thumbnail_url:`https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` });
+  DB.lectures.sort((a,b) => a.batch!==b.batch ? a.batch.localeCompare(b.batch)
+    : a.subject!==b.subject ? a.subject.localeCompare(b.subject)
+    : (a.chapter_num||0)-(b.chapter_num||0));
   try {
-    const { db, sha } = await fetchDB();
-    db.lectures.push({
-      batch, subject,
-      chapter_num: chNum,
-      chapter_name: chName,
-      title,
-      youtube_url: ytUrl,
-      embed_url: `https://www.youtube.com/embed/${vidId}`,
-      thumbnail_url: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`
-    });
-    db.lectures.sort((a,b) => {
-      if (a.batch !== b.batch) return a.batch.localeCompare(b.batch);
-      if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
-      return (a.chapter_num||0) - (b.chapter_num||0);
-    });
-    await saveDB(db, sha, `Add lecture: ${batch} ${subject} - ${chName}`);
-    showToast('✅ Lecture add ho gaya! Vercel 30 sec mein deploy karega.', 'success');
-    clearForm(['l-chapter-num','l-chapter-name','l-title','l-yt-url']);
-    document.getElementById('thumbPreview').style.display = 'none';
-    await refreshCounts();
-  } catch(e) {
-    showToast('❌ Error: ' + e.message, 'error');
-  }
-  btn.disabled = false; btn.textContent = '✅ Add Lecture';
+    await saveDB(`Add lecture: ${batch} ${subject} - ${chName}`);
+    showToast('✅ Lecture add ho gaya! Vercel ~30s mein deploy karega.', 'success');
+    document.getElementById('l-chapter-name').value='';
+    document.getElementById('l-title').value='';
+    document.getElementById('l-yt-url').value='';
+    document.getElementById('thumbPreview').style.display='none';
+    await refreshAll();
+  } catch(e) { showToast('❌ ' + e.message, 'error'); DB.lectures.pop(); }
+  btn.disabled=false; btn.textContent='✅ Add Lecture';
 }
- 
-// ── ADD NOTE ──────────────────────────────────────────────────────────
-async function addNote() {
-  const className = document.getElementById('n-class').value;
-  const subject   = document.getElementById('n-subject').value.trim();
-  const chNum     = parseInt(document.getElementById('n-chapter-num').value);
-  const title     = document.getElementById('n-title').value.trim();
-  const pdfUrl    = document.getElementById('n-pdf-url').value.trim();
- 
-  if (!subject || !chNum || !title || !pdfUrl) {
-    showToast('Sab fields fill karo!', 'error'); return;
-  }
- 
+
+function renderLectures() {
+  if (!DB) return;
+  const batchF = document.getElementById('filter-batch').value;
+  const subF   = document.getElementById('filter-subject').value;
+  const q      = (document.getElementById('lec-search').value||'').toLowerCase();
+  let list = DB.lectures.map((l,i)=>({...l,_i:i}));
+  if (batchF) list = list.filter(l=>l.batch===batchF);
+  if (subF)   list = list.filter(l=>l.subject===subF);
+  if (q)      list = list.filter(l=>(l.title+l.batch+l.subject+l.chapter_name).toLowerCase().includes(q));
+  document.getElementById('lec-count-badge').textContent = list.length;
+  const el = document.getElementById('lecture-list');
+  if (!list.length) { el.innerHTML='<p class="empty-msg">Koi lectures nahi hain.</p>'; return; }
+  el.innerHTML='';
+  list.forEach(lec => {
+    const row = document.createElement('div'); row.className='item-row';
+    row.innerHTML=`
+      <img class="item-thumb" src="${lec.thumbnail_url}" onerror="this.style.display='none'" />
+      <div class="item-info"><strong>${lec.title}</strong>
+        <span>${lec.batch} › ${lec.subject} › Ch.${lec.chapter_num} ${lec.chapter_name}</span></div>
+      <button class="btn btn-danger" onclick="deleteLecture(${lec._i},this)">🗑 Delete</button>`;
+    el.appendChild(row);
+  });
+}
+
+async function deleteLecture(idx, btn) {
+  if (!confirm('Delete this lecture?')) return;
+  btn.disabled=true; btn.textContent='...';
+  const removed = DB.lectures.splice(idx,1);
+  try { await saveDB('Delete lecture'); showToast('✅ Deleted!','success'); await refreshAll(); }
+  catch(e) { showToast('❌ '+e.message,'error'); DB.lectures.splice(idx,0,...removed); btn.disabled=false; btn.textContent='🗑 Delete'; }
+}
+
+// ══════════════════════════ NOTES ═════════════════════════════════════
+async function submitNote() {
+  const idx     = document.getElementById('editing-note-idx').value;
+  const cls     = document.getElementById('n-class').value;
+  const subject = document.getElementById('n-subject').value.trim();
+  const chNum   = parseInt(document.getElementById('n-chapter-num').value)||1;
+  const title   = document.getElementById('n-title').value.trim();
+  const pdfUrl  = document.getElementById('n-pdf-url').value.trim();
+  if (!subject||!title||!pdfUrl) { showToast('Subject, Title, PDF URL required!','error'); return; }
   const btn = document.getElementById('btn-add-note');
-  btn.disabled = true; btn.textContent = 'Saving...';
- 
+  btn.disabled=true; btn.textContent='⏳ Saving...';
+  const rec = { class_name:cls, subject, chapter_num:chNum, title, pdf_url:pdfUrl };
+  const isEdit = idx !== '';
+  if (isEdit) DB.notes[parseInt(idx)] = rec; else DB.notes.push(rec);
+  DB.notes.sort((a,b)=>a.class_name!==b.class_name?a.class_name.localeCompare(b.class_name)
+    :a.subject!==b.subject?a.subject.localeCompare(b.subject):(a.chapter_num||0)-(b.chapter_num||0));
   try {
-    const { db, sha } = await fetchDB();
-    db.notes.push({ class_name: className, subject, chapter_num: chNum, title, pdf_url: pdfUrl });
-    db.notes.sort((a,b) => {
-      if (a.class_name !== b.class_name) return a.class_name.localeCompare(b.class_name);
-      if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
-      return (a.chapter_num||0) - (b.chapter_num||0);
-    });
-    await saveDB(db, sha, `Add note: ${className} ${subject} - ${title}`);
-    showToast('✅ Note add ho gaya! Vercel 30 sec mein deploy karega.', 'success');
-    clearForm(['n-subject','n-chapter-num','n-title','n-pdf-url']);
-    await refreshCounts();
-  } catch(e) {
-    showToast('❌ Error: ' + e.message, 'error');
-  }
-  btn.disabled = false; btn.textContent = '✅ Add Note';
+    await saveDB((isEdit?'Update':'Add')+` note: ${cls} ${subject} - ${title}`);
+    showToast(isEdit?'✅ Note updated!':'✅ Note add ho gaya!','success');
+    cancelEditNote(); await refreshAll();
+  } catch(e) { showToast('❌ '+e.message,'error'); if(!isEdit) DB.notes.pop(); }
+  btn.disabled=false; btn.textContent=isEdit?'💾 Update Note':'✅ Add Note';
 }
- 
-// ── ADD BOOK ──────────────────────────────────────────────────────────
-async function addBook() {
-  const title    = document.getElementById('b-title').value.trim();
-  const author   = document.getElementById('b-author').value.trim();
-  const category = document.getElementById('b-category').value;
-  const thumb    = document.getElementById('b-thumb').value.trim();
-  const pdfUrl   = document.getElementById('b-pdf-url').value.trim();
- 
-  if (!title || !author || !pdfUrl) {
-    showToast('Title, Author aur PDF URL zaroori hain!', 'error'); return;
-  }
- 
-  const btn = document.getElementById('btn-add-book');
-  btn.disabled = true; btn.textContent = 'Saving...';
- 
+function editNote(idx) {
+  const n=DB.notes[idx];
+  document.getElementById('editing-note-idx').value=idx;
+  document.getElementById('n-class').value=n.class_name;
+  document.getElementById('n-subject').value=n.subject;
+  document.getElementById('n-chapter-num').value=n.chapter_num||1;
+  document.getElementById('n-title').value=n.title;
+  document.getElementById('n-pdf-url').value=n.pdf_url;
+  document.getElementById('note-form-title').textContent='✏️ Note Edit Karo';
+  document.getElementById('btn-add-note').textContent='💾 Update Note';
+  document.getElementById('note-cancel-btn').style.display='inline-flex';
+  document.getElementById('note-form-title').scrollIntoView({behavior:'smooth'});
+}
+function cancelEditNote() {
+  document.getElementById('editing-note-idx').value='';
+  ['n-subject','n-title','n-pdf-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('n-chapter-num').value='1';
+  document.getElementById('note-form-title').textContent='➕ Naya Note Add Karo';
+  document.getElementById('btn-add-note').textContent='✅ Add Note';
+  document.getElementById('note-cancel-btn').style.display='none';
+}
+async function deleteNote(idx,btn) {
+  if(!confirm('Delete this note?')) return;
+  btn.disabled=true; btn.textContent='...';
+  const rem=DB.notes.splice(idx,1);
+  try { await saveDB('Delete note'); showToast('✅ Deleted!','success'); await refreshAll(); }
+  catch(e) { showToast('❌ '+e.message,'error'); DB.notes.splice(idx,0,...rem); btn.disabled=false; btn.textContent='🗑 Delete'; }
+}
+function renderNotes() {
+  if (!DB) return;
+  const q   = (document.getElementById('notes-search').value||'').toLowerCase();
+  const cls = document.getElementById('notes-filter-class').value;
+  let list  = DB.notes.map((n,i)=>({...n,_i:i}));
+  if (cls) list=list.filter(n=>n.class_name===cls);
+  if (q)   list=list.filter(n=>(n.title+n.subject+n.class_name).toLowerCase().includes(q));
+  document.getElementById('note-count-badge').textContent=list.length;
+  const el=document.getElementById('notes-list');
+  if(!list.length){el.innerHTML='<p class="empty-msg">Koi notes nahi hain.</p>';return;}
+  el.innerHTML='';
+  list.forEach(n=>{
+    const row=document.createElement('div'); row.className='item-row';
+    row.innerHTML=`
+      <div class="item-info"><strong>${n.title}</strong>
+        <span>${n.class_name} › ${n.subject} › Ch.${n.chapter_num||1}</span></div>
+      <a href="${n.pdf_url}" target="_blank" class="btn btn-outline" style="text-decoration:none;font-size:12px">📄 PDF</a>
+      <button class="btn btn-outline" style="font-size:12px" onclick="editNote(${n._i})">✏️ Edit</button>
+      <button class="btn btn-danger" style="font-size:12px" onclick="deleteNote(${n._i},this)">🗑 Delete</button>`;
+    el.appendChild(row);
+  });
+}
+
+// ── NOTE SUBJECT MANAGEMENT ──────────────────────────────────────────
+async function addNoteSubject() {
+  const cls  = document.getElementById('ns-class-select').value;
+  const name = document.getElementById('ns-new-subject').value.trim();
+  if (!cls)  { showToast('Pehle class select karo!','error'); return; }
+  if (!name) { showToast('Subject name required!','error'); return; }
+  if (DB.note_subjects.some(s=>s.class_name===cls&&s.name.toLowerCase()===name.toLowerCase()))
+    { showToast('Subject already exists!','error'); return; }
+  DB.note_subjects.push({class_name:cls,name});
   try {
-    const { db, sha } = await fetchDB();
-    db.digital_books.push({ title, author, category, thumbnail_url: thumb, pdf_url: pdfUrl });
-    await saveDB(db, sha, `Add book: ${title}`);
-    showToast('✅ Book add ho gaya! Vercel 30 sec mein deploy karega.', 'success');
-    clearForm(['b-title','b-author','b-thumb','b-pdf-url']);
-    await refreshCounts();
-  } catch(e) {
-    showToast('❌ Error: ' + e.message, 'error');
-  }
-  btn.disabled = false; btn.textContent = '✅ Add Book';
+    await saveDB(`Add note subject: ${cls} - ${name}`);
+    showToast(`✅ "${name}" added!`,'success');
+    document.getElementById('ns-new-subject').value='';
+    await refreshAll();
+  } catch(e) { showToast('❌ '+e.message,'error'); DB.note_subjects.pop(); }
 }
- 
+async function deleteNoteSubject(idx,btn) {
+  const sub=DB.note_subjects[idx];
+  if(!confirm(`Delete "${sub.name}"?`)) return;
+  btn.disabled=true;
+  const rem=DB.note_subjects.splice(idx,1);
+  try { await saveDB(`Delete note subject: ${sub.name}`); showToast('✅ Deleted!','success'); await refreshAll(); }
+  catch(e) { showToast('❌ '+e.message,'error'); DB.note_subjects.splice(idx,0,...rem); btn.disabled=false; }
+}
+function renderNoteSubjects() {
+  if(!DB) return;
+  const cls=document.getElementById('ns-class-select').value;
+  const el=document.getElementById('note-subject-list');
+  if(!cls){el.innerHTML='<p class="empty-msg">Select a class first.</p>';return;}
+  const list=DB.note_subjects.map((s,i)=>({...s,_i:i})).filter(s=>s.class_name===cls);
+  if(!list.length){el.innerHTML='<p class="empty-msg">Koi subjects nahi. Upar se add karo!</p>';return;}
+  el.innerHTML='';
+  list.forEach(s=>{
+    const row=document.createElement('div'); row.className='item-row';
+    row.innerHTML=`<div class="item-info"><strong>${s.name}</strong><span>${cls}</span></div>
+      <button class="btn btn-danger" onclick="deleteNoteSubject(${s._i},this)">🗑 Delete</button>`;
+    el.appendChild(row);
+  });
+}
+document.getElementById('ns-class-select').addEventListener('change',renderNoteSubjects);
+
+// ══════════════════════════ BOOKS ═════════════════════════════════════
+async function submitBook() {
+  const idx    = document.getElementById('editing-book-idx').value;
+  const title  = document.getElementById('b-title').value.trim();
+  const pdfUrl = document.getElementById('b-pdf-url').value.trim();
+  if(!title||!pdfUrl){showToast('Title aur PDF URL zaroori hain!','error');return;}
+  const btn=document.getElementById('btn-add-book');
+  btn.disabled=true; btn.textContent='⏳ Saving...';
+  const rec={title,author:document.getElementById('b-author').value.trim(),
+    category:document.getElementById('b-category').value,
+    thumbnail_url:document.getElementById('b-thumb').value.trim(),pdf_url:pdfUrl};
+  const isEdit=idx!=='';
+  if(isEdit) DB.digital_books[parseInt(idx)]=rec; else DB.digital_books.push(rec);
+  try {
+    await saveDB((isEdit?'Update':'Add')+` book: ${title}`);
+    showToast(isEdit?'✅ Book updated!':'✅ Book add ho gaya!','success');
+    cancelEditBook(); await refreshAll();
+  } catch(e) { showToast('❌ '+e.message,'error'); if(!isEdit) DB.digital_books.pop(); }
+  btn.disabled=false; btn.textContent=isEdit?'💾 Update Book':'✅ Add Book';
+}
+function editBook(idx) {
+  const b=DB.digital_books[idx];
+  document.getElementById('editing-book-idx').value=idx;
+  document.getElementById('b-title').value=b.title||'';
+  document.getElementById('b-author').value=b.author||'';
+  document.getElementById('b-category').value=b.category||'IIT-JEE';
+  document.getElementById('b-thumb').value=b.thumbnail_url||'';
+  document.getElementById('b-pdf-url').value=b.pdf_url||'';
+  document.getElementById('book-form-title').textContent='✏️ Book Edit Karo';
+  document.getElementById('btn-add-book').textContent='💾 Update Book';
+  document.getElementById('book-cancel-btn').style.display='inline-flex';
+  document.getElementById('book-form-title').scrollIntoView({behavior:'smooth'});
+}
+function cancelEditBook() {
+  document.getElementById('editing-book-idx').value='';
+  ['b-title','b-author','b-thumb','b-pdf-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b-category').value='IIT-JEE';
+  document.getElementById('book-form-title').textContent='➕ Naya Book Add Karo';
+  document.getElementById('btn-add-book').textContent='✅ Add Book';
+  document.getElementById('book-cancel-btn').style.display='none';
+}
+async function deleteBook(idx,btn) {
+  if(!confirm('Delete this book?')) return;
+  btn.disabled=true; btn.textContent='...';
+  const rem=DB.digital_books.splice(idx,1);
+  try { await saveDB('Delete book'); showToast('✅ Deleted!','success'); await refreshAll(); }
+  catch(e) { showToast('❌ '+e.message,'error'); DB.digital_books.splice(idx,0,...rem); btn.disabled=false; btn.textContent='🗑 Delete'; }
+}
+function renderBooks() {
+  if(!DB) return;
+  const q=(document.getElementById('books-search').value||'').toLowerCase();
+  let list=DB.digital_books.map((b,i)=>({...b,_i:i}));
+  if(q) list=list.filter(b=>`${b.title} ${b.author} ${b.category}`.toLowerCase().includes(q));
+  document.getElementById('book-count-badge').textContent=list.length;
+  const el=document.getElementById('books-list');
+  if(!list.length){el.innerHTML='<p class="empty-msg">Koi books nahi hain.</p>';return;}
+  el.innerHTML='';
+  list.forEach(b=>{
+    const row=document.createElement('div'); row.className='item-row';
+    row.innerHTML=`
+      <div class="item-thumb-book">${b.thumbnail_url?`<img src="${b.thumbnail_url}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='📖'">`:'📖'}</div>
+      <div class="item-info"><strong>${b.title}</strong>
+        <span>${b.author||''}${b.category?' · '+b.category:''}</span></div>
+      <button class="btn btn-outline" style="font-size:12px" onclick="editBook(${b._i})">✏️ Edit</button>
+      <button class="btn btn-danger" style="font-size:12px" onclick="deleteBook(${b._i},this)">🗑 Delete</button>`;
+    el.appendChild(row);
+  });
+}
+
+// ══════════════════════════ TESTIMONIALS ══════════════════════════════
+let tStars=5;
+function setTStar(v){
+  tStars=v;
+  document.querySelectorAll('#t-stars .star-btn').forEach(b=>b.classList.toggle('on',+b.dataset.v<=v));
+}
+async function submitTestimonial() {
+  const idx  = document.getElementById('editing-t-idx').value;
+  const name = document.getElementById('t-name').value.trim();
+  const role = document.getElementById('t-role').value.trim();
+  const text = document.getElementById('t-text').value.trim();
+  const photo= document.getElementById('t-photo').value.trim();
+  if(!name||!role||!text){showToast('Name, Role, Review text required!','error');return;}
+  const btn=document.getElementById('btn-add-testimonial');
+  btn.disabled=true; btn.textContent='⏳ Saving...';
+  const rec={name,role,stars:tStars,text,photo};
+  const isEdit=idx!=='';
+  if(isEdit) DB.testimonials[parseInt(idx)]=rec; else DB.testimonials.push(rec);
+  try {
+    await saveDB((isEdit?'Update':'Add')+` testimonial: ${name}`);
+    showToast(isEdit?'✅ Updated!':'✅ Testimonial add ho gaya!','success');
+    cancelEditTestimonial(); await refreshAll();
+  } catch(e) { showToast('❌ '+e.message,'error'); if(!isEdit) DB.testimonials.pop(); }
+  btn.disabled=false; btn.textContent=isEdit?'💾 Update Testimonial':'✅ Add Testimonial';
+}
+function editTestimonial(idx) {
+  const t=DB.testimonials[idx];
+  document.getElementById('editing-t-idx').value=idx;
+  document.getElementById('t-name').value=t.name||'';
+  document.getElementById('t-role').value=t.role||'';
+  document.getElementById('t-text').value=t.text||'';
+  document.getElementById('t-photo').value=t.photo||'';
+  setTStar(t.stars||5);
+  document.getElementById('t-form-title').textContent='✏️ Testimonial Edit Karo';
+  document.getElementById('btn-add-testimonial').textContent='💾 Update Testimonial';
+  document.getElementById('t-cancel-btn').style.display='inline-flex';
+  document.getElementById('t-form-title').scrollIntoView({behavior:'smooth'});
+}
+function cancelEditTestimonial() {
+  document.getElementById('editing-t-idx').value='';
+  ['t-name','t-role','t-text','t-photo'].forEach(id=>document.getElementById(id).value='');
+  setTStar(5);
+  document.getElementById('t-form-title').textContent='➕ Naya Testimonial Add Karo';
+  document.getElementById('btn-add-testimonial').textContent='✅ Add Testimonial';
+  document.getElementById('t-cancel-btn').style.display='none';
+}
+async function deleteTestimonial(idx,btn) {
+  if(!confirm('Delete this testimonial?')) return;
+  btn.disabled=true; btn.textContent='...';
+  const rem=DB.testimonials.splice(idx,1);
+  try { await saveDB('Delete testimonial'); showToast('✅ Deleted!','success'); await refreshAll(); }
+  catch(e) { showToast('❌ '+e.message,'error'); DB.testimonials.splice(idx,0,...rem); btn.disabled=false; btn.textContent='🗑 Delete'; }
+}
+function renderTestimonials() {
+  if(!DB) return;
+  document.getElementById('t-count-badge').textContent=DB.testimonials.length;
+  const el=document.getElementById('testimonials-list');
+  if(!DB.testimonials.length){el.innerHTML='<p class="empty-msg">Koi testimonials nahi hain.</p>';return;}
+  el.innerHTML='';
+  DB.testimonials.forEach((t,idx)=>{
+    const row=document.createElement('div'); row.className='item-row';
+    row.innerHTML=`
+      <div class="item-info">
+        <strong>${t.name} <span style="color:#fbbf24;font-size:12px">${'★'.repeat(t.stars||0)}${'☆'.repeat(5-(t.stars||0))}</span></strong>
+        <span>${t.role} — ${(t.text||'').slice(0,60)}${(t.text||'').length>60?'...':''}</span></div>
+      <button class="btn btn-outline" style="font-size:12px" onclick="editTestimonial(${idx})">✏️ Edit</button>
+      <button class="btn btn-danger" style="font-size:12px" onclick="deleteTestimonial(${idx},this)">🗑 Delete</button>`;
+    el.appendChild(row);
+  });
+}
+
 // ── HELPERS ───────────────────────────────────────────────────────────
-function clearForm(ids) { ids.forEach(id => { document.getElementById(id).value = ''; }); }
- 
-function showToast(msg, type) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = type;
-  setTimeout(() => { t.className = ''; }, 4000);
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className=type;
+  setTimeout(()=>{t.className='';},4000);
 }
 </script>
 </body>
