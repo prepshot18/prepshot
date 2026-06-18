@@ -316,11 +316,18 @@ footer span{color:var(--accent2)}
 <footer>© 2026 <span>PrepShot</span>. All rights reserved.</footer>
  
 <script>
-const SUPA_URL='https://ohptzgfwgbmtjcmivstx.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M';
- 
+let SITE_DB = null;
+async function getSiteDB(){
+  if (SITE_DB) return SITE_DB;
+  try {
+    const r = await fetch('db.json?t=' + Date.now());
+    SITE_DB = await r.json();
+  } catch(e) { SITE_DB = {}; }
+  return SITE_DB;
+}
+
 function initials(n){ return (n||'?').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
- 
+
 function cardHTML(t){
   const av=t.photo
     ?`<div class="tc-avatar"><img src="${t.photo}" alt="${t.name}"></div>`
@@ -331,16 +338,11 @@ function cardHTML(t){
     <p class="tc-text">${t.text}</p>
   </div>`;
 }
- 
+
 async function renderCols(){
-  // Fetch from Supabase so all devices see same data
-  let data=[];
-  try{
-    const r=await fetch(`${SUPA_URL}/rest/v1/testimonials?select=*&order=created_at.asc`,
-      {headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}});
-    data=await r.json();
-  }catch(e){}
- 
+  const db = await getSiteDB();
+  const data = db.testimonials || [];
+
   if(!data.length){
     document.querySelector('.tscroll-wrap').innerHTML='<div style="grid-column:1/-1;display:flex;align-items:center;justify-content:center;height:200px;color:#64748b;font-size:.9rem;">No testimonials yet.</div>';
     return;
@@ -355,21 +357,20 @@ async function renderCols(){
     document.getElementById(id).innerHTML=[...col,...col].map(cardHTML).join('');
   });
 }
- 
+
 renderCols();
 </script>
- 
+
 <script>
 // ── BOOKS CAROUSEL ──
 (async()=>{
   try{
-    const r=await fetch('https://ohptzgfwgbmtjcmivstx.supabase.co/rest/v1/digital_books?select=*&order=created_at.desc&limit=10',
-      {headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ocHR6Z2Z3Z2JtdGpjbWl2c3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTQwNzUsImV4cCI6MjA5MjA3MDA3NX0.GU_w5qwZ0_0pj8GsTAz5eQXwKvKNXOpgkXuIFcw7M1M'}});
-    const data=await r.json();
+    const db = await getSiteDB();
+    const data = db.digital_books || [];
     const el=document.getElementById('booksCarousel');
     if(!data.length){el.style.display='none';return;}
     el.innerHTML=data.map(b=>`
-      <a class="bk-card" href="books.html" target="_blank">
+      <a class="bk-card" href="books.html">
         <div class="bk-thumb">${b.thumbnail_url?`<img src="${b.thumbnail_url}" alt="${b.title}" loading="lazy">`:'📖'}</div>
         <div class="bk-info">
           <div class="bk-cat">${b.category||''}</div>
